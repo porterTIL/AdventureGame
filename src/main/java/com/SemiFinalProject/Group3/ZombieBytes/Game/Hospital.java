@@ -5,7 +5,7 @@ import com.SemiFinalProject.Group3.ZombieBytes.Items.Items;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hospital implements Location{
+public class    Hospital implements Location{
     String name = null;
     List<Items> placedItems = new ArrayList<>();
 
