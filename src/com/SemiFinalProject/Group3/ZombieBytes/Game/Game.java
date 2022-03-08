@@ -46,7 +46,7 @@ public class Game {
         this.gameInProgress = false;
     }
 
-    public void setGameBoard(int length, int width, int hospital){
+    public void setGameBoard(int length, int width, int hospital, int store, int policeStation, int school){
         String land = "Land";
         for(int x = 0; x < length; x++){
             board.add(new ArrayList<>());
@@ -55,6 +55,9 @@ public class Game {
             }
         }
         setHospital(hospital, length, width);
+        setStore(store, length, width);
+        setPoliceStation(policeStation, length, width);
+        setSchool(school, length, width);
 
         // prints the board
         for(int x = 0; x < board.size(); x++){
@@ -63,7 +66,7 @@ public class Game {
     }
     public void setHospital(int hospital, int length, int width){
         Random randomNumber = new Random();
-        for (int x = 0; x < hospital; ++x){
+        for (int x = 0; x < hospital; x++){
             int randomLength = randomNumber.nextInt(length);
             int randomWidth = randomNumber.nextInt(width);
 
@@ -75,5 +78,48 @@ public class Game {
 
         }
     }
+    public void setStore(int store, int length, int width){
+        Random randomNumber = new Random();
+        for (int x = 0; x < store; x++){
+            int randomLength = randomNumber.nextInt(length);
+            int randomWidth = randomNumber.nextInt(width);
+
+            if (!board.get(randomLength).get(randomWidth).equalsIgnoreCase("Store")){
+                board.get(randomLength).set(randomWidth, "Store");
+            } else{
+                x--;
+            }
+
+        }
+    }
+    public void setPoliceStation(int policeStation, int length, int width){
+        Random randomNumber = new Random();
+        for (int x = 0; x < policeStation; x++){
+            int randomLength = randomNumber.nextInt(length);
+            int randomWidth = randomNumber.nextInt(width);
+
+            if (!board.get(randomLength).get(randomWidth).equalsIgnoreCase("PoliceStation")){
+                board.get(randomLength).set(randomWidth, "PoliceStation");
+            } else{
+                x--;
+            }
+
+        }
+    }
+    public void setSchool(int school, int length, int width){
+        Random randomNumber = new Random();
+        for (int x = 0; x < school; x++){
+            int randomLength = randomNumber.nextInt(length);
+            int randomWidth = randomNumber.nextInt(width);
+
+            if (!board.get(randomLength).get(randomWidth).equalsIgnoreCase("PoliceStation")){
+                board.get(randomLength).set(randomWidth, "PoliceStation");
+            } else{
+                x--;
+            }
+
+        }
+    }
+
 
 }
