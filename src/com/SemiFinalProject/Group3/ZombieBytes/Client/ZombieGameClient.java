@@ -1,9 +1,10 @@
 package com.SemiFinalProject.Group3.ZombieBytes.Client;
 
+import com.SemiFinalProject.Group3.ZombieBytes.Game.Game;
+
 public class ZombieGameClient {
     public static void main(String[] args) {
-    // parse command
-        System.out.println("Nothing running");
+        Game game1 = new Game();
+        game1.setGameBoard(5, 5, 2);
     }
-
 }
