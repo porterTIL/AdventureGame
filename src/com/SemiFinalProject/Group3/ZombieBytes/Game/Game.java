@@ -2,8 +2,7 @@ package com.SemiFinalProject.Group3.ZombieBytes.Game;
 
 import com.SemiFinalProject.Group3.ZombieBytes.Characters.Character;
 import com.SemiFinalProject.Group3.ZombieBytes.Characters.Zombie;
-import com.SemiFinalProject.Group3.ZombieBytes.Items.Food;
-import com.SemiFinalProject.Group3.ZombieBytes.Items.Items;
+import com.SemiFinalProject.Group3.ZombieBytes.Items.*;
 
 import java.util.*;
 
@@ -21,8 +20,18 @@ public class Game {
     // methods
     public void getItems(){
         ArrayList<Items> items = new ArrayList<>();
-        Items cheese =new Food("cheese");
+        Items cheese =new Food("banana");
         items.add(cheese);
+        Items stick = new Weapon("stick");
+        items.add(stick);
+        Items hospitalKey = new Key("hospital key");
+        items.add(hospitalKey);
+        Items nurseTag = new Key("nurse's badge");
+        items.add(nurseTag);
+        Items baton = new Weapon("baton");
+        items.add(baton);
+        Items cure = new Cure();
+        items.add(cure);
     }
     public void setRules(){
         // set the rules of the game, use a scanner for map size
