@@ -1,8 +1,11 @@
 package com.SemiFinalProject.Group3.ZombieBytes.Items;
 
-public class Knife implements Items{
+public class Weapon implements Items{
     // properties
     String name;
+
+    public Weapon(String weapon) {
+    }
 
     // methods
     @Override
