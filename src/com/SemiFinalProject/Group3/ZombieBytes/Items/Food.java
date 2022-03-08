@@ -4,6 +4,9 @@ public class Food implements Items{
     // properties
     String name;
 
+    public Food(String food) {
+    }
+
     // methods
     @Override
     public void use() {
