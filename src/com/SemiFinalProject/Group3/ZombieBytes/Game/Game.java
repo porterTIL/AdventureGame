@@ -36,20 +36,20 @@ public class Game {
                 board.get(x).add(land);
             }
         }
-        setLocation(hospital, length, width);
+        setHospital(hospital, length, width);
 
         // prints the board
         for(int x = 0; x < board.size(); x++){
             System.out.println(board.get(x));
         }
     }
-    public void setLocation(int hospital, int length, int width){
+    public void setHospital(int hospital, int length, int width){
         Random randomNumber = new Random();
         for (int x = 0; x < hospital; ++x){
             int randomLength = randomNumber.nextInt(length);
             int randomWidth = randomNumber.nextInt(width);
 
-            if (board.get(randomLength).get(randomWidth) != "Hospital"){
+            if (!board.get(randomLength).get(randomWidth).equalsIgnoreCase("Hospital")){
              board.get(randomLength).set(randomWidth, "Hospital");
             } else{
                 x--;
