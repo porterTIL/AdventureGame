@@ -71,7 +71,11 @@ public class Game {
             int randomWidth = randomNumber.nextInt(width);
 
             if (!board.get(randomLength).get(randomWidth).equalsIgnoreCase("Hospital")){
-             board.get(randomLength).set(randomWidth, "Hospital");
+                if(board.get(randomLength).get(randomWidth).equalsIgnoreCase("land")){
+                    board.get(randomLength).set(randomWidth, "Hospital");
+                }else {
+                    x--;
+                }
             } else{
                 x--;
             }
@@ -85,7 +89,11 @@ public class Game {
             int randomWidth = randomNumber.nextInt(width);
 
             if (!board.get(randomLength).get(randomWidth).equalsIgnoreCase("Store")){
-                board.get(randomLength).set(randomWidth, "Store");
+                if(board.get(randomLength).get(randomWidth).equalsIgnoreCase("land")){
+                    board.get(randomLength).set(randomWidth, "Store");
+                }else {
+                    x--;
+                }
             } else{
                 x--;
             }
@@ -99,7 +107,11 @@ public class Game {
             int randomWidth = randomNumber.nextInt(width);
 
             if (!board.get(randomLength).get(randomWidth).equalsIgnoreCase("PoliceStation")){
-                board.get(randomLength).set(randomWidth, "PoliceStation");
+                if(board.get(randomLength).get(randomWidth).equalsIgnoreCase("land")){
+                    board.get(randomLength).set(randomWidth, "PoliceStation");
+                }else {
+                    x--;
+                }
             } else{
                 x--;
             }
@@ -112,8 +124,12 @@ public class Game {
             int randomLength = randomNumber.nextInt(length);
             int randomWidth = randomNumber.nextInt(width);
 
-            if (!board.get(randomLength).get(randomWidth).equalsIgnoreCase("PoliceStation")){
-                board.get(randomLength).set(randomWidth, "PoliceStation");
+            if (!board.get(randomLength).get(randomWidth).equalsIgnoreCase("School")){
+                if(board.get(randomLength).get(randomWidth).equalsIgnoreCase("land")){
+                    board.get(randomLength).set(randomWidth, "School");
+                }else {
+                    x--;
+                }
             } else{
                 x--;
             }
