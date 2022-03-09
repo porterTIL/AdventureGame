@@ -10,16 +10,16 @@ public class Zombie{
     }
 
 
-    public int bite() {
-    if (difficulty == Level.EASY) {
-        Character.health = Character.health - 10;
-    } else if (difficulty == Level.MEDIUM) {
-        Character.health = Character.health - 20;
-    } else if (difficulty == Level.HARD) {
-        Character.health = Character.health - 30;
-    }
-    return Character.health;
-    }
+//    public int bite() {
+//    if (difficulty == Level.EASY) {
+//        Character.health = Character.health - 10;
+//    } else if (difficulty == Level.MEDIUM) {
+//        Character.health = Character.health - 20;
+//    } else if (difficulty == Level.HARD) {
+//        Character.health = Character.health - 30;
+//    }
+//    return Character.health;
+//    }
 
 
 }
