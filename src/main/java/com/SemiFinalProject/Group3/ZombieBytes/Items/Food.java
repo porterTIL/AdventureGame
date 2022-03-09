@@ -11,5 +11,6 @@ public class Food implements Items{
     @Override
     public void use() {
         // restore health
+//        Character.health = Character.health + 5;
     }
 }
