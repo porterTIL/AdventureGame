@@ -1,8 +1,8 @@
-package com.SemiFinalProject.Group3.ZombieBytes.Game;
+package com.Group3.ZombieBytes.Game;
 
-import com.SemiFinalProject.Group3.ZombieBytes.Characters.Character;
-import com.SemiFinalProject.Group3.ZombieBytes.Characters.Zombie;
-import com.SemiFinalProject.Group3.ZombieBytes.Items.*;
+import com.Group3.ZombieBytes.Characters.Character;
+import com.Group3.ZombieBytes.Characters.Zombie;
+import com.Group3.ZombieBytes.Items.*;
 
 import java.util.*;
 
@@ -34,7 +34,9 @@ public class Game {
         items.add(cure);
     }
     public void setRules(){
-        // set the rules of the game, use a scanner for map size
+        setIntro();
+        setParameters();
+
     }
 
     public void gameStart(){
@@ -135,6 +137,13 @@ public class Game {
             }
 
         }
+    }
+
+    public void setIntro(){
+        System.out.println("Welcome to Zombie Bytes!!!");
+    }
+    public void setParameters(){
+
     }
 
 
