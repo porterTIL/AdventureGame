@@ -1,10 +1,11 @@
 package com.SemiFinalProject.Group3.ZombieBytes.Items;
+import com.SemiFinalProject.Group3.ZombieBytes.Characters.Character;
 
 public class Food implements Items{
     // properties
     String name;
 
-    public Food(String food) {
+    public Food(String name) {
     }
 
     // methods
