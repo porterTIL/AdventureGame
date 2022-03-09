@@ -1,12 +1,12 @@
 package com.SemiFinalProject.Group3.ZombieBytes.Characters;
 
 public class Zombie{
-    int hp;
+    public static int ZombieHP;
     Level difficulty;
 
-    public Zombie(Level difficulty, int hp) {
+    public Zombie(Level difficulty, int ZombieHP) {
         this.difficulty = difficulty;
-        this.hp = hp;
+        this.ZombieHP = ZombieHP;
     }
 
 
