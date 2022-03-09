@@ -1,4 +1,4 @@
-package com.SemiFinalProject.Group3.ZombieBytes.Items;
+package com.Group3.ZombieBytes.Items;
 
 public class Cure implements Items{
     // properties
