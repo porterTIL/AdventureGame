@@ -1,7 +1,6 @@
-package com.SemiFinalProject.Group3.ZombieBytes.Characters;
+package com.Group3.ZombieBytes.Characters;
 
-import com.SemiFinalProject.Group3.ZombieBytes.Items.Items;
-import com.SemiFinalProject.Group3.ZombieBytes.Items.Weapon;
+import com.Group3.ZombieBytes.Items.Items;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +49,7 @@ public class Character {
         System.out.println(Zombie.ZombieHP);
         System.out.println("Zombie hit");
         Zombie.ZombieHP = Zombie.ZombieHP - 10;
-        System.out.println("new Zombie HP" + Zombie.ZombieHP);
+        System.out.println("new Zombie HP " + Zombie.ZombieHP);
 
     }
 
