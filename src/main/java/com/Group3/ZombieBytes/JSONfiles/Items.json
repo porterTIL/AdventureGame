@@ -2,25 +2,30 @@
   "Items": [
     {
       "name": "Cure",
-      "quantity": 1
+      "quantity": 1,
+      "Description": "You have found the cure! You'll have to find a location to spread it to the zombies..."
     },
     {
       "name": "Letter",
-      "quantity": 1
+      "quantity": 1,
+      "Description": "A tattered note with 'HELP' written on the front"
     },
     {
       "name": "Food",
       "quantity": 2,
-      "type":["Sandwich", "Apple"]
+      "type":["Sandwich", "Apple"],
+      "Description": "Looks delicious! Maybe eating this will restore some health points..."
     },
     {
-      "name": "BananaKey",
-      "quantity": 1
+      "name": "Banana Key",
+      "quantity": 1,
+      "Description": "Hm...maybe I can use this for something..."
     },
     {
       "name": "Weapon",
       "quantity": 2,
-      "type": ["baton", "stick"]
+      "type": ["baton", "stick"],
+      "Description": "A tool that can come in use for protecting against Zombies."
     }
   ]
 }
