@@ -71,6 +71,7 @@ public class Character {
 
         switch (startGame.toLowerCase(Locale.ROOT)){
             case "start":
+
                 chooseAction();
                 break;
             case "quit":
@@ -106,7 +107,8 @@ public class Character {
                 startGame();
                 break;
             default:
-                System.out.println("What would you like to do?");
+                System.out.println("What would you like to do?")
+
         }
     }
     public void walk(){
