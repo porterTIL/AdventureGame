@@ -49,6 +49,36 @@ public class Character {
                 System.out.println("Please select a valid movement");
         }
     }*/
+    public void startGame(){
+        InputStreamReader input = new InputStreamReader(System.in);
+        BufferedReader reader = new BufferedReader(input);
+        System.out.println("Welcome to ZombieBytes! Enter a username: ");
+        username = null;
+        try {
+            username = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(username + ", type 'start' to play the game. Enter 'quit' at any time to end the game.");
+        String startGame = null;
+        try {
+            startGame = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        switch (startGame.toLowerCase(Locale.ROOT)){
+            case "start":
+                walk();
+                break;
+            case "quit":
+                startGame();
+                break;
+            default:
+                System.out.println("enter 'start' to begin the game");
+        }
+    }
 
     public void walk(){
         InputStreamReader input = new InputStreamReader(System.in);
@@ -76,6 +106,9 @@ public class Character {
                break;
            case "walk west":
                System.out.println(characterLocation.get(3));
+               break;
+           case "quit":
+               startGame();
                break;
            default:
                System.out.println("enter valid movement");
