@@ -1,5 +1,7 @@
 package com.Group3.ZombieBytes.Items;
 
+import java.util.Locale;
+
 public class Items {
 
     // properties
@@ -30,5 +32,8 @@ public class Items {
     }
     public void use(){
         System.out.println("Using " + getName() + ": " + getDescription());
-    };
+    }
+    public String toString(){
+        return getName().toUpperCase()+": " + description;
+    }
 }
