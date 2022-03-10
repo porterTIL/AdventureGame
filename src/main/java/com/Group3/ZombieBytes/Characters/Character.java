@@ -97,9 +97,11 @@ public class Character {
             case "walk":
                 walk();
                 break;
-//            case "inspect":
-//                inspect(Items);
-//                break;
+            case "inspect":
+                for (int i = 0; i < currentLocation.itemsInLocation.size(); i++){
+                    System.out.println(currentLocation.itemsInLocation.get(i));
+                }
+                break;
             case "quit":
                 startGame();
                 break;

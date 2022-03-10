@@ -30,5 +30,8 @@ public class Items {
     }
     public void use(){
         System.out.println("Using " + getName() + ": " + getDescription());
-    };
+    }
+    public String toString(){
+        return description;
+    }
 }
