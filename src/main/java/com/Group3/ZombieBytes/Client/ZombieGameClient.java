@@ -36,9 +36,6 @@ public class ZombieGameClient {
 
         Character c = new Character("Sam", 100,townLocations);
         c.currentLocation = townLocations.get(0);
-
-        c.startGame();
-
         System.out.println(c.currentLocation);
 //        c.walk();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,6 +61,7 @@ public class ZombieGameClient {
         for(int x = 0; x < townLocations.size(); x++){
             System.out.println(townLocations.get(x));
         }
+        // this is the second commit
 
     }
 }

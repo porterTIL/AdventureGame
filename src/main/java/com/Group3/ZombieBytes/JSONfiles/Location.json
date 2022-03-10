@@ -1,7 +1,7 @@
 {
   "Location": [
     {
-      "name": "Town Center",
+      "name": "TownCenter",
       "Item": "Letter",
       "description": "You have entered the town center",
       "Valid Direction": "North",
@@ -11,7 +11,7 @@
     },
     {
       "name": "Hospital",
-      "Cure": "Cure",
+      "Item": "Cure",
       "Zombie": "Zombie Boss",
       "Description": "You have entered the Hospital.",
       "Valid Direction": "East",
