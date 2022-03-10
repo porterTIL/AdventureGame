@@ -36,9 +36,9 @@ public class ZombieGameClient {
 
         Character c = new Character("Sam", 100,townLocations);
         c.currentLocation = townLocations.get(0);
-<<<<<<< HEAD
+
         c.startGame();
-=======
+
         System.out.println(c.currentLocation);
 //        c.walk();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,6 +65,5 @@ public class ZombieGameClient {
             System.out.println(townLocations.get(x));
         }
 
->>>>>>> af2bede626973ff0e8c7f21c22a61ed85aea932c
     }
 }

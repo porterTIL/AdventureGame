@@ -1,50 +1,52 @@
 {
   "Items": [
     {
+      "location": "hospital",
       "name": "Cure",
       "quantity": 1,
+      "type": "cure",
       "Description": "You have found the cure! You'll have to find a location to spread it to the zombies..."
     },
     {
+      "location": "townCenter",
       "name": "Letter",
       "quantity": 1,
+      "type": "letter",
       "Description": "A tattered note with 'HELP' written on the front"
     },
     {
-      "name": "Food",
-      "quantity": 2,
-      "type":["Sandwich", "Apple"],
+      "location": "school",
+      "name": "Apple",
+      "quantity": 1,
+      "type":"food"
+    },
+    {
+      "location": "policeStation",
+      "name": "Sandwich",
+      "quantity": 1,
+      "type":"food",
       "Description": "Looks delicious! Maybe eating this will restore some health points..."
     },
     {
-      "name": "Banana Key",
-      "quantity": 1,
-      "Description": "Hm...maybe I can use this for something..."
-    },
-    {
-<<<<<<< HEAD
-      "name": "Weapon",
-      "quantity": 2,
-      "type": ["baton", "stick"],
-      "Description": "A tool that can come in use for protecting against Zombies."
-=======
       "location": "store",
       "name": "Key",
       "quantity": 1,
-      "type": "item"
+      "type": "item",
+      "Description": "Hm...maybe I can use this for something..."
     },
     {
       "location": "policeStation",
       "name": "Baton",
       "quantity": 1,
-      "type":"weapon"
+      "type":"weapon",
+      "Description": "A tool that can come in use for protecting against Zombies."
     },
     {
       "location": "road 1",
       "name": "Stick",
       "quantity": 1,
-      "type":"weapon"
->>>>>>> af2bede626973ff0e8c7f21c22a61ed85aea932c
+      "type":"weapon",
+      "Description": "A tool that can come in use for protecting against Zombies."
     }
   ]
 }
