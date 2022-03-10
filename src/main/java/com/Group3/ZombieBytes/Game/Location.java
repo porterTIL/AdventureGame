@@ -34,7 +34,7 @@ public class Location {
 
     // to String
     public String toString(){
-        return "This is a " + getName() + ", " + "and it has the following items: " + getItems();
+        return "The " + getName() + ", " + "and it has the following items: " + getItems();
     }
 
 }
