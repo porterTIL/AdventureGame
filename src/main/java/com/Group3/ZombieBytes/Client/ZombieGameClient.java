@@ -31,12 +31,14 @@ public class ZombieGameClient {
            String name = (String) location.get("name");
            String item =  (String) location.get("Item");
            townLocations.add(new Location(name, item));
-            System.out.println("Name of the location is " + name);
-            System.out.println("The item here is " + item);
+//            System.out.println("Name of the location is " + name);
+//            System.out.println("The item here is " + item);
         }
-        System.out.println(townLocations.size());
+//        System.out.println(townLocations.size());
 
         Character c = new Character("Sam", 100,townLocations);
+        c.currentLocation = townLocations.get(0);
+        System.out.println(c.currentLocation);
         c.walk();
     }
 }

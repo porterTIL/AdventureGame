@@ -18,7 +18,7 @@ public class Character {
     private Directions direction = Directions.NORTH;
     List<Items> inventory = new ArrayList<>();
     List<Location> characterLocation = new ArrayList<>();
-    //Location currentLocation = Location.getName();
+    public Location currentLocation;
 
 
     //constructors

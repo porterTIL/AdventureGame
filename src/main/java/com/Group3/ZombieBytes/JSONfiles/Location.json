@@ -2,6 +2,7 @@
   "Location": [
     {
       "name": "Town Center",
+      "Item": "Letter",
       "description": "You have entered the town center",
       "Valid Direction": "North",
       "Valid Direction": "South",
