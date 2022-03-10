@@ -2,6 +2,7 @@ package com.Group3.ZombieBytes.Characters;
 
 import com.Group3.ZombieBytes.Items.Items;
 import com.Group3.ZombieBytes.Game.Location;
+import jdk.swing.interop.SwingInterOpUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -81,6 +82,7 @@ public class Character {
     }
 
     public void walk(){
+        System.out.println(username + " is currently located " + currentLocation);
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader reader = new BufferedReader(input);
         System.out.println("Which direction does " + username + " Want to walk?");
@@ -92,27 +94,166 @@ public class Character {
             e.printStackTrace();
         }
 
-
-       switch (walkDirection.toLowerCase(Locale.ROOT)){
-           case "walk north":
-               //if (Location.getName() == "")
-               System.out.println(characterLocation.get(0));
-               break;
-           case "walk south":
-               System.out.println(characterLocation.get(1));
-               break;
-           case "walk east":
-               System.out.println(characterLocation.get(2));
-               break;
-           case "walk west":
-               System.out.println(characterLocation.get(3));
-               break;
-           case "quit":
-               startGame();
-               break;
-           default:
-               System.out.println("enter valid movement");
-       }
+        if (currentLocation == characterLocation.get(0)){
+            switch (walkDirection.toLowerCase(Locale.ROOT)){
+                case "walk north":
+                    currentLocation = characterLocation.get(1);
+                    System.out.println(username + " has moved to " + currentLocation);
+                    break;
+                case "walk south":
+                    currentLocation = characterLocation.get(2);
+                    System.out.println(username + " has moved to " + currentLocation);
+                    break;
+                case "walk east":
+                    currentLocation = characterLocation.get(3);
+                    System.out.println(username + " has moved to " + currentLocation);
+                    break;
+                case "walk west":
+                    currentLocation = characterLocation.get(7);
+                    System.out.println(username + " has moved to " + currentLocation);
+                    break;
+                case "quit":
+                    startGame();
+                    break;
+                default:
+                    System.out.println("enter valid movement");
+            }
+        }else {
+            if (currentLocation == characterLocation.get(1)){
+                switch (walkDirection.toLowerCase(Locale.ROOT)){
+                    case "walk east":
+                        currentLocation = characterLocation.get(6);
+                        System.out.println(username + " has moved to " + currentLocation);
+                        break;
+                    case "walk west":
+                        currentLocation = characterLocation.get(5);
+                        System.out.println(username + " has moved to " + currentLocation);
+                        break;
+                    case "walk south":
+                        currentLocation = characterLocation.get(0);
+                        System.out.println(username + " has moved to " + currentLocation);
+                    default:
+                        System.out.println("enter valid movement");
+                }
+            } else{
+                if (currentLocation == characterLocation.get(2)){
+                    switch (walkDirection.toLowerCase(Locale.ROOT)){
+                        case "walk north":
+                            currentLocation = characterLocation.get(0);
+                            System.out.println(username + " has moved to " + currentLocation);
+                            break;
+                        case "walk east":
+                            currentLocation = characterLocation.get(8);
+                            System.out.println(username + " has moved to " + currentLocation);
+                            break;
+                        case "walk west":
+                            currentLocation = characterLocation.get(4);
+                            System.out.println(username + " has moved to " + currentLocation);
+                            break;
+                        default:
+                            System.out.println("enter valid movement");
+                    }
+                }else {
+                    if (currentLocation == characterLocation.get(3)){
+                        switch (walkDirection.toLowerCase(Locale.ROOT)){
+                            case "walk north":
+                                currentLocation = characterLocation.get(6);
+                                System.out.println(username + " has moved to " + currentLocation);
+                                break;
+                            case "walk west":
+                                currentLocation = characterLocation.get(0);
+                                System.out.println(username + " has moved to " + currentLocation);
+                                break;
+                            case "walk south":
+                                currentLocation = characterLocation.get(8);
+                                System.out.println(username + " has moved to " + currentLocation);
+                                break;
+                            default:
+                                System.out.println("enter valid movement");
+                        }
+                    }else {
+                        if (currentLocation == characterLocation.get(4)){
+                            switch (walkDirection.toLowerCase(Locale.ROOT)){
+                                case "walk north":
+                                    currentLocation = characterLocation.get(7);
+                                    System.out.println(username + " has moved to " + currentLocation);
+                                    break;
+                                case "walk east":
+                                    currentLocation = characterLocation.get(2);
+                                    System.out.println(username + " has moved to " + currentLocation);
+                                    break;
+                                default:
+                                    System.out.println("enter valid movement");
+                            }
+                        }else {
+                            if (currentLocation == characterLocation.get(5)) {
+                                switch (walkDirection.toLowerCase(Locale.ROOT)){
+                                    case "walk east":
+                                        currentLocation = characterLocation.get(1);
+                                        System.out.println(username + " has moved to " + currentLocation);
+                                        break;
+                                    case "walk south":
+                                        currentLocation = characterLocation.get(7);
+                                        System.out.println(username + " has moved to " + currentLocation);
+                                        break;
+                                    default:
+                                        System.out.println("enter valid movement");
+                                }
+                            }else {
+                                if (currentLocation == characterLocation.get(6)){
+                                    switch (walkDirection.toLowerCase(Locale.ROOT)){
+                                        case "walk west":
+                                            currentLocation = characterLocation.get(1);
+                                            System.out.println(username + " has moved to " + currentLocation);
+                                            break;
+                                        case "walk south":
+                                            currentLocation = characterLocation.get(3);
+                                            System.out.println(username + " has moved to " + currentLocation);
+                                            break;
+                                        default:
+                                            System.out.println("enter valid movement");
+                                    }
+                                } else {
+                                    if (currentLocation == characterLocation.get(7)){
+                                        switch (walkDirection.toLowerCase(Locale.ROOT)){
+                                            case "walk north":
+                                                currentLocation = characterLocation.get(5);
+                                                System.out.println(username + " has moved to " + currentLocation);
+                                                break;
+                                            case "walk east":
+                                                currentLocation = characterLocation.get(0);
+                                                System.out.println(username + " has moved to " + currentLocation);
+                                                break;
+                                            case "walk south":
+                                                currentLocation = characterLocation.get(4);
+                                                System.out.println(username + " has moved to " + currentLocation);
+                                                break;
+                                            default:
+                                                System.out.println("enter valid movement");
+                                        }
+                                    } else {
+                                        if (currentLocation == characterLocation.get(8)){
+                                            switch (walkDirection.toLowerCase(Locale.ROOT)){
+                                                case "walk north":
+                                                    currentLocation = characterLocation.get(3);
+                                                    System.out.println(username + " has moved to " + currentLocation);
+                                                    break;
+                                                case "walk west":
+                                                    currentLocation = characterLocation.get(2);
+                                                    System.out.println(username + " has moved to " + currentLocation);
+                                                    break;
+                                                default:
+                                                    System.out.println("enter valid movement");
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void runAway(Directions direction, int spaces){
@@ -176,6 +317,14 @@ public class Character {
 
     public void setInventory(List<Items> inventory) {
         this.inventory = inventory;
+    }
+
+    public Location getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(Location currentLocation) {
+        this.currentLocation = currentLocation;
     }
 
     //toString
