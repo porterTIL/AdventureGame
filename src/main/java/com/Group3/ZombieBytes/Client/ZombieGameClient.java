@@ -1,6 +1,7 @@
 package com.Group3.ZombieBytes.Client;
 
 import com.Group3.ZombieBytes.Characters.Character;
+import com.Group3.ZombieBytes.Items.Items;
 import org.json.simple.*;
 import com.Group3.ZombieBytes.Game.Location;
 import org.json.simple.parser.*;
@@ -18,7 +19,7 @@ public class ZombieGameClient {
         // this class helps us parse the json file
         JSONParser jsonparser = new JSONParser();
 
-        // this class helps us read the json file
+        // this class helps us read the json file for location
         FileReader reader = new FileReader("src/main/java/com/Group3/ZombieBytes/JSONfiles/Location.json");
         Object locationObject = jsonparser.parse(reader);
         JSONObject locations = (JSONObject)locationObject;
@@ -31,13 +32,39 @@ public class ZombieGameClient {
            String name = (String) location.get("name");
            String item =  (String) location.get("Item");
            townLocations.add(new Location(name, item));
-//            System.out.println("Name of the location is " + name);
-//            System.out.println("The item here is " + item);
         }
-//        System.out.println(townLocations.size());
 
         Character c = new Character("Sam", 100,townLocations);
         c.currentLocation = townLocations.get(0);
+<<<<<<< HEAD
         c.startGame();
+=======
+        System.out.println(c.currentLocation);
+//        c.walk();
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // this class helps us read the json file for items in a location
+        FileReader readerItems = new FileReader("src/main/java/com/Group3/ZombieBytes/JSONfiles/Items.json");
+        Object itemsObject = jsonparser.parse(readerItems);
+        JSONObject items = (JSONObject)itemsObject;
+
+        // Location is a json array of objects
+        JSONArray itemsArray = (JSONArray)items.get("Items");
+
+        for(int i = 0; i < itemsArray.size(); i++){
+        JSONObject ithItem = (JSONObject) itemsArray.get(i);
+        String item =  (String) ithItem.get("name");
+        String itemLocation = (String) ithItem.get("location");
+            for(var loc: townLocations){
+                if(loc.getName().equalsIgnoreCase(itemLocation)){
+                    loc.itemsInLocation.add(new Items(item));
+                }
+            }
+        }
+
+        for(int x = 0; x < townLocations.size(); x++){
+            System.out.println(townLocations.get(x));
+        }
+
+>>>>>>> af2bede626973ff0e8c7f21c22a61ed85aea932c
     }
 }

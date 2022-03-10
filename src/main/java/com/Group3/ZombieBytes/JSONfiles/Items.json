@@ -22,10 +22,29 @@
       "Description": "Hm...maybe I can use this for something..."
     },
     {
+<<<<<<< HEAD
       "name": "Weapon",
       "quantity": 2,
       "type": ["baton", "stick"],
       "Description": "A tool that can come in use for protecting against Zombies."
+=======
+      "location": "store",
+      "name": "Key",
+      "quantity": 1,
+      "type": "item"
+    },
+    {
+      "location": "policeStation",
+      "name": "Baton",
+      "quantity": 1,
+      "type":"weapon"
+    },
+    {
+      "location": "road 1",
+      "name": "Stick",
+      "quantity": 1,
+      "type":"weapon"
+>>>>>>> af2bede626973ff0e8c7f21c22a61ed85aea932c
     }
   ]
 }
