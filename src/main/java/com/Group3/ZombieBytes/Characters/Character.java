@@ -71,7 +71,7 @@ public class Character {
 
         switch (startGame.toLowerCase(Locale.ROOT)){
             case "start":
-                walk();
+                chooseAction();
                 break;
             case "quit":
                 startGame();
@@ -79,8 +79,31 @@ public class Character {
             default:
                 System.out.println("enter 'start' to begin the game");
         }
+
     }
 
+    public void chooseAction() {
+        InputStreamReader input = new InputStreamReader(System.in);
+        BufferedReader reader = new BufferedReader(input);
+        System.out.println("What would you like to do? (walk, inspect)");
+        String chooseAction = null;
+        try {
+            chooseAction = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        switch (chooseAction.toLowerCase(Locale.ROOT)){
+            case "walk":
+                walk();
+                break;
+//            case "inspect":
+//                inspect(Items);
+//                break;
+            default:
+                System.out.println("What would you like to do?");
+        }
+    }
     public void walk(){
         System.out.println(username + " is currently located " + currentLocation);
         InputStreamReader input = new InputStreamReader(System.in);
