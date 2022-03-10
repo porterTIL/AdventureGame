@@ -1,24 +1,76 @@
 {
   "Location": [
     {
+      "name": "Town Center",
+      "description": "You have entered the town center",
+      "Valid Direction": "North",
+      "Valid Direction": "South",
+      "Valid Direction": "East",
+      "Valid Direction": "West"
+    },
+    {
       "name": "Hospital",
-      "Item": "Medicine"
+      "Cure": "Cure",
+      "Zombie": "Zombie Boss",
+      "Description": "You have entered the Hospital.",
+      "Valid Direction": "East",
+      "Valid Direction": "South",
+      "Valid Direction": "West"
     },
     {
       "name": "PoliceStation",
-      "Item": "Baton"
+      "Item": "Baton",
+      "Item": "Sandwich",
+      "Zombie": "Monkey Zombie",
+      "Description": "You have entered the Police Station. You see a desk by the front door and jail cells to the back.",
+      "Key": "City Key",
+      "Valid Direction": "North",
+      "Valid Direction": "West",
+      "Valid Direction": "East"
     },
     {
       "name": "Store",
-      "Item": "Food"
+      "Item": "Food",
+      "Key": "Banana Key",
+      "Zombie": "Grocer Zombie",
+      "Description": "You have entered the Store. Aisles are lined with grocery items.",
+      "Valid Direction": "North",
+      "Valid Direction": "South",
+      "Valid Direction": "West"
     },
     {
       "name": "School",
-      "Item": "Books"
+      "Item": "Apple",
+      "Key": "Nurse's Badge",
+      "Zombie": "Teacher Zombie",
+      "Valid Direction": "North",
+      "Valid Direction": "East"
     },
     {
-      "name": "TownCenter",
-      "Item": "Map"
+      "name": "Road 1",
+      "Description": "You have entered a road. You see a stick on the ground.",
+      "Item": "Stick",
+      "Valid Direction": "South",
+      "Valid Direction": "East"
+    },
+    {
+      "name": "Road 2",
+      "Description": "You have entered a road",
+      "Valid Direction": "West",
+      "Valid Direction": "South"
+    },
+    {
+      "name": "Road 3",
+      "Description": "You have entered a road",
+      "Valid Direction": "South",
+      "Valid Direction": "North",
+      "Valid Direction": "East"
+    },
+    {
+      "name": "Road 4",
+      "Description": "You have entered a road",
+      "Valid Direction": "North",
+      "Valid Direction": "West"
     }
   ]
 }
