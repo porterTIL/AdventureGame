@@ -1,5 +1,6 @@
 package com.Group3.ZombieBytes.Client;
 
+import com.Group3.ZombieBytes.Characters.Character;
 import org.json.simple.*;
 import com.Group3.ZombieBytes.Game.Location;
 import org.json.simple.parser.*;
@@ -34,5 +35,8 @@ public class ZombieGameClient {
             System.out.println("The item here is " + item);
         }
         System.out.println(townLocations.size());
+
+        Character c = new Character("Sam", 100,townLocations);
+        c.walk();
     }
 }

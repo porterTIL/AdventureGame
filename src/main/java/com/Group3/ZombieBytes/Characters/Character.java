@@ -1,9 +1,14 @@
 package com.Group3.ZombieBytes.Characters;
 
 import com.Group3.ZombieBytes.Items.Items;
+import com.Group3.ZombieBytes.Game.Location;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Character {
     // properties
@@ -12,17 +17,21 @@ public class Character {
     private int spaces;
     private Directions direction = Directions.NORTH;
     List<Items> inventory = new ArrayList<>();
+    List<Location> characterLocation = new ArrayList<>();
+    //Location currentLocation = Location.getName();
+
 
     //constructors
     public Character(){};
 
-    public Character(String username, int health){
+    public Character(String username, int health, List<Location>characterLocation){
         this.username = username;
         this.health = health;
+        this.characterLocation = characterLocation;
     }
 
     //methods
-    public void walk(Directions direction){
+    /*public void walk(Directions direction){
         switch (direction) {
             case NORTH:
                 System.out.println("moving north");
@@ -39,6 +48,38 @@ public class Character {
             default:
                 System.out.println("Please select a valid movement");
         }
+    }*/
+
+    public void walk(){
+        InputStreamReader input = new InputStreamReader(System.in);
+        BufferedReader reader = new BufferedReader(input);
+        System.out.println("Which direction does " + username + " Want to walk?");
+
+        String walkDirection = null;
+        try {
+            walkDirection = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+       switch (walkDirection.toLowerCase(Locale.ROOT)){
+           case "walk north":
+               //if (Location.getName() == "")
+               System.out.println(characterLocation.get(0));
+               break;
+           case "walk south":
+               System.out.println(characterLocation.get(1));
+               break;
+           case "walk east":
+               System.out.println(characterLocation.get(2));
+               break;
+           case "walk west":
+               System.out.println(characterLocation.get(3));
+               break;
+           default:
+               System.out.println("enter valid movement");
+       }
     }
 
     public void runAway(Directions direction, int spaces){
