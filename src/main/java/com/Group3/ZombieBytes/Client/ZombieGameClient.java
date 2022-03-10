@@ -47,18 +47,17 @@ public class ZombieGameClient {
 
         for(int i = 0; i < itemsArray.size(); i++){
         JSONObject ithItem = (JSONObject) itemsArray.get(i);
-        String item =  (String) ithItem.get("name");
+        String itemName =  (String) ithItem.get("name");
         String itemLocation = (String) ithItem.get("location");
+        String itemDescription = (String) ithItem.get("Description");
             for(var loc: townLocations){
                 if(loc.getName().equalsIgnoreCase(itemLocation)){
-                    loc.itemsInLocation.add(new Items(item));
+                    loc.itemsInLocation.add(new Items(itemName, itemDescription));
+
                 }
             }
         }
 
-//        for(int x = 0; x < townLocations.size(); x++){
-//            townLocations.get(x);
-//        }
         // this is the second commit
         c.currentLocation = townLocations.get(0);
         c.startGame();
