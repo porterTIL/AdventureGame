@@ -1,5 +1,7 @@
 package com.Group3.ZombieBytes.Game;
 
+import com.Group3.ZombieBytes.Items.Items;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,12 +9,14 @@ public class Location {
     // Properties
     String name = null;
     String items = null;
+    List <Items> itemsInLocation = new ArrayList<Items>();
 //    List <String> items = new ArrayList<>();
 
     // constructors
     public Location(String name, String items){
         setName(name);
         setItems(items);
+
     }
 
     // methods
