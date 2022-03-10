@@ -1,0 +1,16 @@
+{
+  "Zombies": [
+    {
+      "name": "EasyZombie",
+      "healthPoint": 30
+    },
+    {
+      "name": "MediumZombie",
+      "healthPoint": 60
+    },
+    {
+      "name": "HardZombie",
+      "healthPoint": 100
+    }
+  ]
+}
