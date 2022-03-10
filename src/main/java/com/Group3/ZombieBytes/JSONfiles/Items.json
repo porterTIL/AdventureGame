@@ -1,0 +1,26 @@
+{
+  "Items": [
+    {
+      "name": "Cure",
+      "quantity": 1
+    },
+    {
+      "name": "Letter",
+      "quantity": 1
+    },
+    {
+      "name": "Food",
+      "quantity": 2,
+      "type":["Sandwich", "Apple"]
+    },
+    {
+      "name": "BananaKey",
+      "quantity": 1
+    },
+    {
+      "name": "Weapon",
+      "quantity": 2,
+      "type": ["baton", "stick"]
+    }
+  ]
+}
