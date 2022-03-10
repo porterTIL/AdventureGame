@@ -11,7 +11,7 @@
     },
     {
       "name": "Hospital",
-      "Cure": "Cure",
+      "Item": "Cure",
       "Zombie": "Zombie Boss",
       "Description": "You have entered the Hospital.",
       "Valid Direction": "East",
