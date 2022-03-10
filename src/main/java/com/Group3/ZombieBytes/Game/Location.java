@@ -9,6 +9,7 @@ public class Location {
     List <String> items = new ArrayList<>();
 
     // constructors
+    public Location(){}
     public Location(String name, List<String> items){
         setName(name);
         setItems(items);

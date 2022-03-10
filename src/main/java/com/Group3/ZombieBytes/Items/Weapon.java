@@ -1,8 +1,6 @@
 package com.Group3.ZombieBytes.Items;
 
-import com.SemiFinalProject.Group3.ZombieBytes.Characters.Zombie;
-
-import static com.SemiFinalProject.Group3.ZombieBytes.Characters.Zombie.*;
+import com.Group3.ZombieBytes.Characters.Zombie;
 
 public class Weapon implements Items{
     // properties
