@@ -1,37 +1,38 @@
 package com.Group3.ZombieBytes.Client;
 
+import org.json.simple.*;
 import com.Group3.ZombieBytes.Game.Location;
+import org.json.simple.parser.*;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ZombieGameClient {
-    public static void main (String[] args) {
-        // create hospital
-        ArrayList<String> hospitalItems = new ArrayList<>();
-        hospitalItems.add("Health Kit");
-        Location hospital = new Location("Hospital",hospitalItems);
+    public static void main (String[] args) throws IOException, ParseException {
+        // created an arraylist to store my location objects
+        ArrayList<Location> townLocations = new ArrayList<>();
 
-        // create policeStation
-        ArrayList<String> policeItems = new ArrayList<>();
-        policeItems.add("Baton");
-        Location policeStation = new Location("PoliceStation", policeItems);
+        // this class helps us parse the json file
+        JSONParser jsonparser = new JSONParser();
 
-        // create Store
-        ArrayList<String> storeItems = new ArrayList<>();
-        storeItems.add("Food");
-        Location store = new Location("Store", storeItems);
+        // this class helps us read the json file
+        FileReader reader = new FileReader("src/main/java/com/Group3/ZombieBytes/JSONfiles/Location.json");
+        Object locationObject = jsonparser.parse(reader);
+        JSONObject locations = (JSONObject)locationObject;
 
-        // create School
-        ArrayList<String> schoolItems = new ArrayList<>();
-        schoolItems.add("Books");
-        Location school = new Location("School", schoolItems);
+        // Location is a json array of objects
+        JSONArray locationArray = (JSONArray)locations.get("Location");
 
-        System.out.println(hospital);
-        System.out.println(policeStation);
-        System.out.println(store);
-        System.out.println(school);
-
-
-
+        for(int i = 0; i < locationArray.size(); i++){
+           JSONObject location = (JSONObject) locationArray.get(i);
+           String name = (String) location.get("name");
+           String item =  (String) location.get("Item");
+           townLocations.add(new Location(name, item));
+            System.out.println("Name of the location is " + name);
+            System.out.println("The item here is " + item);
+        }
+        System.out.println(townLocations.size());
     }
 }
