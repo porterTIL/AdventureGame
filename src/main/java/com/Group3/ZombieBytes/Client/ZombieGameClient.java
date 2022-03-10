@@ -61,6 +61,7 @@ public class ZombieGameClient {
         for(int x = 0; x < townLocations.size(); x++){
             System.out.println(townLocations.get(x));
         }
+        // this is the second commit
 
     }
 }
