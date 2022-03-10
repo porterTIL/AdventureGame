@@ -6,11 +6,11 @@ import java.util.List;
 public class Location {
     // Properties
     String name = null;
-    List <String> items = new ArrayList<>();
+    String items = null;
+//    List <String> items = new ArrayList<>();
 
     // constructors
-    public Location(){}
-    public Location(String name, List<String> items){
+    public Location(String name, String items){
         setName(name);
         setItems(items);
     }
@@ -24,17 +24,17 @@ public class Location {
         this.name = name;
     }
 
-    public List<String> getItems() {
+    public String getItems() {
         return items;
     }
 
-    public void setItems(List<String> items) {
+    public void setItems(String item) {
         this.items = items;
     }
 
     // to String
     public String toString(){
-        return "This is a " + getName() + ", " + "and it has the following items: " + getItems().toString();
+        return "This is a " + getName() + ", " + "and it has the following items: " + getItems();
     }
 
 }

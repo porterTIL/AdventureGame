@@ -1,0 +1,24 @@
+{
+  "Location": [
+    {
+      "name": "Hospital",
+      "Item": "Medicine"
+    },
+    {
+      "name": "PoliceStation",
+      "Item": "Baton"
+    },
+    {
+      "name": "Store",
+      "Item": "Food"
+    },
+    {
+      "name": "School",
+      "Item": "Books"
+    },
+    {
+      "name": "TownCenter",
+      "Item": "Map"
+    }
+  ]
+}
