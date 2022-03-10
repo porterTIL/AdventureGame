@@ -19,6 +19,9 @@
     {
       "name": "TownCenter",
       "Item": "Map"
+    },
+    {"name":  "Library",
+      "Item": "dog"
     }
   ]
 }
