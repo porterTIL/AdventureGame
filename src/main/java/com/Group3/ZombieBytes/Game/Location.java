@@ -49,7 +49,7 @@ public class Location {
 
     // to String
     public String toString(){
-        return "This is a " + getName() + ", " + "and it has the following items: " + falseToString();
+        return getName() + ", " + "and it has the following items: " + falseToString();
     }
 
 }

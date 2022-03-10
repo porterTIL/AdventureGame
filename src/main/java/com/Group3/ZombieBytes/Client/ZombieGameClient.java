@@ -35,8 +35,6 @@ public class ZombieGameClient {
         }
 
         Character c = new Character("Sam", 100,townLocations);
-        c.currentLocation = townLocations.get(0);
-        System.out.println(c.currentLocation);
 //        c.walk();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // this class helps us read the json file for items in a location
@@ -49,21 +47,21 @@ public class ZombieGameClient {
 
         for(int i = 0; i < itemsArray.size(); i++){
         JSONObject ithItem = (JSONObject) itemsArray.get(i);
-        String itemName =  (String) ithItem.get("name");
+        String item =  (String) ithItem.get("name");
         String itemLocation = (String) ithItem.get("location");
-        String itemDescription = (String) ithItem.get("Description");
             for(var loc: townLocations){
                 if(loc.getName().equalsIgnoreCase(itemLocation)){
-                    loc.itemsInLocation.add(new Items(itemName, itemDescription));
+                    loc.itemsInLocation.add(new Items(item));
                 }
             }
         }
 
-        for(int x = 0; x < townLocations.size(); x++){
-            System.out.println(townLocations.get(x));
-        }
+//        for(int x = 0; x < townLocations.size(); x++){
+//            townLocations.get(x);
+//        }
         // this is the second commit
+        c.currentLocation = townLocations.get(0);
         c.startGame();
-
-    }
+        System.out.println(c.currentLocation);
+}
 }
