@@ -71,6 +71,7 @@ public class Character {
 
         switch (startGame.toLowerCase(Locale.ROOT)){
             case "start":
+                System.out.println(username + " is currently located in the " + currentLocation);
                 chooseAction();
                 break;
             case "quit":
@@ -86,7 +87,6 @@ public class Character {
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader reader = new BufferedReader(input);
         System.out.println("What would you like to do? (walk, inspect)");
-        System.out.println(username + " is currently located in the " + currentLocation);
 
         String chooseAction = null;
         try {
@@ -103,12 +103,14 @@ public class Character {
                 for (int i = 0; i < currentLocation.itemsInLocation.size(); i++){
                     System.out.println(currentLocation.itemsInLocation.get(i));
                 }
+                    chooseAction();
                 break;
             case "quit":
                 startGame();
                 break;
             default:
                 System.out.println("What would you like to do?");
+                chooseAction();
         }
     }
     public void walk(){
