@@ -17,7 +17,7 @@ public class Character {
     public static int health;
     private int spaces;
     private Directions direction = Directions.NORTH;
-    List<Items> inventory = new ArrayList<>();
+    private List<Items> inventory = new ArrayList<>();
     List<Location> characterLocation = new ArrayList<>();
     public Location currentLocation;
 
