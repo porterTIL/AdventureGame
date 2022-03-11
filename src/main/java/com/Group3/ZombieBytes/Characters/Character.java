@@ -103,6 +103,8 @@ public class Character {
                 for (int i = 0; i < currentLocation.itemsInLocation.size(); i++){
                     System.out.println(currentLocation.itemsInLocation.get(i));
                 }
+                for (int w = 0; w < currentLocation.zombiesInLocation.size(); w++){
+                    System.out.println(currentLocation.zombiesInLocation.get(w)); }
                     chooseAction();
                 break;
             case "quit":
@@ -114,7 +116,7 @@ public class Character {
         }
     }
     public void walk(){
-        System.out.println(username + " is currently located in the " + currentLocation);
+        System.out.println(username + " is currently located in the " + currentLocation.getName());
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader reader = new BufferedReader(input);
         System.out.println("Which direction does " + username + " want to walk?");
