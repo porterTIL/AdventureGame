@@ -22,6 +22,7 @@ public class Zombie {
 
     }
 
+
     //methods
     public String getZombieDescription() {
         return zombieDescription;
