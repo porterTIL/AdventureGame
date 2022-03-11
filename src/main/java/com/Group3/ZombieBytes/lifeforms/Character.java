@@ -1,5 +1,7 @@
 package com.Group3.ZombieBytes.lifeforms;
 
+import com.Group3.ZombieBytes.Game.Game;
+import com.Group3.ZombieBytes.Game.GameText;
 import com.Group3.ZombieBytes.Items.Item;
 import com.Group3.ZombieBytes.Game.Location;
 import com.Group3.ZombieBytes.Items.Noun;
@@ -21,6 +23,7 @@ public class Character {
     private List<Item> inventory = new ArrayList<>();
     private List<Location> characterLocation = new ArrayList<>();
     public Location currentLocation;
+    List<GameText> characterText = new ArrayList<>();
 
     public static ArrayList<Verb> verbInteractions = new ArrayList<>();
     public static ArrayList<Noun> nounInteractions = new ArrayList<>();
@@ -29,10 +32,11 @@ public class Character {
     //constructors
     public Character(){};
 
-    public Character(String username, int health, List<Location>characterLocation){
+    public Character(String username, int health, List<Location>characterLocation, List<GameText>characterText){
         this.username = username;
         this.health = health;
         this.characterLocation = characterLocation;
+        this.characterText = characterText;
     }
 
     //methods
