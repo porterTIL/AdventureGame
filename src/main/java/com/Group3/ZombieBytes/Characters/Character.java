@@ -15,7 +15,7 @@ import java.util.Locale;
 public class Character {
     // properties
     private String username;
-    public static int health;
+    private int health;
     private int spaces;
     private Directions direction = Directions.NORTH;
     private List<Items> inventory = new ArrayList<>();
@@ -327,14 +327,14 @@ public class Character {
     public void runAway(Directions direction, int spaces){
 
     }
-
-    public void attack(){
-        System.out.println(Zombie.ZombieHP);
-        System.out.println("Zombie hit");
-        Zombie.ZombieHP = Zombie.ZombieHP - 10;
-        System.out.println("new Zombie HP " + Zombie.ZombieHP);
-
-    }
+//
+//    public void attack(){
+//        System.out.println(Zombie.ZombieHP);
+//        System.out.println("Zombie hit");
+//        Zombie.ZombieHP = Zombie.ZombieHP - 10;
+//        System.out.println("new Zombie HP " + Zombie.ZombieHP);
+//
+//    }
 
     public void grab(Items item){
         inventory.add(item);

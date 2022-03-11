@@ -1,18 +1,21 @@
 package com.Group3.ZombieBytes.Characters;
 
 public class Zombie {
-    public static int ZombieHP;
-    Level difficulty;
+    private int ZombieHP;
+
     // Properties
-    String zombieName = null;
-    String Zombies = null;
+    private String zombieName = null;
+    private String Zombies = null;
 //    String zombieHP = null;
-    String zombieDescription = null;
+    private String zombieDescription = null;
+    public long zombieHP;
 
     // constructors
-    public Zombie(String Zombies, String zombieDescription){
+    public Zombie(String Zombies, String zombieDescription, long zombieHP){
         this.zombieName = Zombies;
         this.zombieDescription = zombieDescription;
+        this.zombieHP = zombieHP;
+
 //        getZombieName(zombieName);
 //        setZombies(Zombies);
 //        setZombieHP(zombieHP);
@@ -49,16 +52,16 @@ public class Zombie {
 //        this.zombieHP = zombieHP;
 //    }
 
-    public int bite() {
-    if (difficulty == Level.EASY) {
-        Character.health = Character.health - 10;
-    } else if (difficulty == Level.MEDIUM) {
-        Character.health = Character.health - 20;
-    } else if (difficulty == Level.HARD) {
-        Character.health = Character.health - 30;
-    }
-    return Character.health;
-    }
+//    public int bite() {
+//    if (difficulty == Level.EASY) {
+//        Character.health = Character.health - 10;
+//    } else if (difficulty == Level.MEDIUM) {
+//        Character.health = Character.health - 20;
+//    } else if (difficulty == Level.HARD) {
+//        Character.health = Character.health - 30;
+//    }
+//    return Character.health;
+//    }
 
 
     // to String
@@ -67,4 +70,3 @@ public class Zombie {
     }
 }
 
-//WORK ON ZOMBIE DESCRIPTION APPEARING WHEN INSPECTING

@@ -71,11 +71,10 @@ public class ZombieGameClient {
             String zombieName =  (String) ithZombie.get("name");
             String zombieLocation = (String) ithZombie.get("location");
             String zombieDescription = (String) ithZombie.get("description");
-//            String zombieHP = (String) ithZombie.get("healthPoint");
-//            int zombieHealth = Integer.parseInt(zombieHP);
+            long zombieHP = (long) ithZombie.get("healthPoint");
             for(var loc: townLocations){
                 if(loc.getName().equalsIgnoreCase(zombieLocation)){
-                    loc.zombiesInLocation.add(new Zombie(zombieName, zombieDescription));
+                    loc.zombiesInLocation.add(new Zombie(zombieName, zombieDescription, zombieHP));
 
                 }
             }
@@ -99,8 +98,8 @@ public class ZombieGameClient {
         for(String verb: verbList){
             Character.verbInteractions.add(new Verb(verb));
         }
-        System.out.println(Character.verbInteractions.get(1).value);
-        System.out.println(Character.nounInteractions.get(2).value);
+//        System.out.println(Character.verbInteractions.get(1).value);
+//        System.out.println(Character.nounInteractions.get(2).value);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // this is the second commit
