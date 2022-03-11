@@ -2,7 +2,8 @@ package com.Group3.ZombieBytes.Characters;
 
 import com.Group3.ZombieBytes.Items.Items;
 import com.Group3.ZombieBytes.Game.Location;
-import jdk.swing.interop.SwingInterOpUtils;
+import com.Group3.ZombieBytes.Items.Noun;
+import com.Group3.ZombieBytes.Items.Verb;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,9 +18,12 @@ public class Character {
     public static int health;
     private int spaces;
     private Directions direction = Directions.NORTH;
-    List<Items> inventory = new ArrayList<>();
-    List<Location> characterLocation = new ArrayList<>();
+    private List<Items> inventory = new ArrayList<>();
+    private List<Location> characterLocation = new ArrayList<>();
     public Location currentLocation;
+
+    public static ArrayList<Verb> verbInteractions = new ArrayList<>();
+    public static ArrayList<Noun> nounInteractions = new ArrayList<>();
 
 
     //constructors
