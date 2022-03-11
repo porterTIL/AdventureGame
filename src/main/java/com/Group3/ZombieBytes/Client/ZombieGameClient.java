@@ -1,6 +1,7 @@
 package com.Group3.ZombieBytes.Client;
 
 import com.Group3.ZombieBytes.Characters.Character;
+import com.Group3.ZombieBytes.Characters.Zombie;
 import com.Group3.ZombieBytes.Items.Items;
 import org.json.simple.*;
 import com.Group3.ZombieBytes.Game.Location;
@@ -53,6 +54,29 @@ public class ZombieGameClient {
             for(var loc: townLocations){
                 if(loc.getName().equalsIgnoreCase(itemLocation)){
                     loc.itemsInLocation.add(new Items(itemName, itemDescription));
+
+                }
+            }
+        }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // this class helps us read the json file for zombies in a location
+        FileReader readerZombie = new FileReader("src/main/java/com/Group3/ZombieBytes/JSONfiles/Zombie.json");
+        Object zombieObject = jsonparser.parse(readerZombie);
+        JSONObject zombie = (JSONObject)zombieObject;
+
+        // Location is a json array of objects
+        JSONArray zombieArray = (JSONArray)zombie.get("Zombies");
+
+        for(int i = 0; i < zombieArray.size(); i++){
+            JSONObject ithZombie = (JSONObject) zombieArray.get(i);
+            String zombieName =  (String) ithZombie.get("name");
+            String zombieLocation = (String) ithZombie.get("location");
+            String zombieDescription = (String) ithZombie.get("description");
+//            String zombieHP = (String) ithZombie.get("healthPoint");
+//            int zombieHealth = Integer.parseInt(zombieHP);
+            for(var loc: townLocations){
+                if(loc.getName().equalsIgnoreCase(zombieLocation)){
+                    loc.zombiesInLocation.add(new Zombie(zombieName, zombieDescription));
 
                 }
             }
