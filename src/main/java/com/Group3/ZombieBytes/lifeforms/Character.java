@@ -1,8 +1,9 @@
-package com.Group3.ZombieBytes.Characters;
+package com.Group3.ZombieBytes.lifeforms;
 
-import com.Group3.ZombieBytes.Items.Items;
+import com.Group3.ZombieBytes.Items.Item;
 import com.Group3.ZombieBytes.Game.Location;
-import jdk.swing.interop.SwingInterOpUtils;
+import com.Group3.ZombieBytes.Items.Noun;
+import com.Group3.ZombieBytes.Items.Verb;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,9 +18,12 @@ public class Character {
     public static int health;
     private int spaces;
     private Directions direction = Directions.NORTH;
-    List<Items> inventory = new ArrayList<>();
-    List<Location> characterLocation = new ArrayList<>();
+    private List<Item> inventory = new ArrayList<>();
+    private List<Location> characterLocation = new ArrayList<>();
     public Location currentLocation;
+
+    public static ArrayList<Verb> verbInteractions = new ArrayList<>();
+    public static ArrayList<Noun> nounInteractions = new ArrayList<>();
 
 
     //constructors
@@ -332,15 +336,15 @@ public class Character {
 
     }
 
-    public void grab(Items item){
+    public void grab(Item item){
         inventory.add(item);
     }
 
-    public void use(Items item){
+    public void use(Item item){
         inventory.remove(item);
     }
 
-    public void inspect(Items items){
+    public void inspect(Item items){
 
     }
 
@@ -375,11 +379,11 @@ public class Character {
         this.direction = direction;
     }
 
-    public List<Items> getInventory() {
+    public List<Item> getInventory() {
         return inventory;
     }
 
-    public void setInventory(List<Items> inventory) {
+    public void setInventory(List<Item> inventory) {
         this.inventory = inventory;
     }
 

@@ -2,7 +2,7 @@ package com.Group3.ZombieBytes.Items;
 
 import java.util.Locale;
 
-public class Items {
+public class Item {
 
     // properties
     String name = null;
@@ -11,7 +11,7 @@ public class Items {
     String description = null;
 
     // constructors
-    public Items(String item, String description){
+    public Item(String item, String description){
         this.name = item;
         this.description = description;
     }

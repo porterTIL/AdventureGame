@@ -1,13 +1,12 @@
 package com.Group3.ZombieBytes.Client;
 
-import com.Group3.ZombieBytes.Characters.Character;
-import com.Group3.ZombieBytes.Characters.Zombie;
-import com.Group3.ZombieBytes.Items.Items;
+import com.Group3.ZombieBytes.lifeforms.Character;
+import com.Group3.ZombieBytes.lifeforms.Zombie;
+import com.Group3.ZombieBytes.Items.*;
 import org.json.simple.*;
 import com.Group3.ZombieBytes.Game.Location;
 import org.json.simple.parser.*;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,7 +35,6 @@ public class ZombieGameClient {
         }
 
         Character c = new Character("Sam", 100,townLocations);
-//        c.walk();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // this class helps us read the json file for items in a location
         FileReader readerItems = new FileReader("src/main/java/com/Group3/ZombieBytes/JSONfiles/Items.json");
@@ -53,7 +51,7 @@ public class ZombieGameClient {
         String itemDescription = (String) ithItem.get("Description");
             for(var loc: townLocations){
                 if(loc.getName().equalsIgnoreCase(itemLocation)){
-                    loc.itemsInLocation.add(new Items(itemName, itemDescription));
+                    loc.itemsInLocation.add(new Item(itemName, itemDescription));
 
                 }
             }
@@ -77,10 +75,31 @@ public class ZombieGameClient {
             for(var loc: townLocations){
                 if(loc.getName().equalsIgnoreCase(zombieLocation)){
                     loc.zombiesInLocation.add(new Zombie(zombieName, zombieDescription));
-
                 }
             }
         }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // created an arraylist to store my noun and verb objects
+
+        // this class helps us read the json file for location
+        FileReader readerInteractions = new FileReader("src/main/java/com/Group3/ZombieBytes/JSONfiles/gameInteraction.json");
+        Object interactionObject = jsonparser.parse(readerInteractions);
+        JSONObject interactions = (JSONObject)interactionObject;
+
+        // Location is a json array of objects
+        JSONArray interactionArray = (JSONArray)interactions.get("Interaction");
+        JSONObject interaction = (JSONObject) interactionArray.get(0);
+        ArrayList<String> verbList = (ArrayList<String>) interaction.get("verb");
+        ArrayList<String> nounList = (ArrayList<String>) interaction.get("noun");
+        for(String noun: nounList){
+            Character.nounInteractions.add(new Noun(noun));
+        }
+        for(String verb: verbList){
+            Character.verbInteractions.add(new Verb(verb));
+        }
+        System.out.println(Character.verbInteractions.get(0).value);
+        System.out.println(Character.nounInteractions.get(3).value);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // this is the second commit
         c.currentLocation = townLocations.get(0);
