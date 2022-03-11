@@ -1,7 +1,7 @@
 package com.Group3.ZombieBytes.Game;
 
-import com.Group3.ZombieBytes.Characters.Zombie;
-import com.Group3.ZombieBytes.Items.Items;
+import com.Group3.ZombieBytes.lifeforms.Zombie;
+import com.Group3.ZombieBytes.Items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class Location {
     String zombieName = null;
     String Zombies = null;
     int zombieHP = 0;
-    public List<Items> itemsInLocation = new ArrayList<Items>();
+    public List<Item> itemsInLocation = new ArrayList<Item>();
     public List<Zombie> zombiesInLocation = new ArrayList<Zombie>();
 //    List <String> items = new ArrayList<>();
 

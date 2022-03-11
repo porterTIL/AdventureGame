@@ -1,13 +1,12 @@
 package com.Group3.ZombieBytes.Client;
 
-import com.Group3.ZombieBytes.Characters.Character;
-import com.Group3.ZombieBytes.Characters.Zombie;
+import com.Group3.ZombieBytes.lifeforms.Character;
+import com.Group3.ZombieBytes.lifeforms.Zombie;
 import com.Group3.ZombieBytes.Items.*;
 import org.json.simple.*;
 import com.Group3.ZombieBytes.Game.Location;
 import org.json.simple.parser.*;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public class ZombieGameClient {
         String itemDescription = (String) ithItem.get("Description");
             for(var loc: townLocations){
                 if(loc.getName().equalsIgnoreCase(itemLocation)){
-                    loc.itemsInLocation.add(new Items(itemName, itemDescription));
+                    loc.itemsInLocation.add(new Item(itemName, itemDescription));
 
                 }
             }
@@ -76,7 +75,6 @@ public class ZombieGameClient {
             for(var loc: townLocations){
                 if(loc.getName().equalsIgnoreCase(zombieLocation)){
                     loc.zombiesInLocation.add(new Zombie(zombieName, zombieDescription));
-
                 }
             }
         }
@@ -91,7 +89,7 @@ public class ZombieGameClient {
         // Location is a json array of objects
         JSONArray interactionArray = (JSONArray)interactions.get("Interaction");
         JSONObject interaction = (JSONObject) interactionArray.get(0);
-        ArrayList<String> verbList =  (ArrayList<String>) interaction.get("verb");
+        ArrayList<String> verbList = (ArrayList<String>) interaction.get("verb");
         ArrayList<String> nounList = (ArrayList<String>) interaction.get("noun");
         for(String noun: nounList){
             Character.nounInteractions.add(new Noun(noun));
@@ -99,8 +97,8 @@ public class ZombieGameClient {
         for(String verb: verbList){
             Character.verbInteractions.add(new Verb(verb));
         }
-        System.out.println(Character.verbInteractions.get(1).value);
-        System.out.println(Character.nounInteractions.get(2).value);
+        System.out.println(Character.verbInteractions.get(0).value);
+        System.out.println(Character.nounInteractions.get(3).value);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // this is the second commit

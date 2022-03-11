@@ -1,7 +1,7 @@
 package com.Group3.ZombieBytes.Game;
 
-import com.Group3.ZombieBytes.Characters.Character;
-import com.Group3.ZombieBytes.Characters.Zombie;
+import com.Group3.ZombieBytes.lifeforms.Character;
+import com.Group3.ZombieBytes.lifeforms.Zombie;
 import com.Group3.ZombieBytes.Items.*;
 
 import java.util.*;
@@ -13,7 +13,7 @@ public class Game {
     public Zombie zombie;
 
 
-    public ArrayList<Items> items = new ArrayList<>();
+    public ArrayList<Item> items = new ArrayList<>();
 
     public boolean gameInProgress = false;
 
