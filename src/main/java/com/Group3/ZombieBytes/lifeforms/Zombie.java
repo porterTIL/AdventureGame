@@ -1,4 +1,4 @@
-package com.Group3.ZombieBytes.Characters;
+package com.Group3.ZombieBytes.lifeforms;
 
 public class Zombie {
     private int ZombieHP;
