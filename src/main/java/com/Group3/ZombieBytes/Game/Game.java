@@ -26,13 +26,9 @@ public class Game {
         // business methods
     public static void start(){
         runParsers();  // gathers data from json files and installs our classes with its properties
-//        GameText.intro();
-//        GameText.username();
         Character.startGame();
 
-        System.out.println(Character.currentLocation);
         // game code
-        GameText.outro();
 //        for (Map.Entry<String, Location> loc : gameLocation.entrySet()) {
 //            String key = loc.getKey();
 //            Location location = loc.getValue();
