@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class ZombieGameClient {
     public static void main(String[] args) {
         // starts the game
+
         Game.start();
     }
 }
