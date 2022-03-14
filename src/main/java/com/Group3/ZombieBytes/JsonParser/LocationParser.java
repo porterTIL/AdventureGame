@@ -1,5 +1,17 @@
 package com.Group3.ZombieBytes.JsonParser;
 
+import com.Group3.ZombieBytes.Game.Game;
+import com.Group3.ZombieBytes.Game.Location;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+
 public class LocationParser {
     public static void run() {
 //     created an arraylist to store my location objects
@@ -11,7 +23,7 @@ public class LocationParser {
         // this class helps us read the json file for location
         {
             try {
-                FileReader locationReader = new FileReader("src/main/java/com/V2/Group3/Zombie/JsonFiles/location.json");
+                FileReader locationReader = new FileReader("src/main/java/com/Group3/ZombieBytes/JSONfiles/Location.json");
                 Object locationObject = jsonparser.parse(locationReader);
                 JSONObject locations = (JSONObject) locationObject;
 
@@ -25,7 +37,7 @@ public class LocationParser {
                     String description = (String) location.get("Description");
                     gameLocation.put(name, new Location(name, description));
                 }
-                ZombieGame.setGameLocation(gameLocation);
+                Game.setGameLocation(gameLocation);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {

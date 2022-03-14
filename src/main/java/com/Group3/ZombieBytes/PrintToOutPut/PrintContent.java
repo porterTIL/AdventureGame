@@ -1,5 +1,8 @@
 package com.Group3.ZombieBytes.PrintToOutPut;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PrintContent {
     public static void print(String text) {
         System.out.println(text);
@@ -18,4 +21,6 @@ public class PrintContent {
         System.out.println(text);
     }
 
+    public static void print(HashMap<String, String> gameText) {
+    }
 }
