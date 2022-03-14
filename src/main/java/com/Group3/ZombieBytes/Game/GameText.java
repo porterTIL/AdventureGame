@@ -21,6 +21,12 @@ private static HashMap<String, String> gameText;
         PrintContent.print(gameText.get("outro"));
 
     }
+    public static void punch(){
+        PrintContent.print(gameText.get("punch"));
+    }
+    public static void alreadyDefeated(){
+        PrintContent.print(gameText.get("alreadyDefeated"));
+    }
     public static void defaultStart(){
         PrintContent.print(gameText.get("defaultStart"));
     }
