@@ -5,26 +5,23 @@ import com.Group3.ZombieBytes.Items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class Location {
-    // Properties
-    String name = null;
-    String items = null;
-    String zombieName = null;
-    String Zombies = null;
-    int zombieHP = 0;
-    public List<Item> itemsInLocation = new ArrayList<Item>();
-    public List<Zombie> zombiesInLocation = new ArrayList<Zombie>();
-//    List <String> items = new ArrayList<>();
+    // properties
+    private String name;
+    private String description;
 
-    // constructors
-    public Location(String name, String items) {
+
+    private ArrayList<Item> items;
+    private ArrayList<Zombie> zombies;
+
+    // constructor
+    public Location(String name, String description){
         setName(name);
-        setItems(items);
-        setZombies(Zombies);
+        setDescription(description);
     }
 
     // methods
+    // getters and setters
     public String getName() {
         return name;
     }
@@ -33,61 +30,31 @@ public class Location {
         this.name = name;
     }
 
-    public String getItems() {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public ArrayList<Item> getItems() {
         return items;
     }
 
-    public void setItems(String items) {
+    public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
 
-    public String getZombieName() {
-        return zombieName;
+    public ArrayList<Zombie> getZombies() {
+        return zombies;
     }
 
-    public void setZombieName() {
-        this.zombieName = zombieName;
+    public void setZombies(ArrayList<Zombie> zombies) {
+        this.zombies = zombies;
     }
-
-    public void setZombies(String Zombies) {
-        this.Zombies = Zombies;
-    }
-
-    public int getZombieHP() {
-        return zombieHP;
-    }
-
-    public void setZombieHP(int zombieHP) {
-        this.zombieHP = zombieHP;
-    }
-
-    private String falseToString() {
-        int sizeofLocation = itemsInLocation.size();
-        String item = "";
-        for (int y = 0; y < sizeofLocation; y++) {
-            item += itemsInLocation.get(y).getName();
-            item += " ";
-        }
-        return item;
-    }
-
-    private String falseToString2() {
-        int sizeofLocation = zombiesInLocation.size();
-        String zombie = "";
-        for (int y = 0; y < sizeofLocation; y++) {
-            zombie += zombiesInLocation.get(y).getZombieName();
-            zombie += " ";
-        }
-        return zombie;
-    }
-
-    // to String
-    public String toString() {
-        if (falseToString2() == "") {
-            return getName() + ", " + "and it has the following items: " + falseToString();
-        } else {
-            return getName() + ", " + "and it has the following items: " + falseToString() + ". You see a " + falseToString2() + "stumbling around.";
-        }
-
+    // toString
+    public String toString(){
+        return description;
     }
 }
+
