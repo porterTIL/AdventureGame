@@ -1,6 +1,6 @@
 package com.Group3.ZombieBytes.Game;
 
-import com.Group3.ZombieBytes.lifeforms.Zombie;
+//import com.Group3.ZombieBytes.lifeforms.Zombie;
 import com.Group3.ZombieBytes.Items.Item;
 
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class Location {
 
 
     private ArrayList<Item> items;
-    private ArrayList<Zombie> zombies;
+//    private ArrayList<Zombie> zombies;
 
     // constructor
     public Location(String name, String description){
@@ -45,13 +45,13 @@ public class Location {
         this.items = items;
     }
 
-    public ArrayList<Zombie> getZombies() {
-        return zombies;
-    }
-
-    public void setZombies(ArrayList<Zombie> zombies) {
-        this.zombies = zombies;
-    }
+//    public ArrayList<Zombie> getZombies() {
+//        return zombies;
+//    }
+//
+//    public void setZombies(ArrayList<Zombie> zombies) {
+//        this.zombies = zombies;
+//    }
     // toString
     public String toString(){
         return description;

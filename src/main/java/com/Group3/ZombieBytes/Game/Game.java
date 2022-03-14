@@ -1,8 +1,11 @@
 package com.Group3.ZombieBytes.Game;
 
-import com.Group3.ZombieBytes.lifeforms.Character;
-import com.Group3.ZombieBytes.lifeforms.Zombie;
+import com.Group3.ZombieBytes.JsonParser.*;
+import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
+//import com.Group3.ZombieBytes.lifeforms.Character;
+//import com.Group3.ZombieBytes.lifeforms.Zombie;
 import com.Group3.ZombieBytes.Items.*;
+import com.Group3.ZombieBytes.JsonParser.*;
 
 import java.util.*;
 
@@ -13,15 +16,17 @@ public class Game {
     private static HashMap<String, Location> gameLocation;
 
     // constructors
-    private ZombieGame(){
+    private Game(){
 
     }
     // methods
     // business methods
     public static void start(){
-        GameText.intro();
         runParsers();
+        GameText.intro();
+        PrintContent.print(gameLocation.size());
         // game code
+        GameText.dead();
         GameText.outro();
 //        PrintContent.print(gameText.get("intro"));
 //        PrintContent.print(gameText.size());
@@ -33,13 +38,13 @@ public class Game {
     public static void runParsers(){
         GameTextParser.run();
         LocationParser.run();
-        ItemParser.run();
+//        ItemParser.run();
 
-        for(Map.Entry<String, Location> loc : gameLocation.entrySet()) {
-            PrintContent.print("Location: " + loc.getKey());
-            PrintContent.print("Items: " + loc.getValue().getItems());
-            PrintContent.print("Total Items: " + loc.getValue().getItems().size());
-        }
+//        for(Map.Entry<String, Location> loc : gameLocation.entrySet()) {
+//            PrintContent.print("Location: " + loc.getKey());
+//            PrintContent.print("Items: " + loc.getValue().getItems());
+//            PrintContent.print("Total Items: " + loc.getValue().getItems().size());
+//        }
     }
     // setters and getters
     public static HashMap<String, Location> getGameLocation() {
@@ -47,11 +52,11 @@ public class Game {
     }
 
     public static void setGameLocation(HashMap<String, Location> gameLocation) {
-        ZombieGame.gameLocation = gameLocation;
+        Game.gameLocation = gameLocation;
     }
     // toString
     public String toString(){
         return zombieGameText;
     }
 }
-}
+
