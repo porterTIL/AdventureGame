@@ -67,7 +67,7 @@ public class Character {
 
         switch (startGame.toLowerCase()) {
             case "start":
-                System.out.println(username + " is currently located in the " + currentLocation);
+                System.out.println(username + " is currently located in the " + currentLocation.getName());
                 chooseAction();
                 break;
             case "quit":
