@@ -24,6 +24,7 @@ public class Game {
     public static void start(){
         runParsers();  // gathers data from json files and installs our classes with its properties
         GameText.intro();
+        System.out.println(gameLocation);
         // game code
         GameText.outro();
 //        for (Map.Entry<String, Location> loc : gameLocation.entrySet()) {
