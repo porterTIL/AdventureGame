@@ -1,0 +1,16 @@
+{
+  "GameText": [
+    {
+      "name": "Starting intro",
+      "text": "HELLO THIS IS INTRO"
+    },
+    {
+      "name": "Quit outro",
+      "text": "THANKS FOR QUITTING"
+    },
+    {
+      "name": "Dead text",
+      "text": "You have died"
+    }
+  ]
+}
