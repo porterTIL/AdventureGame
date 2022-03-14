@@ -1,5 +1,7 @@
 package com.Group3.ZombieBytes.PrintToOutPut;
 
+import java.util.Map;
+
 public class PrintContent {
     public static void print(String text) {
         System.out.println(text);
