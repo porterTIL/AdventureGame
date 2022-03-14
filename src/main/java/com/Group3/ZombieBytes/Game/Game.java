@@ -1,17 +1,18 @@
 package com.Group3.ZombieBytes.Game;
 
-import com.Group3.ZombieBytes.JsonParser.*;
+import com.Group3.ZombieBytes.JSONParser.*;
 import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
 //import com.Group3.ZombieBytes.lifeforms.Character;
 //import com.Group3.ZombieBytes.lifeforms.Zombie;
 import com.Group3.ZombieBytes.Items.*;
-import com.Group3.ZombieBytes.JsonParser.*;
+import com.Group3.ZombieBytes.JSONParser.*;
 
 import java.util.*;
 
 public class Game {
     // properties
     private static String zombieGameText = "This is a zombie game";
+
     // set game map
     private static HashMap<String, Location> gameLocation;
 
@@ -36,8 +37,8 @@ public class Game {
     }
     // run the parsers to fill the game properties
     public static void runParsers(){
-        GameTextParser.run();
-        LocationParser.run();
+        com.Group3.ZombieBytes.JsonParser.GameTextParser.run();
+        com.Group3.ZombieBytes.JsonParser.LocationParser.run();
 //        ItemParser.run();
 
 //        for(Map.Entry<String, Location> loc : gameLocation.entrySet()) {

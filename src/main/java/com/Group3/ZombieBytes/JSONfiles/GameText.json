@@ -1,16 +1,60 @@
 {
   "gameText": [
     {
-      "name": "Intro",
-      "text": "HELLO THIS IS INTRO"
+      "name": "intro",
+      "text": "Welcome to ZombieBytes! Enter a username: "
     },
     {
-      "name": "Outro",
+      "name": "outro",
       "text": "THANKS FOR QUITTING"
     },
     {
-      "name": "Dead text",
+      "name": "death",
       "text": "You have died"
+    },
+    {
+      "name": "bite",
+      "text": "The zombie bit you!"
+    },
+    {
+      "name": "chooseAction",
+      "text": "What would you like to do? (walk, inspect, attack, grab, use item)"
+    },
+    {
+      "name": "noZombies",
+      "text": "There are no zombies to attack in this room."
+    },
+    {
+      "name": "defaultChooseAction",
+      "text": "What would you like to do?"
+    },
+    {
+      "name": "defaultWalk",
+      "text": "Please choose a valid direction(east, west, north, south"
+    },
+    {
+      "name": "monkeyNoBanana",
+      "text": "The monkey zombie shreiks at you and you stumble backwards..."
+    },
+    {
+      "name": "ultimateNoKey",
+      "text": "There's no way you can face the creature now at your current state."
+    },
+    {
+      "name": "attackWin",
+      "text": "You defeated the zombie"
+    },
+    {
+      "name": "runFail",
+      "text": "Your attempt at running away was unsuccessful. The zombie attacks you back!"
+    },
+    {
+      "name": "runWin",
+      "text": "You were able to get away!"
+    },
+    {
+      "name": "attackDefault",
+      "text": "Please enter a valid choice"
     }
   ]
 }
