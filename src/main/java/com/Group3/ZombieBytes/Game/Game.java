@@ -6,12 +6,12 @@ import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
 //import com.Group3.ZombieBytes.lifeforms.Zombie;
 import com.Group3.ZombieBytes.Items.*;
 import com.Group3.ZombieBytes.JsonParser.*;
+import com.Group3.ZombieBytes.lifeforms.Zombie;
 
 import java.util.*;
 
 public class Game {
     // properties
-    private static String zombieGameText = "This is a zombie game";
     // set game map
     private static HashMap<String, Location> gameLocation;
 
@@ -20,25 +20,27 @@ public class Game {
 
     }
     // methods
-    // business methods
+        // business methods
     public static void start(){
-        runParsers();
+        runParsers();  // gathers data from json files and installs our classes with its properties
         GameText.intro();
-        PrintContent.print(gameLocation.size());
         // game code
-        GameText.dead();
         GameText.outro();
-//        PrintContent.print(gameText.get("intro"));
-//        PrintContent.print(gameText.size());
-//        PrintContent.print(gameLocation.size());
-//        PrintContent.print(gameText.get("outro"));
-
+//        for (Map.Entry<String, Location> loc : gameLocation.entrySet()) {
+//            String key = loc.getKey();
+//            Location location = loc.getValue();
+//            PrintContent.print("Location Name:" + key);
+//            PrintContent.print("Location Items: " + location.getItems());
+//            PrintContent.print("Location Zombies: " + location.getZombies());
+//            PrintContent.print("");
+//        }
     }
-    // run the parsers to fill the game properties
+    // runs the parsers to fill the game properties
     public static void runParsers(){
         GameTextParser.run();
         LocationParser.run();
-//        ItemParser.run();
+        ItemParser.run();
+        ZombieParser.run();
 
 //        for(Map.Entry<String, Location> loc : gameLocation.entrySet()) {
 //            PrintContent.print("Location: " + loc.getKey());
@@ -55,8 +57,8 @@ public class Game {
         Game.gameLocation = gameLocation;
     }
     // toString
-    public String toString(){
-        return zombieGameText;
-    }
+//    public String toString(){
+//        return ;
+//    }
 }
 

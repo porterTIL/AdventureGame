@@ -24,12 +24,14 @@
       "location": "hospital",
       "description": "A powerful zombie, large from consuming others. You assume this was the initial zombie that began the plague."
     },
-    {"name": "Monkey Zombie",
-    "healthPoint": 60,
-    "location": "policeStation",
+    {
+      "name": "Monkey Zombie",
+      "healthPoint": 60,
+      "location": "policeStation",
       "description": "Somehow a monkey got turned into a zombie? Anyway, it is blocking the police station entrance."
     },
-    {"name": "Teacher Zombie",
+    {
+      "name": "Teacher Zombie",
       "healthPoint": 60,
       "location": "school",
       "description": "A teacher who must have been bitten by a zombie. It stumbles with it's mouth gaping open around the school halls."
