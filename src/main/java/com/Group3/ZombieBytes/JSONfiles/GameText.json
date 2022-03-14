@@ -1,11 +1,11 @@
 {
   "gameText": [
     {
-      "name": "Starting intro",
+      "name": "Intro",
       "text": "HELLO THIS IS INTRO"
     },
     {
-      "name": "Quit outro",
+      "name": "Outro",
       "text": "THANKS FOR QUITTING"
     },
     {

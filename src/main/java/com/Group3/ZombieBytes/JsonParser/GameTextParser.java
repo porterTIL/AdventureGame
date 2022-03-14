@@ -17,6 +17,7 @@ public class GameTextParser {
         //     created an arraylist to store my location objects
         HashMap<String, String> gameText = new HashMap<String, String>();
 
+
         // this class helps us parse the json file
         JSONParser jsonparser = new JSONParser();
 
@@ -33,7 +34,7 @@ public class GameTextParser {
                 for (int i = 0; i < textArray.size(); i++) {
                     JSONObject location = (JSONObject) textArray.get(i);
                     String name = (String) location.get("name");
-                    String description = (String) location.get("description");
+                    String description = (String) location.get("text");
                     gameText.put(name, description);
                 }
                 GameText.setGameText(gameText);
