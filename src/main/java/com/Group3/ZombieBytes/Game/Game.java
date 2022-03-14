@@ -26,21 +26,11 @@ public class Game {
         // business methods
     public static void start(){
         runParsers();  // gathers data from json files and installs our classes with its properties
-//        GameText.intro();
-//        GameText.username();
+        System.out.println(Character.currentLocation);
         Character.startGame();
 
-        System.out.println(Character.currentLocation);
         // game code
         GameText.outro();
-//        for (Map.Entry<String, Location> loc : gameLocation.entrySet()) {
-//            String key = loc.getKey();
-//            Location location = loc.getValue();
-//            PrintContent.print("Location Name:" + key);
-//            PrintContent.print("Location Items: " + location.getItems());
-//            PrintContent.print("Location Zombies: " + location.getZombies());
-//            PrintContent.print("");
-//        }
     }
     // runs the parsers to fill the game properties
     public static void runParsers(){
@@ -49,11 +39,6 @@ public class Game {
         ItemParser.run();
         ZombieParser.run();
 
-//        for(Map.Entry<String, Location> loc : gameLocation.entrySet()) {
-//            PrintContent.print("Location: " + loc.getKey());
-//            PrintContent.print("Items: " + loc.getValue().getItems());
-//            PrintContent.print("Total Items: " + loc.getValue().getItems().size());
-//        }
     }
     // setters and getters
     public static HashMap<String, Location> getGameLocation() {
@@ -69,3 +54,11 @@ public class Game {
 //    }
 }
 
+//        for (Map.Entry<String, Location> loc : gameLocation.entrySet()) {
+//            String key = loc.getKey();
+//            Location location = loc.getValue();
+//            PrintContent.print("Location Name:" + key);
+//            PrintContent.print("Location Items: " + location.getItems());
+//            PrintContent.print("Location Zombies: " + location.getZombies());
+//            PrintContent.print("");
+//        }

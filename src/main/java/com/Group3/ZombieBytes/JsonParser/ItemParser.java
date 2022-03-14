@@ -26,7 +26,7 @@ public class ItemParser {
         // this class helps us read the json file for location
         {
             try {
-                FileReader itemReader = new FileReader("src/main/java/com/V2/Group3/Zombie/JsonFiles/item.json");
+                FileReader itemReader = new FileReader("src/main/java/com/Group3/ZombieBytes/JSONfiles/Items.json");
                 Object itemObject = jsonparser.parse(itemReader);
                 JSONObject items = (JSONObject) itemObject;
 

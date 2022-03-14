@@ -41,12 +41,17 @@ public class Character {
     private Directions direction = Directions.NORTH;
     private List<Item> inventory = new ArrayList<>();
     public static HashMap<String, Location> totalLocation = Game.getGameLocation();
-//    private Map<Location> characterLocation = new HashMap<>();
+    //    private Map<Location> characterLocation = new HashMap<>();
     public static Location currentLocation = totalLocation.get("TownCenter");
     List<GameText> characterText = new ArrayList<>();
 
     public static ArrayList<Verb> verbInteractions = new ArrayList<>();
     public static ArrayList<Noun> nounInteractions = new ArrayList<>();
+
+    // constructor
+    private Character(){
+
+    }
 
     public static void startGame() {
         InputStreamReader input = new InputStreamReader(System.in);
@@ -83,47 +88,50 @@ public class Character {
     public static void chooseAction() {
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader reader = new BufferedReader(input);
-        System.out.println("What would you like to do? (walk, inspect)");
-
+        System.out.println("What would you like to do? (walk, grab, attack, inspect, use)");
         String chooseAction = null;
         try {
             chooseAction = reader.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String strArray[] = chooseAction.split(" ");
+        if (strArray[0].equalsIgnoreCase("walk")){
 
-        switch (chooseAction.toLowerCase()) {
-            case "walk":
-//                walk();
-                System.out.println("You are walking");
-                break;
-            case "inspect":
-                for (int i = 0; i < currentLocation.getItems().size();i++) {
-                    System.out.println(currentLocation.getItems().get(i));
-                }
-                for (int w = 0; w < currentLocation.getZombies().size(); w++) {
-                    System.out.println(currentLocation.getZombies().get(w));
-                }
-                chooseAction();
-                break;
-            case "quit":
-                startGame();
-                break;
-            default:
-                System.out.println("What would you like to do?");
-                chooseAction();
         }
-    }
-    //constructors
-    public Character() {
-    }
 
-    ;
-
-    public Character(String username, int health, ArrayList<Location> currentLocation) {
+//        switch (chooseAction.toLowerCase()) {
+//            case "walk " +
+//            case "walk":
+////                walk();
+//                System.out.println("You are walking");
+//                break;
+//            case "inspect":
+//                for (int i = 0; i < currentLocation.getItems().size(); i++) {
+//                    System.out.println(currentLocation.getItems().get(i));
+//                }
+//                for (int w = 0; w < currentLocation.getZombies().size(); w++) {
+//                    System.out.println(currentLocation.getZombies().get(w));
+//                }
+//                chooseAction();
+//                break;
+//            case "quit":
+//                startGame();
+//                break;
+//            default:
+//                System.out.println("What would you like to do?");
+//                chooseAction();
+//        }
     }
 }
-//    public Character(String username, int health, List<Location>characterLocation, List<GameText>characterText){
+
+    //constructors
+
+
+//    public Character(String username, int health, ArrayList<Location> currentLocation) {
+//    }
+
+    //    public Character(String username, int health, List<Location>characterLocation, List<GameText>characterText){
 //        this.username = username;
 //        this.health = health;
 //        this.characterLocation = characterLocation;
@@ -148,38 +156,6 @@ public class Character {
 //            default:
 //                System.out.println("Please select a valid movement");
 //        }
-//    }*/
-//    public void startGame(){
-//        InputStreamReader input = new InputStreamReader(System.in);
-//        BufferedReader reader = new BufferedReader(input);
-//        System.out.println("Welcome to ZombieBytes! Enter a username: ");
-//        username = null;
-//        try {
-//            username = reader.readLine();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println(username + ", type 'start' to play the game. Enter 'quit' at any time to end the game.");
-//        String startGame = null;
-//        try {
-//            startGame = reader.readLine();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//        switch (startGame.toLowerCase(Locale.ROOT)){
-//            case "start":
-//                System.out.println(username + " is currently located in the " + currentLocation);
-//                chooseAction();
-//                break;
-//            case "quit":
-//                startGame();
-//                break;
-//            default:
-//                System.out.println("enter 'start' to begin the game");
-//        }
-//
 //    }
 //
 //    public void chooseAction() {

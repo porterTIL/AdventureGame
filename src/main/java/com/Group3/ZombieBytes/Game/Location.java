@@ -9,8 +9,7 @@ public class Location {
     // properties
     private String name;
     private String description;
-
-
+    private ArrayList<String[]> verbNounDirections;
     private ArrayList<Item> items;
 
 
