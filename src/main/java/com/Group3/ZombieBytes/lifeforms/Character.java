@@ -133,15 +133,15 @@ public class Character {
                     attack();
                 }
                 break;
-                    case "quit":
-                        System.out.println("Test");
-                        startGame();
-                        break;
-                    default:
-                        System.out.println("What would you like to do?");
-                        chooseAction();
-                }
+            case "quit":
+                System.out.println("Test");
+                startGame();
+                break;
+            default:
+                System.out.println("What would you like to do?");
+                chooseAction();
         }
+    }
 
 
     public void walk() {
@@ -356,148 +356,141 @@ public class Character {
     public void attack() {
 //        InputStreamReader input = new InputStreamReader(System.in);
 //        BufferedReader reader = new BufferedReader(input);
-
+        if (Character.health <= 0) {
+//            gameOver();
+            System.out.println("You have died.");
+        }
         for (int w = 0; w < currentLocation.zombiesInLocation.size(); w++) {
-            if (Objects.equals(currentLocation.zombiesInLocation.get(w).getZombieName(), "Monkey Zombie")) {
-                System.out.println("The monkey zombie shreiks at you and you stumble backwards...");
-                chooseAction(); }
-            else {
-                System.out.println("You have confronted " + currentLocation.zombiesInLocation.get(w).getZombieName() + ". This zombie's HP is currently " + Zombie.zombieHP + ". What would you like to do? (use item, run, or hit)");
-                String battleAction = null;
-                try {
-                    battleAction = reader.readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            if (currentLocation.zombiesInLocation.size() > 00) {
+                if (Zombie.zombieHP <= 0) {
+                    System.out.println("You have already defeated this zombie.");
+                    chooseAction();
                 }
-                switch (battleAction.toLowerCase(Locale.ROOT)) {
-                    case "hit":
-                        System.out.println("Zombie HP: " + Zombie.zombieHP);
-                        System.out.println("Your health: " + Character.health);
-                        System.out.println("You punch the zombie in the face.");
-                        Zombie.zombieHP = Zombie.zombieHP - 10;
-                        Zombie.bite();
-                        System.out.println("Your health " + Character.health);
-                        System.out.println("Zombie HP: " + Zombie.zombieHP);
-                        attack();
-                        break;
-                    case "run":
-                        int int_random = ThreadLocalRandom.current().nextInt(0, 100);
-                        if (int_random > 50) {
-                            System.out.println("Your attempt at running away was unsuccessful. The zombie attacks you back!");
-                            Character.health = Character.health - 10;
-                            System.out.println("Your HP: " + Character.health);
+//                for (int w = 0; w < currentLocation.zombiesInLocation.size(); w++) {
+                if (Objects.equals(currentLocation.zombiesInLocation.get(w).getZombieName(), "Monkey Zombie")) {
+                    System.out.println("The monkey zombie shreiks at you and you stumble backwards...");
+                    chooseAction();
+                }
+                if (Objects.equals(currentLocation.zombiesInLocation.get(w).getZombieName(), "Ultimate Zombie Boss")) {
+                    System.out.println("There's no way you can face the creature now at your current state.");
+                    chooseAction();
+                } else {
+                    System.out.println("You have confronted " + currentLocation.zombiesInLocation.get(w).getZombieName() + ". This zombie's HP is currently " + Zombie.zombieHP + ". What would you like to do? (use item, run, or hit)");
+                    String battleAction = null;
+                    try {
+                        battleAction = reader.readLine();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    switch (battleAction.toLowerCase(Locale.ROOT)) {
+                        case "hit":
+//                        if (Zombie.zombieHP <= 0) {
+//                            System.out.println("You have already defeated this zombie."); chooseAction(); }
+                            System.out.println("Zombie HP: " + Zombie.zombieHP);
+                            System.out.println("Your health: " + Character.health);
+                            System.out.println("You punch the zombie in the face.");
+                            Zombie.zombieHP = Zombie.zombieHP - 10;
+                            Zombie.bite();
+                            System.out.println("Your health " + Character.health);
+                            System.out.println("Zombie HP: " + Zombie.zombieHP);
+                            if (Zombie.zombieHP <= 0) {
+                                System.out.println("You have defeated the zombie!");
+                                chooseAction();
+                            }
                             attack();
-                        } else {
-                            System.out.println("You were able to get away!");
-                            chooseAction();
-                        }
-                        break;
+                            break;
+                        case "run":
+                            int int_random = ThreadLocalRandom.current().nextInt(0, 100);
+                            if (int_random > 50) {
+                                System.out.println("Your attempt at running away was unsuccessful. The zombie attacks you back!");
+                                Character.health = Character.health - 10;
+                                System.out.println("Your HP: " + Character.health);
+                                attack();
+                            } else {
+                                System.out.println("You were able to get away!");
+                                chooseAction();
+                            }
+                            break;
 //                    case "use item":
 //                        System.out.println("Item used");
 //                        break;
-                    default:
-                        System.out.println("Please enter a valid choice");
-                        attack();
+                        default:
+                            System.out.println("Please enter a valid choice");
+                            attack();
+                    }
                 }
             }
         }
     }
-//        for (int w = 0; w < currentLocation.zombiesInLocation.size(); w++) {
-//            if (currentLocation.zombiesInLocation.get(w).getZombieName() == "Monkey Boss Zombie")
-//                System.out.println("The monkey zombie shreiks at you and you stumble backwards...");
-//            else {
-//                System.out.println("This zombie's HP is currently " + Zombie.zombieHP + ". What would you like to do? (use item, run away, or hit)");
-//                if (battleAction.toLowerCase(Locale.ROOT) == "hit") {
-//                    System.out.println("Zombie HP: " + Zombie.zombieHP);
-//                    System.out.println("Your health: " + Character.health);
-//                    System.out.println("You punch the zombie in the face.");
-//                    Zombie.zombieHP = Zombie.zombieHP - 10;
-//                    System.out.println("Zombie HP: " + Zombie.zombieHP);
-//                }
-//                if (battleAction.toLowerCase(Locale.ROOT) == "run away") {
-//                    int int_random = ThreadLocalRandom.current().nextInt(0, 100);
-//                    if (int_random > 50) {
-//                        System.out.println("Your attempt at running away was unsuccessful. The zombie attacks you back!");
-//                        int newHealth = Character.health - 10;
-//                        System.out.println("Your HP: " + newHealth);
-//                    } else {
-//                        System.out.println("You were able to get away!");
-//                        chooseAction();
-//                    } }
-//                }
-////                if (battleAction.toLowerCase(Locale.ROOT) == "use item") {
-////
-//                }
+
+            public void grab (Item item){
+                inventory.add(item);
+            }
+
+            public void use (Item item){
+                inventory.remove(item);
+            }
+
+            public void inspect (Item items){
+
+            }
+
+            public void showInventory () {
+                System.out.println(getInventory());
+            }
 
 
-    public void grab(Item item) {
-        inventory.add(item);
-    }
+            //getter and setter
 
-    public void use(Item item) {
-        inventory.remove(item);
-    }
+            public String getUsername () {
+                return username;
+            }
 
-    public void inspect(Item items) {
+            public void setUsername (String username){
+                this.username = username;
+            }
 
-    }
+            public int getHealth () {
+                return health;
+            }
 
-    public void showInventory() {
-        System.out.println(getInventory());
-    }
+            public void setHealth ( int health){
+                this.health = health;
+            }
 
+            public Directions getDirection () {
+                return direction;
+            }
 
-    //getter and setter
+            public void setDirection (Directions direction){
+                this.direction = direction;
+            }
 
-    public String getUsername() {
-        return username;
-    }
+            public List<Item> getInventory () {
+                return inventory;
+            }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+            public void setInventory (List < Item > inventory) {
+                this.inventory = inventory;
+            }
 
-    public int getHealth() {
-        return health;
-    }
+            public Location getCurrentLocation () {
+                return currentLocation;
+            }
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
+            public void setCurrentLocation (Location currentLocation){
+                this.currentLocation = currentLocation;
+            }
 
-    public Directions getDirection() {
-        return direction;
-    }
+            //toString
 
-    public void setDirection(Directions direction) {
-        this.direction = direction;
-    }
-
-    public List<Item> getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(List<Item> inventory) {
-        this.inventory = inventory;
-    }
-
-    public Location getCurrentLocation() {
-        return currentLocation;
-    }
-
-    public void setCurrentLocation(Location currentLocation) {
-        this.currentLocation = currentLocation;
-    }
-
-    //toString
-
-    @Override
-    public String toString() {
-        return "Character{" +
-                "username='" + username + '\'' +
-                ", health=" + health +
-                ", direction=" + direction +
-                ", inventory=" + inventory +
-                '}';
-    }
-}
+            @Override
+            public String toString () {
+                return "Character{" +
+                        "username='" + username + '\'' +
+                        ", health=" + health +
+                        ", direction=" + direction +
+                        ", inventory=" + inventory +
+                        '}';
+            }
+        }
