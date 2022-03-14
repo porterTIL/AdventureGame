@@ -1,4 +1,6 @@
 package com.Group3.ZombieBytes.Game;
+//import com.Group3.ZombieBytes.lifeforms.Character;
+//import com.Group3.ZombieBytes.lifeforms.Zombie;
 
 import com.Group3.ZombieBytes.JsonParser.*;
 import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
@@ -6,9 +8,10 @@ import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
 //import com.Group3.ZombieBytes.lifeforms.Zombie;
 import com.Group3.ZombieBytes.Items.*;
 import com.Group3.ZombieBytes.JsonParser.*;
+import com.Group3.ZombieBytes.lifeforms.Character;
 import com.Group3.ZombieBytes.lifeforms.Zombie;
 
-import java.util.*;
+import java.util.HashMap;
 
 public class Game {
     // properties
@@ -23,7 +26,11 @@ public class Game {
         // business methods
     public static void start(){
         runParsers();  // gathers data from json files and installs our classes with its properties
-        GameText.intro();
+//        GameText.intro();
+//        GameText.username();
+        Character.startGame();
+
+        System.out.println(Character.currentLocation);
         // game code
         GameText.outro();
 //        for (Map.Entry<String, Location> loc : gameLocation.entrySet()) {

@@ -21,6 +21,12 @@ private static HashMap<String, String> gameText;
         PrintContent.print(gameText.get("outro"));
 
     }
+    public static void defaultStart(){
+        PrintContent.print(gameText.get("defaultStart"));
+    }
+    public static void username(){
+        PrintContent.print(gameText.get("username"));
+    }
     public static void death(){
         PrintContent.print(gameText.get("death"));
     }
