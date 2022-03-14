@@ -10,10 +10,6 @@
         {"South": "PoliceStation"},
         {"West": "Road"}
       ]
-      //      "Valid Direction": "North",
-      //      "Valid Direction": "South",
-      //      "Valid Direction": "East",
-      //      "Valid Direction": "West"
     },
     {
       "name": "Hospital",
@@ -25,9 +21,6 @@
         {"South": "TownCenter"},
         {"West": "Road 1"}
       ]
-      //      "Valid Direction": "East",
-      //      "Valid Direction": "South",
-      //      "Valid Direction": "West"
     },
     {
       "name": "PoliceStation",
@@ -41,9 +34,6 @@
         {"East": "Road 4"},
         {"West": "School"}
       ]
-      //      "Valid Direction": "North",
-      //      "Valid Direction": "West",
-      //      "Valid Direction": "East"
     },
     {
       "name": "Store",
@@ -56,9 +46,6 @@
         {"South": "Road 4"},
         {"West": "TownCenter"}
       ]
-      //      "Valid Direction": "North",
-      //      "Valid Direction": "South",
-      //      "Valid Direction": "West"
     },
     {
       "name": "School",
@@ -69,8 +56,6 @@
         {"North": "Road 3"},
         {"East": "PoliceStation"}
       ]
-      //      "Valid Direction": "North",
-      //      "Valid Direction": "East"
     },
     {
       "name": "Road 1",
@@ -80,8 +65,6 @@
         {"East": "Hospital"},
         {"South": "Road 3"}
       ]
-      //      "Valid Direction": "South",
-      //      "Valid Direction": "East"
     },
     {
       "name": "Road 2",
@@ -90,8 +73,6 @@
         {"South": "Store"},
         {"West": "Hospital"}
       ]
-      //      "Valid Direction": "West",
-      //      "Valid Direction": "South"
     },
     {
       "name": "Road 3",
@@ -101,9 +82,6 @@
         {"East": "TownCenter"},
         {"South": "School"}
       ]
-      //      "Valid Direction": "South",
-      //      "Valid Direction": "North",
-      //      "Valid Direction": "East"
     },
     {
       "name": "Road 4",
@@ -112,8 +90,7 @@
         {"North": "Hospital"},
         {"West": "Road"}
       ]
-      //      "Valid Direction": "North",
-      //      "Valid Direction": "West"
+
     }
   ]
 }
