@@ -1,7 +1,7 @@
 package com.Group3.ZombieBytes.lifeforms;
 
 import com.Group3.ZombieBytes.Game.Game;
-//import com.Group3.ZombieBytes.Game.GameText;
+import com.Group3.ZombieBytes.Game.GameText;
 import com.Group3.ZombieBytes.Items.Item;
 import com.Group3.ZombieBytes.Game.Location;
 import com.Group3.ZombieBytes.Items.Noun;
@@ -13,8 +13,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Character {
     // properties
@@ -25,26 +23,20 @@ public class Character {
     private List<Item> inventory = new ArrayList<>();
     private List<Location> characterLocation = new ArrayList<>();
     public Location currentLocation;
-    InputStreamReader input = new InputStreamReader(System.in);
-    BufferedReader reader = new BufferedReader(input);
-
-//    List<GameText> characterText = new ArrayList<>();
+    List<GameText> characterText = new ArrayList<>();
 
     public static ArrayList<Verb> verbInteractions = new ArrayList<>();
     public static ArrayList<Noun> nounInteractions = new ArrayList<>();
 
 
     //constructors
-    public Character() {
-    }
+    public Character(String username, int health, ArrayList<Location>currentLocation){}
 
-    ;
-
-    public Character(String username, int health, List<Location> characterLocation) {
+    public Character(String username, int health, List<Location>characterLocation, List<GameText>characterText){
         this.username = username;
         this.health = health;
         this.characterLocation = characterLocation;
-//        this.characterText = characterText;
+        this.characterText = characterText;
     }
 
     //methods
@@ -66,9 +58,9 @@ public class Character {
                 System.out.println("Please select a valid movement");
         }
     }*/
-    public void startGame() {
-//        InputStreamReader input = new InputStreamReader(System.in);
-//        BufferedReader reader = new BufferedReader(input);
+    public void startGame(){
+        InputStreamReader input = new InputStreamReader(System.in);
+        BufferedReader reader = new BufferedReader(input);
         System.out.println("Welcome to ZombieBytes! Enter a username: ");
         username = null;
         try {
@@ -85,7 +77,7 @@ public class Character {
         }
 
 
-        switch (startGame.toLowerCase(Locale.ROOT)) {
+        switch (startGame.toLowerCase(Locale.ROOT)){
             case "start":
                 System.out.println(username + " is currently located in the " + currentLocation);
                 chooseAction();
@@ -95,15 +87,15 @@ public class Character {
                 break;
             default:
                 System.out.println("enter 'start' to begin the game");
-                startGame();
         }
 
     }
 
     public void chooseAction() {
-//        InputStreamReader input = new InputStreamReader(System.in);
-//        BufferedReader reader = new BufferedReader(input);
-        System.out.println("What would you like to do? (walk, inspect, attack)");
+        InputStreamReader input = new InputStreamReader(System.in);
+        BufferedReader reader = new BufferedReader(input);
+        System.out.println("What would you like to do? (walk, inspect)");
+
         String chooseAction = null;
         try {
             chooseAction = reader.readLine();
@@ -111,30 +103,19 @@ public class Character {
             e.printStackTrace();
         }
 
-        switch (chooseAction.toLowerCase(Locale.ROOT)) {
+        switch (chooseAction.toLowerCase(Locale.ROOT)){
             case "walk":
                 walk();
                 break;
             case "inspect":
-                for (int i = 0; i < currentLocation.itemsInLocation.size(); i++) {
+                for (int i = 0; i < currentLocation.itemsInLocation.size(); i++){
                     System.out.println(currentLocation.itemsInLocation.get(i));
                 }
-                for (int w = 0; w < currentLocation.zombiesInLocation.size(); w++) {
-                    System.out.println(currentLocation.zombiesInLocation.get(w));
-                }
-                chooseAction();
-                break;
-            case "attack":
-                if (currentLocation.zombiesInLocation.size() == 0) {
-//                    if (currentLocation.zombiesInLocation.get(w) == null) {
-                    System.out.println("There are no zombies to attack in this room.");
+                for (int w = 0; w < currentLocation.zombiesInLocation.size(); w++){
+                    System.out.println(currentLocation.zombiesInLocation.get(w)); }
                     chooseAction();
-                } else {
-                    attack();
-                }
                 break;
             case "quit":
-                System.out.println("Test");
                 startGame();
                 break;
             default:
@@ -142,12 +123,10 @@ public class Character {
                 chooseAction();
         }
     }
-
-
-    public void walk() {
+    public void walk(){
         System.out.println(username + " is currently located in the " + currentLocation.getName());
-//        InputStreamReader input = new InputStreamReader(System.in);
-//        BufferedReader reader = new BufferedReader(input);
+        InputStreamReader input = new InputStreamReader(System.in);
+        BufferedReader reader = new BufferedReader(input);
         System.out.println("Which direction does " + username + " want to walk?");
 
         String walkDirection = null;
@@ -157,8 +136,8 @@ public class Character {
             e.printStackTrace();
         }
 
-        if (currentLocation == characterLocation.get(0)) {
-            switch (walkDirection.toLowerCase(Locale.ROOT)) {
+        if (currentLocation == characterLocation.get(0)){
+            switch (walkDirection.toLowerCase(Locale.ROOT)){
                 case "north":
                     currentLocation = characterLocation.get(1);
                     System.out.println(username + " has moved to the" + currentLocation);
@@ -183,9 +162,9 @@ public class Character {
                     System.out.println("enter valid movement");
                     walk();
             }
-        } else {
-            if (currentLocation == characterLocation.get(1)) {
-                switch (walkDirection.toLowerCase(Locale.ROOT)) {
+        }else {
+            if (currentLocation == characterLocation.get(1)){
+                switch (walkDirection.toLowerCase(Locale.ROOT)){
                     case "east":
                         currentLocation = characterLocation.get(6);
                         System.out.println(username + " has moved to the " + currentLocation);
@@ -204,9 +183,9 @@ public class Character {
                         System.out.println("enter valid movement");
                         walk();
                 }
-            } else {
-                if (currentLocation == characterLocation.get(2)) {
-                    switch (walkDirection.toLowerCase(Locale.ROOT)) {
+            } else{
+                if (currentLocation == characterLocation.get(2)){
+                    switch (walkDirection.toLowerCase(Locale.ROOT)){
                         case "north":
                             currentLocation = characterLocation.get(0);
                             System.out.println(username + " has moved to the " + currentLocation);
@@ -226,9 +205,9 @@ public class Character {
                             System.out.println("Please enter a valid movement");
                             walk();
                     }
-                } else {
-                    if (currentLocation == characterLocation.get(3)) {
-                        switch (walkDirection.toLowerCase(Locale.ROOT)) {
+                }else {
+                    if (currentLocation == characterLocation.get(3)){
+                        switch (walkDirection.toLowerCase(Locale.ROOT)){
                             case "north":
                                 currentLocation = characterLocation.get(6);
                                 System.out.println(username + " has moved to the " + currentLocation);
@@ -248,9 +227,9 @@ public class Character {
                                 System.out.println("Please enter a valid movement");
                                 walk();
                         }
-                    } else {
-                        if (currentLocation == characterLocation.get(4)) {
-                            switch (walkDirection.toLowerCase(Locale.ROOT)) {
+                    }else {
+                        if (currentLocation == characterLocation.get(4)){
+                            switch (walkDirection.toLowerCase(Locale.ROOT)){
                                 case "north":
                                     currentLocation = characterLocation.get(7);
                                     System.out.println(username + " has moved to the " + currentLocation);
@@ -265,9 +244,9 @@ public class Character {
                                     System.out.println("Please enter a valid movement");
                                     walk();
                             }
-                        } else {
+                        }else {
                             if (currentLocation == characterLocation.get(5)) {
-                                switch (walkDirection.toLowerCase(Locale.ROOT)) {
+                                switch (walkDirection.toLowerCase(Locale.ROOT)){
                                     case "east":
                                         currentLocation = characterLocation.get(1);
                                         chooseAction();
@@ -282,9 +261,9 @@ public class Character {
                                         System.out.println("Please enter a valid movement");
                                         walk();
                                 }
-                            } else {
-                                if (currentLocation == characterLocation.get(6)) {
-                                    switch (walkDirection.toLowerCase(Locale.ROOT)) {
+                            }else {
+                                if (currentLocation == characterLocation.get(6)){
+                                    switch (walkDirection.toLowerCase(Locale.ROOT)){
                                         case "west":
                                             currentLocation = characterLocation.get(1);
                                             System.out.println(username + " has moved to the " + currentLocation);
@@ -300,8 +279,8 @@ public class Character {
                                             walk();
                                     }
                                 } else {
-                                    if (currentLocation == characterLocation.get(7)) {
-                                        switch (walkDirection.toLowerCase(Locale.ROOT)) {
+                                    if (currentLocation == characterLocation.get(7)){
+                                        switch (walkDirection.toLowerCase(Locale.ROOT)){
                                             case "north":
                                                 currentLocation = characterLocation.get(5);
                                                 System.out.println(username + " has moved to the " + currentLocation);
@@ -322,8 +301,8 @@ public class Character {
                                                 walk();
                                         }
                                     } else {
-                                        if (currentLocation == characterLocation.get(8)) {
-                                            switch (walkDirection.toLowerCase(Locale.ROOT)) {
+                                        if (currentLocation == characterLocation.get(8)){
+                                            switch (walkDirection.toLowerCase(Locale.ROOT)){
                                                 case "north":
                                                     currentLocation = characterLocation.get(3);
                                                     System.out.println(username + " has moved to the " + currentLocation);
@@ -349,148 +328,86 @@ public class Character {
         }
     }
 
-    public void runAway(Directions direction, int spaces) {
+    public void runAway(Directions direction, int spaces){
 
     }
 
-    public void attack() {
-//        InputStreamReader input = new InputStreamReader(System.in);
-//        BufferedReader reader = new BufferedReader(input);
-        if (Character.health <= 0) {
-//            gameOver();
-            System.out.println("You have died.");
-        }
-        for (int w = 0; w < currentLocation.zombiesInLocation.size(); w++) {
-            if (currentLocation.zombiesInLocation.size() > 00) {
-                if (Zombie.zombieHP <= 0) {
-                    System.out.println("You have already defeated this zombie.");
-                    chooseAction();
-                }
-//                for (int w = 0; w < currentLocation.zombiesInLocation.size(); w++) {
-                if (Objects.equals(currentLocation.zombiesInLocation.get(w).getZombieName(), "Monkey Zombie")) {
-                    System.out.println("The monkey zombie shreiks at you and you stumble backwards...");
-                    chooseAction();
-                }
-                if (Objects.equals(currentLocation.zombiesInLocation.get(w).getZombieName(), "Ultimate Zombie Boss")) {
-                    System.out.println("There's no way you can face the creature now at your current state.");
-                    chooseAction();
-                } else {
-                    System.out.println("You have confronted " + currentLocation.zombiesInLocation.get(w).getZombieName() + ". This zombie's HP is currently " + Zombie.zombieHP + ". What would you like to do? (use item, run, or hit)");
-                    String battleAction = null;
-                    try {
-                        battleAction = reader.readLine();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    switch (battleAction.toLowerCase(Locale.ROOT)) {
-                        case "hit":
-//                        if (Zombie.zombieHP <= 0) {
-//                            System.out.println("You have already defeated this zombie."); chooseAction(); }
-                            System.out.println("Zombie HP: " + Zombie.zombieHP);
-                            System.out.println("Your health: " + Character.health);
-                            System.out.println("You punch the zombie in the face.");
-                            Zombie.zombieHP = Zombie.zombieHP - 10;
-                            Zombie.bite();
-                            System.out.println("Your health " + Character.health);
-                            System.out.println("Zombie HP: " + Zombie.zombieHP);
-                            if (Zombie.zombieHP <= 0) {
-                                System.out.println("You have defeated the zombie!");
-                                chooseAction();
-                            }
-                            attack();
-                            break;
-                        case "run":
-                            int int_random = ThreadLocalRandom.current().nextInt(0, 100);
-                            if (int_random > 50) {
-                                System.out.println("Your attempt at running away was unsuccessful. The zombie attacks you back!");
-                                Character.health = Character.health - 10;
-                                System.out.println("Your HP: " + Character.health);
-                                attack();
-                            } else {
-                                System.out.println("You were able to get away!");
-                                chooseAction();
-                            }
-                            break;
-//                    case "use item":
-//                        System.out.println("Item used");
-//                        break;
-                        default:
-                            System.out.println("Please enter a valid choice");
-                            attack();
-                    }
-                }
-            }
-        }
+    public void attack(){
+        System.out.println(Zombie.zombieHP);
+        System.out.println("Zombie hit");
+        Zombie.zombieHP = Zombie.zombieHP - 10;
+        System.out.println("new Zombie HP " + Zombie.zombieHP);
+
     }
 
-            public void grab (Item item){
-                inventory.add(item);
-            }
+    public void grab(Item item){
+        inventory.add(item);
+    }
 
-            public void use (Item item){
-                inventory.remove(item);
-            }
+    public void use(Item item){
+        inventory.remove(item);
+    }
 
-            public void inspect (Item items){
+    public void inspect(Item items){
 
-            }
+    }
 
-            public void showInventory () {
-                System.out.println(getInventory());
-            }
+    public void showInventory(){
+        System.out.println(getInventory());
+    }
 
 
-            //getter and setter
+    //getter and setter
 
-            public String getUsername () {
-                return username;
-            }
+    public String getUsername() {
+        return username;
+    }
 
-            public void setUsername (String username){
-                this.username = username;
-            }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-            public int getHealth () {
-                return health;
-            }
+    public int getHealth() {
+        return health;
+    }
 
-            public void setHealth ( int health){
-                this.health = health;
-            }
+    public void setHealth(int health) {
+        this.health = health;
+    }
 
-            public Directions getDirection () {
-                return direction;
-            }
+    public Directions getDirection() {
+        return direction;
+    }
 
-            public void setDirection (Directions direction){
-                this.direction = direction;
-            }
+    public void setDirection(Directions direction) {
+        this.direction = direction;
+    }
 
-            public List<Item> getInventory () {
-                return inventory;
-            }
+    public List<Item> getInventory() {
+        return inventory;
+    }
 
-            public void setInventory (List < Item > inventory) {
-                this.inventory = inventory;
-            }
+    public void setInventory(List<Item> inventory) {
+        this.inventory = inventory;
+    }
 
-            public Location getCurrentLocation () {
-                return currentLocation;
-            }
+    public Location getCurrentLocation() {
+        return currentLocation;
+    }
 
-            public void setCurrentLocation (Location currentLocation){
-                this.currentLocation = currentLocation;
-            }
+    public void setCurrentLocation(Location currentLocation) {
+        this.currentLocation = currentLocation;
+    }
 
-            //toString
+    //toString
 
-            @Override
-            public String toString () {
-                return "Character{" +
-                        "username='" + username + '\'' +
-                        ", health=" + health +
-                        ", direction=" + direction +
-                        ", inventory=" + inventory +
-                        '}';
-            }
-        }
+    @Override
+    public String toString() {
+        return "Character{" +
+                "username='" + username + '\'' +
+                ", health=" + health +
+                ", direction=" + direction +
+                ", inventory=" + inventory +
+                '}';
+    }
+}
