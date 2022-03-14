@@ -2,7 +2,7 @@ package com.Group3.ZombieBytes.Client;
 
 import com.Group3.ZombieBytes.lifeforms.Character;
 import com.Group3.ZombieBytes.lifeforms.Zombie;
-import com.Group3.ZombieBytes.Game.GameText;
+//import com.Group3.ZombieBytes.Game.GameText;
 import com.Group3.ZombieBytes.Items.*;
 import org.json.simple.*;
 import com.Group3.ZombieBytes.Game.Location;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class ZombieGameClient {
     public static void main (String[] args) throws IOException, ParseException {
         // created an arraylist to store my location objects
-        ArrayList<GameText> alltext = new ArrayList<>();
+//        ArrayList<GameText> alltext = new ArrayList<>();
         ArrayList<Location> townLocations = new ArrayList<>();
 
         // this class helps us parse the json file
@@ -72,11 +72,11 @@ public class ZombieGameClient {
             String zombieName =  (String) ithZombie.get("name");
             String zombieLocation = (String) ithZombie.get("location");
             String zombieDescription = (String) ithZombie.get("description");
-//            String zombieHP = (String) ithZombie.get("healthPoint");
-//            int zombieHealth = Integer.parseInt(zombieHP);
+            long zombieHP = (long) ithZombie.get("healthPoint");
+
             for(var loc: townLocations){
                 if(loc.getName().equalsIgnoreCase(zombieLocation)){
-                    loc.zombiesInLocation.add(new Zombie(zombieName, zombieDescription));
+                    loc.zombiesInLocation.add(new Zombie(zombieName, zombieDescription, zombieHP));
 
                 }
             }
@@ -105,23 +105,23 @@ public class ZombieGameClient {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///help read GameText JSON
-        FileReader test = new FileReader("src/main/java/com/Group3/ZombieBytes/JSONfiles/GameText.json");
-        Object gameTextObject = jsonparser.parse(test);
-        JSONObject gameText = (JSONObject)gameTextObject;
+//        FileReader test = new FileReader("src/main/java/com/Group3/ZombieBytes/JSONfiles/GameText.json");
+//        Object gameTextObject = jsonparser.parse(test);
+//        JSONObject gameText = (JSONObject)gameTextObject;
+//
+//        //////////////
+//        JSONArray gameTextArray = (JSONArray)gameText.get("GameText");
 
-        //////////////
-        JSONArray gameTextArray = (JSONArray)gameText.get("GameText");
+//        for (int i = 0; i < gameTextArray.size(); i++){
+//            JSONObject gameThang = (JSONObject) gameTextArray.get(i);
+//            String text = (String) gameThang.get("text");
+//            String name = (String) gameThang.get("name");
+//            System.out.println(name + text);
+//            alltext.add(new GameText(name, text));
+//
+//        }
 
-        for (int i = 0; i < gameTextArray.size(); i++){
-            JSONObject gameThang = (JSONObject) gameTextArray.get(i);
-            String text = (String) gameThang.get("text");
-            String name = (String) gameThang.get("name");
-            System.out.println(name + text);
-            alltext.add(new GameText(name, text));
-
-        }
-
-        Character c = new Character("Sam", 100,townLocations, alltext);
+        Character c = new Character("Sam", 100,townLocations);
 
         // this is the second commit
         c.currentLocation = townLocations.get(0);
