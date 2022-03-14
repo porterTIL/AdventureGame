@@ -38,7 +38,7 @@
     },
     {
       "name": "ultimateNoKey",
-      "text": "There's no way you can face the creature now at your current state."
+      "text": "There is no way you can face the creature now at your current state."
     },
     {
       "name": "attackWin",
@@ -58,3 +58,4 @@
     }
   ]
 }
+

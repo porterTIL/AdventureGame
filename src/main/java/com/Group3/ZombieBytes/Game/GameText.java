@@ -9,52 +9,55 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GameText {
-//    String name;
-//    String text;
-//
-//    public GameText(){}
-//
-//    public GameText(String name, String text){
-//        this.name = name;
-//        this.text = text;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public String getText() {
-//        return text;
-//    }
-//
-//    public void setText(String text) {
-//        this.text = text;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return text;
-//    }
 // properties
 private static HashMap<String, String> gameText;
 
     //methods
     // business methods
     public static void intro(){
-        PrintContent.print(gameText.get("Intro"));
+        PrintContent.print(gameText.get("intro"));
     }
     public static void outro(){
-        PrintContent.print(gameText.get("Outro"));
+        PrintContent.print(gameText.get("outro"));
 
     }
-    public static void dead(){
-        PrintContent.print("You have died");
-
+    public static void death(){
+        PrintContent.print(gameText.get("death"));
     }
+    public static void bite(){
+        PrintContent.print(gameText.get("bite"));
+    }
+    public static void chooseAction(){
+        PrintContent.print(gameText.get("chooseAction"));
+    }
+    public static void noZombies(){
+        PrintContent.print(gameText.get("noZombies"));
+    }
+    public static void defaultChooseAction(){
+        PrintContent.print(gameText.get("defaultChooseAction"));
+    }
+    public static void defaultWalk(){
+        PrintContent.print(gameText.get("defaultWalk"));
+    }
+    public static void monkeyNoBanana(){
+        PrintContent.print(gameText.get("monkeyNoBanana"));
+    }
+    public static void ultimateNoKey(){
+        PrintContent.print(gameText.get("ultimateNoKey"));
+    }
+    public static void attackWin(){
+        PrintContent.print(gameText.get("attackWin"));
+    }
+    public static void runFail(){
+        PrintContent.print(gameText.get("runFail"));
+    }
+    public static void runWin(){
+        PrintContent.print(gameText.get("runWin"));
+    }
+    public static void attackDefault(){
+        PrintContent.print(gameText.get("attackDefault"));
+    }
+
     // getters and setters
     public static HashMap<String, String> getGameText() {
         return gameText;
