@@ -24,7 +24,7 @@
       "location": "hospital",
       "description": "A powerful zombie, large from consuming others. You assume this was the initial zombie that began the plague."
     },
-    {"name": "Monkey Boss Zombie",
+    {"name": "Monkey Zombie",
     "healthPoint": 60,
     "location": "policeStation",
       "description": "Somehow a monkey got turned into a zombie? Anyway, it is blocking the police station entrance."
