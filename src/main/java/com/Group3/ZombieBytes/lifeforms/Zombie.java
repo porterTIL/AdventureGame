@@ -1,5 +1,7 @@
 package com.Group3.ZombieBytes.lifeforms;
 
+import com.Group3.ZombieBytes.Game.GameText;
+
 public class Zombie {
 
     // Properties
@@ -26,8 +28,8 @@ public class Zombie {
     //methods
         // business methods
     public static void bite() {
-//        Character.health = Character.health - 10;
-        System.out.println("The zombie bit you!");
+        Character.health = Character.health - 10;
+        GameText.bite();
     }
 
         // getters and setters
