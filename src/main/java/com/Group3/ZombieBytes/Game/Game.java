@@ -8,130 +8,50 @@ import java.util.*;
 
 public class Game {
     // properties
-    public ArrayList<ArrayList<String>> board = new ArrayList<>();
-    public Character character;
-    public Zombie zombie;
+    private static String zombieGameText = "This is a zombie game";
+    // set game map
+    private static HashMap<String, Location> gameLocation;
 
+    // constructors
+    private ZombieGame(){
 
-    public ArrayList<Item> items = new ArrayList<>();
-
-    public boolean gameInProgress = false;
-
+    }
     // methods
-    public void getItems(){
-    }
-    public void setRules(){
-        setIntro();
-        setParameters();
+    // business methods
+    public static void start(){
+        GameText.intro();
+        runParsers();
+        // game code
+        GameText.outro();
+//        PrintContent.print(gameText.get("intro"));
+//        PrintContent.print(gameText.size());
+//        PrintContent.print(gameLocation.size());
+//        PrintContent.print(gameText.get("outro"));
 
     }
+    // run the parsers to fill the game properties
+    public static void runParsers(){
+        GameTextParser.run();
+        LocationParser.run();
+        ItemParser.run();
 
-    public void gameStart(){
-        this.gameInProgress = true;
-        //
-    }
-
-    public void gameOver(){
-        this.gameInProgress = false;
-    }
-
-    public void setGameBoard(int length, int width, int hospital, int store, int policeStation, int school){
-        String land = "Land";
-        for(int x = 0; x < length; x++){
-            board.add(new ArrayList<>());
-            for(int y = 0; y < width; y++){
-                board.get(x).add(land);
-            }
-        }
-        setHospital(hospital, length, width);
-        setStore(store, length, width);
-        setPoliceStation(policeStation, length, width);
-        setSchool(school, length, width);
-
-        // prints the board
-        for(int x = 0; x < board.size(); x++){
-            System.out.println(board.get(x));
+        for(Map.Entry<String, Location> loc : gameLocation.entrySet()) {
+            PrintContent.print("Location: " + loc.getKey());
+            PrintContent.print("Items: " + loc.getValue().getItems());
+            PrintContent.print("Total Items: " + loc.getValue().getItems().size());
         }
     }
-    public void setHospital(int hospital, int length, int width){
-        Random randomNumber = new Random();
-        for (int x = 0; x < hospital; x++){
-            int randomLength = randomNumber.nextInt(length);
-            int randomWidth = randomNumber.nextInt(width);
-
-            if (!board.get(randomLength).get(randomWidth).equalsIgnoreCase("Hospital")){
-                if(board.get(randomLength).get(randomWidth).equalsIgnoreCase("land")){
-                    board.get(randomLength).set(randomWidth, "Hospital");
-                }else {
-                    x--;
-                }
-            } else{
-                x--;
-            }
-
-        }
-    }
-    public void setStore(int store, int length, int width){
-        Random randomNumber = new Random();
-        for (int x = 0; x < store; x++){
-            int randomLength = randomNumber.nextInt(length);
-            int randomWidth = randomNumber.nextInt(width);
-
-            if (!board.get(randomLength).get(randomWidth).equalsIgnoreCase("Store")){
-                if(board.get(randomLength).get(randomWidth).equalsIgnoreCase("land")){
-                    board.get(randomLength).set(randomWidth, "Store");
-                }else {
-                    x--;
-                }
-            } else{
-                x--;
-            }
-
-        }
-    }
-    public void setPoliceStation(int policeStation, int length, int width){
-        Random randomNumber = new Random();
-        for (int x = 0; x < policeStation; x++){
-            int randomLength = randomNumber.nextInt(length);
-            int randomWidth = randomNumber.nextInt(width);
-
-            if (!board.get(randomLength).get(randomWidth).equalsIgnoreCase("PoliceStation")){
-                if(board.get(randomLength).get(randomWidth).equalsIgnoreCase("land")){
-                    board.get(randomLength).set(randomWidth, "PoliceStation");
-                }else {
-                    x--;
-                }
-            } else{
-                x--;
-            }
-
-        }
-    }
-    public void setSchool(int school, int length, int width){
-        Random randomNumber = new Random();
-        for (int x = 0; x < school; x++){
-            int randomLength = randomNumber.nextInt(length);
-            int randomWidth = randomNumber.nextInt(width);
-
-            if (!board.get(randomLength).get(randomWidth).equalsIgnoreCase("School")){
-                if(board.get(randomLength).get(randomWidth).equalsIgnoreCase("land")){
-                    board.get(randomLength).set(randomWidth, "School");
-                }else {
-                    x--;
-                }
-            } else{
-                x--;
-            }
-
-        }
+    // setters and getters
+    public static HashMap<String, Location> getGameLocation() {
+        return gameLocation;
     }
 
-    public void setIntro(){
-        System.out.println("Welcome to Zombie Bytes!!!");
+    public static void setGameLocation(HashMap<String, Location> gameLocation) {
+        ZombieGame.gameLocation = gameLocation;
     }
-    public void setParameters(){
-
+    // toString
+    public String toString(){
+        return zombieGameText;
     }
-
-
+}
 }
