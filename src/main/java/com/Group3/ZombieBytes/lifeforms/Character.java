@@ -366,7 +366,6 @@ public class Character {
                     System.out.println("You have already defeated this zombie.");
                     chooseAction();
                 }
-//                for (int w = 0; w < currentLocation.zombiesInLocation.size(); w++) {
                 if (Objects.equals(currentLocation.zombiesInLocation.get(w).getZombieName(), "Monkey Zombie")) {
                     System.out.println("The monkey zombie shreiks at you and you stumble backwards...");
                     chooseAction();
