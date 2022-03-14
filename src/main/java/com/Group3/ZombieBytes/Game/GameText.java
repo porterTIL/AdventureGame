@@ -1,8 +1,12 @@
 package com.Group3.ZombieBytes.Game;
 
 import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
+import org.json.simple.JSONObject;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class GameText {
 //    String name;
@@ -41,10 +45,10 @@ private static HashMap<String, String> gameText;
     //methods
     // business methods
     public static void intro(){
-        PrintContent.print("HELLO THIS IS INTRO");
+        PrintContent.print(gameText.get("Intro"));
     }
     public static void outro(){
-        PrintContent.print("THANKS FOR QUITTING");
+        PrintContent.print(gameText.get("Outro"));
 
     }
     public static void dead(){
