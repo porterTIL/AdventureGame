@@ -15,6 +15,11 @@ public class Zombie {
         this.zombieHP = zombieHP;
     }
 
+    public Zombie(String zombieName, String zombieDescription) {
+        this.zombieName = zombieName;
+        this.zombieDescription = zombieDescription;
+    }
+
     //methods
     public String getZombieName() {
         return zombieName;
