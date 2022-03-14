@@ -4,19 +4,30 @@
       "name": "TownCenter",
       "Item": "Letter",
       "description": "You have entered the town center",
-      "Valid Direction": "North",
-      "Valid Direction": "South",
-      "Valid Direction": "East",
-      "Valid Direction": "West"
+      "Valid Direction": [
+        {"North": "Hospital"},
+        {"East": "Store"},
+        {"South": "PoliceStation"},
+        {"West": "Road"}
+      ]
+      //      "Valid Direction": "North",
+      //      "Valid Direction": "South",
+      //      "Valid Direction": "East",
+      //      "Valid Direction": "West"
     },
     {
       "name": "Hospital",
       "Item": "Cure",
       "Zombie": "Zombie Boss",
       "Description": "You have entered the Hospital.",
-      "Valid Direction": "East",
-      "Valid Direction": "South",
-      "Valid Direction": "West"
+      "Valid Direction": [
+        {"East": "Road 2"},
+        {"South": "TownCenter"},
+        {"West": "Road 1"}
+      ]
+      //      "Valid Direction": "East",
+      //      "Valid Direction": "South",
+      //      "Valid Direction": "West"
     },
     {
       "name": "PoliceStation",
@@ -25,9 +36,14 @@
       "Zombie": "Monkey Zombie",
       "Description": "You have entered the Police Station. You see a desk by the front door and jail cells to the back.",
       "Key": "City Key",
-      "Valid Direction": "North",
-      "Valid Direction": "West",
-      "Valid Direction": "East"
+      "Valid Direction": [
+        {"North": "TownCenter"},
+        {"East": "Road 4"},
+        {"West": "School"}
+      ]
+      //      "Valid Direction": "North",
+      //      "Valid Direction": "West",
+      //      "Valid Direction": "East"
     },
     {
       "name": "Store",
@@ -35,43 +51,69 @@
       "Key": "Banana Key",
       "Zombie": "Grocer Zombie",
       "Description": "You have entered the Store. Aisles are lined with grocery items.",
-      "Valid Direction": "North",
-      "Valid Direction": "South",
-      "Valid Direction": "West"
+      "Valid Direction": [
+        {"North": "Road 2"},
+        {"South": "Road 4"},
+        {"West": "TownCenter"}
+      ]
+      //      "Valid Direction": "North",
+      //      "Valid Direction": "South",
+      //      "Valid Direction": "West"
     },
     {
       "name": "School",
       "Item": "Apple",
       "Key": "Nurse's Badge",
       "Zombie": "Teacher Zombie",
-      "Valid Direction": "North",
-      "Valid Direction": "East"
+      "Valid Direction": [
+        {"North": "Road 3"},
+        {"East": "PoliceStation"}
+      ]
+      //      "Valid Direction": "North",
+      //      "Valid Direction": "East"
     },
     {
       "name": "Road 1",
       "Description": "You have entered a road. You see a stick on the ground.",
       "Item": "Stick",
-      "Valid Direction": "South",
-      "Valid Direction": "East"
+      "Valid Direction": [
+        {"East": "Hospital"},
+        {"South": "Road 3"}
+      ]
+      //      "Valid Direction": "South",
+      //      "Valid Direction": "East"
     },
     {
       "name": "Road 2",
       "Description": "You have entered a road",
-      "Valid Direction": "West",
-      "Valid Direction": "South"
+      "Valid Direction": [
+        {"South": "Store"},
+        {"West": "Hospital"}
+      ]
+      //      "Valid Direction": "West",
+      //      "Valid Direction": "South"
     },
     {
       "name": "Road 3",
       "Description": "You have entered a road",
-      "Valid Direction": "South",
-      "Valid Direction": "North",
-      "Valid Direction": "East"
+      "Valid Direction": [
+        {"North": "Road 1"},
+        {"East": "TownCenter"},
+        {"South": "School"}
+      ]
+      //      "Valid Direction": "South",
+      //      "Valid Direction": "North",
+      //      "Valid Direction": "East"
     },
     {
       "name": "Road 4",
       "Description": "You have entered a road",
-      "Valid Direction": "North",
-      "Valid Direction": "West"
+      "Valid Direction": [
+        {"North": "Hospital"},
+        {"West": "Road"}
+      ]
+      //      "Valid Direction": "North",
+      //      "Valid Direction": "West"
     }
   ]
 }

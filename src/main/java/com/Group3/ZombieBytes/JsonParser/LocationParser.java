@@ -34,7 +34,7 @@ public class LocationParser {
                     JSONObject location = (JSONObject) locationArray.get(i);
                     String name = (String) location.get("name");
 //            String item =  (String) location.get("Item");
-                    String description = (String) location.get("Description");
+                    String description = (String) location.get("description");
                     gameLocation.put(name, new Location(name, description));
                 }
                 Game.setGameLocation(gameLocation);
