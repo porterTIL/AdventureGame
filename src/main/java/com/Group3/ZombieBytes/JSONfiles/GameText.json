@@ -1,0 +1,85 @@
+{
+  "gameText": [
+    {
+      "name": "username",
+      "text": "Welcome to ZombieBytes! Enter a username: "
+    },
+    {
+      "name": "defaultStart",
+      "text": "Enter 'start' to continue: "
+    },
+    {
+      "name": "punch",
+      "text": "You punch the zombie in the face. "
+    },
+    {
+      "name": "intro",
+      "text": "Weary from finals and end of the year festivities, you return home to your small home town for summer vacation. When you step off the bus at the town center, however, a chill rises in your spine and you notice that there is nobody in sight."
+    },
+    {
+      "name": "letter",
+      "text": "HELP...something happened...the reasearch going on at the hospital...something went wrong and everyone started...changing? Mutating into some...thing. The only cure is still in the hospital but I think I'm the only one who wasn't attacked. I'm going to try to get it...I may not return but please...somebody...if you find this letter we need your help"
+    },
+    {
+      "name": "outro",
+      "text": "THANKS FOR QUITTING"
+    },
+    {
+      "name": "death",
+      "text": "You have died"
+    },
+    {
+      "name": "bite",
+      "text": "The zombie bit you!"
+    },
+    {
+      "name": "chooseAction",
+      "text": "What would you like to do? (walk, inspect, attack, grab, use item, inventory)"
+    },
+    {
+      "name": "noZombies",
+      "text": "There are no zombies to attack in this room."
+    },
+    {
+      "name": "alreadyDefeated",
+      "text": "You have already defeated the zombie here."
+    },
+    {
+      "name": "defaultChooseAction",
+      "text": "What would you like to do?"
+    },
+    {
+      "name": "defaultWalk",
+      "text": "You are walking. Maybe going a certain direction might be helpful."
+    },
+    {
+      "name": "monkeyNoBanana",
+      "text": "The monkey zombie shreiks at you and you stumble backwards..."
+    },
+    {
+      "name": "ultimateNoKey",
+      "text": "There is no way you can face the creature now at your current state."
+    },
+    {
+      "name": "attackWin",
+      "text": "You defeated the zombie"
+    },
+    {
+      "name": "runFail",
+      "text": "Your attempt at running away was unsuccessful. The zombie attacks you back!"
+    },
+    {
+      "name": "runWin",
+      "text": "You were able to get away!"
+    },
+    {
+      "name": "attackDefault",
+      "text": "Please enter a valid choice"
+    },
+    {
+      "name": "lockedIn",
+      "text": "This direction is blocked off by too many zombies. Lets choose a different one."
+    }
+  ]
+}
+

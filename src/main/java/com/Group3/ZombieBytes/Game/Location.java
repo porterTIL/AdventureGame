@@ -1,26 +1,30 @@
 package com.Group3.ZombieBytes.Game;
 
-import com.Group3.ZombieBytes.Items.Items;
+import com.Group3.ZombieBytes.lifeforms.Zombie;
+import com.Group3.ZombieBytes.Items.Item;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-
 public class Location {
-    // Properties
-    String name = null;
-    String items = null;
-    public List <Items> itemsInLocation = new ArrayList<Items>();
-//    List <String> items = new ArrayList<>();
+    // properties
+    private String name;
+    private String description;
+    private HashMap<String, String> availableDirection;
+    private ArrayList<Item> items;
 
-    // constructors
-    public Location(String name, String items){
+
+    private ArrayList<Zombie> zombies;
+
+    // constructor
+    public Location(String name, String description,HashMap<String, String> availableDirection ){
         setName(name);
-        setItems(items);
-
+        setDescription(description);
+        setAvailableDirection(availableDirection);
     }
 
     // methods
+    // getters and setters
     public String getName() {
         return name;
     }
@@ -29,27 +33,40 @@ public class Location {
         this.name = name;
     }
 
-    public String getItems() {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public ArrayList<Item> getItems() {
         return items;
     }
 
-    public void setItems(String items) {
+    public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
 
-    private String falseToString(){
-        int sizeofLocation = itemsInLocation.size();
-        String item = "";
-        for (int y = 0; y < sizeofLocation; y++){
-            item += itemsInLocation.get(y).getName();
-            item += ", ";
-        }
-        return item;
+    public ArrayList<Zombie> getZombies() {
+        return zombies;
     }
 
-    // to String
+    public void setZombies(ArrayList<Zombie> zombies) {
+        this.zombies = zombies;
+    }
+
+    public HashMap<String, String> getAvailableDirection() {
+        return availableDirection;
+    }
+
+    public void setAvailableDirection(HashMap<String, String> availableDirection) {
+        this.availableDirection = availableDirection;
+    }
+    // toString
     public String toString(){
-        return getName() + ", " + "and it has the following items: " + falseToString();
+        return description;
     }
-
 }
+
+
