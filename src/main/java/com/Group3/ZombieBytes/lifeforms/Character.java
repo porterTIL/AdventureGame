@@ -88,7 +88,9 @@ public class Character {
 
         String chooseAction = null;
         try {
+            String wordArray[2];
             chooseAction = reader.readLine();
+            String strArray[2] = str.split(" ");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -142,7 +144,6 @@ public class Character {
     }
 
     public static void walk(String direction){
-        System.out.println("trial:" +currentLocation.getAvailableDirection().get(direction));
         if (currentLocation.getAvailableDirection().get(direction) == null){
             GameText.lockedIn();
         } else {
