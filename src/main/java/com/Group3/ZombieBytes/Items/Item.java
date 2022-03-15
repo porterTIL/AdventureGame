@@ -10,13 +10,18 @@ public class Item {
     String type = null;
     String description = null;
 
+
+    String use = null;
+
     // constructors
-    public Item(String locatedIn, String name, long quantity, String type, String description){
+    public Item(String locatedIn, String name, long quantity, String type, String description, String use){
         setLocatedIn(locatedIn);
         setName(name);
         setQuantity(quantity);
         setType(type);
         setDescription(description);
+        setUse(use);
+
     }
 
     // methods
@@ -62,6 +67,13 @@ public class Item {
         this.description = description;
     }
 
+    public String getUse() {
+        return use;
+    }
+
+    public void setUse(String use) {
+        this.use = use;
+    }
 
     public String toString(){
         return getName().toUpperCase()+": " + description;

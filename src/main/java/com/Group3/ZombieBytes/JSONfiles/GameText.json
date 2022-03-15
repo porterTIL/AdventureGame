@@ -34,7 +34,7 @@
     },
     {
       "name": "chooseAction",
-      "text": "What would you like to do? (walk, inspect, attack, grab, use item, check inventory)"
+      "text": "What would you like to do? (walk, inspect, attack, grab, use item, inventory)"
     },
     {
       "name": "noZombies",
