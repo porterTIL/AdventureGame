@@ -51,29 +51,29 @@
     },
     {
       "name": "Road 1",
-      "Description": "You have entered a road. You see a stick on the ground.",
+      "description": "You have entered a road. You see a stick on the ground.",
       "Item": "Stick",
         "East": "Hospital",
         "South": "Road 3"
     },
     {
       "name": "Road 2",
-      "Description": "You have entered a road",
+      "description": "You have entered a road",
         "South": "Store",
         "West": "Hospital"
     },
     {
       "name": "Road 3",
-      "Description": "You have entered a road",
+      "description": "You have entered a road",
         "North": "Road 1",
         "East": "TownCenter",
         "South": "School"
     },
     {
       "name": "Road 4",
-      "Description": "You have entered a road",
-        "North": "Hospital",
-        "West": "Road"
+      "description": "You have entered a road",
+        "North": "Store",
+        "West": "PoliceStation"
 
     }
   ]
