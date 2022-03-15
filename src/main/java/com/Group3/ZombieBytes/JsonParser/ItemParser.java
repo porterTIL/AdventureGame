@@ -41,7 +41,9 @@ public class ItemParser {
                     long quantity = (Long) item.get("quantity");
                     String type = (String) item.get("type");
                     String description = (String) item.get("Description");
-                    itemList.add(new Item(location, name, quantity, type, description));
+                    String use = (String) item.get("use");
+
+                    itemList.add(new Item(location, name, quantity, type, description, use));
                 }
 
                 // found on stackOverFlow flow how to parse through Location hash map from ZombieGame

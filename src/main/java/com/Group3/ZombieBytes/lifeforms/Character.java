@@ -80,15 +80,16 @@ public class Character {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         switch (wordInput[0].toLowerCase()) {
             case "use":
+                CheckLength(wordInput.length, wordInput[0]);
                 Character.useItem(wordInput[1]);
                 chooseAction();
                 break;
 
-            case "check":
-                if (wordInput[1].equalsIgnoreCase("inventory")) {
+            case "inventory":
+//                CheckLength(wordInput.length, wordInput[0]);
+                if (wordInput[0].equalsIgnoreCase("inventory")) {
                     if (inventory.size() == 0){
                         PrintContent.print("You currently have no items");
                         chooseAction();
@@ -104,16 +105,16 @@ public class Character {
                 chooseAction();
                 break;
             case "grab":
-                System.out.println(inventory.size());
+                CheckLength(wordInput.length, wordInput[0]);
                 Character.addToInventory(wordInput[1], currentLocation);
                 PrintContent.print(username + " has picked up item");
-                System.out.println(inventory.size());
                 for (int i = 0; i < inventory.size(); i++){
-                    System.out.println((inventory.get(i).getName()));
+                    System.out.println(("Your Inventory: " + inventory.get(i).getName()));
                 }
                 chooseAction();
                 break;
             case "walk":
+                CheckLength(wordInput.length, wordInput[0]);
                 walk(wordInput[1].toLowerCase());
 //                GameText.defaultWalk();
                 chooseAction();
@@ -147,12 +148,17 @@ public class Character {
     }
 
     public static void walk(String direction) {
-        System.out.println("trial:" + currentLocation.getAvailableDirection().get(direction));
         if (currentLocation.getAvailableDirection().get(direction) == null) {
             GameText.lockedIn();
         } else {
             currentLocation = totalLocation.get(currentLocation.getAvailableDirection().get(direction));
             System.out.println(currentLocation.toString());
+        }
+    }
+    public static void CheckLength(int length, String verb){
+        if (length < 2){
+            System.out.println("Please enter a noun command to go along with your verb: " + verb);
+            chooseAction();
         }
     }
 
@@ -244,6 +250,7 @@ public class Character {
         for (int i = 0; i < inventory.size(); i++){
             inventory.get(i).getName().equalsIgnoreCase(pickedItem);
             PrintContent.print("You have used " + inventory.get(i).getName());
+            PrintContent.print(inventory.get(i).getUse());
             inventory.remove(i);}
 //        if (inventory.contains(pickedItem)) {
 //            PrintContent.print(pickedItem.getName() + "has been used");
