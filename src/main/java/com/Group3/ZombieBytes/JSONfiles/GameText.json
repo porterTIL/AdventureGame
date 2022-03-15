@@ -50,7 +50,7 @@
     },
     {
       "name": "defaultWalk",
-      "text": "Please choose a valid direction(east, west, north, south"
+      "text": "You are walking. Maybe going a certain direction might be helpful."
     },
     {
       "name": "monkeyNoBanana",

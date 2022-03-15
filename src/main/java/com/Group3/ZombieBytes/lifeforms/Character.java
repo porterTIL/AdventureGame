@@ -35,7 +35,7 @@ public class Character {
 
     // properties
     private static String username;
-    public static int health;
+    public static int health = 100;
     private int spaces;
     private Directions direction = Directions.NORTH;
     private List<Item> inventory = new ArrayList<>();
@@ -95,7 +95,7 @@ public class Character {
 
         switch (chooseAction.toLowerCase()) {
             case "walk":
-                PrintContent.print("You are walking. Maybe going a certain direction might be helpful.");
+                GameText.defaultWalk();
                 chooseAction();
                 break;
             case "walk north":
@@ -145,7 +145,7 @@ public class Character {
         if (currentLocation.getAvailableDirection().get(direction.toLowerCase()) == null){
             GameText.lockedIn();
         } else {
-            currentLocation = currentLocation = totalLocation.get(currentLocation.getAvailableDirection().get(direction));
+            currentLocation = totalLocation.get(currentLocation.getAvailableDirection().get(direction));
             System.out.println(currentLocation.toString());
         }
     }
@@ -180,8 +180,6 @@ public class Character {
                     }
                     switch (battleAction.toLowerCase()) {
                         case "hit":
-//                        if (Zombie.zombieHP <= 0) {
-//                            System.out.println("You have already defeated this zombie."); chooseAction(); }
                             System.out.println("Zombie HP: " + Zombie.zombieHP);
                             System.out.println("Your health: " + Character.health);
                             GameText.punch();
