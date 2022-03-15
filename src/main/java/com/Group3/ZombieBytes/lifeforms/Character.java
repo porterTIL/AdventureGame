@@ -6,6 +6,7 @@ import com.Group3.ZombieBytes.Game.Location;
 import com.Group3.ZombieBytes.Items.Item;
 import com.Group3.ZombieBytes.Items.Noun;
 import com.Group3.ZombieBytes.Items.Verb;
+import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
 import com.Group3.ZombieBytes.lifeforms.Directions;
 
 import java.io.BufferedReader;
@@ -67,6 +68,7 @@ public class Character {
 
         switch (startGame.toLowerCase()) {
             case "start":
+                GameText.intro();
                 System.out.println(username + " is currently located in the " + currentLocation.getName());
                 chooseAction();
                 break;
@@ -93,8 +95,24 @@ public class Character {
 
         switch (chooseAction.toLowerCase()) {
             case "walk":
-//                walk();
-                System.out.println("You are walking");
+                PrintContent.print("You are walking. Maybe going a certain direction might be helpful.");
+                chooseAction();
+                break;
+            case "walk north":
+                walk("north");
+                chooseAction();
+                break;
+            case "walk east":
+                walk("east");
+                chooseAction();
+                break;
+            case "walk south":
+                walk("south");
+                chooseAction();
+                break;
+            case "walk west":
+                walk("west");
+                chooseAction();
                 break;
             case "inspect":
                 for (int i = 0; i < currentLocation.getItems().size();i++) {
@@ -120,6 +138,15 @@ public class Character {
             default:
                 GameText.defaultChooseAction();
                 chooseAction();
+        }
+    }
+
+    public static void walk(String direction){
+        if (currentLocation.getAvailableDirection().get(direction.toLowerCase()) == null){
+            GameText.lockedIn();
+        } else {
+            currentLocation = currentLocation = totalLocation.get(currentLocation.getAvailableDirection().get(direction));
+            System.out.println(currentLocation.toString());
         }
     }
 
