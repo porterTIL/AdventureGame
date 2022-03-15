@@ -2,6 +2,8 @@ package com.Group3.ZombieBytes.JsonParser;
 
 import com.Group3.ZombieBytes.Game.Game;
 import com.Group3.ZombieBytes.Game.Location;
+import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -10,7 +12,9 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class LocationParser {
     public static void run() {
@@ -33,9 +37,19 @@ public class LocationParser {
                 for (int i = 0; i < locationArray.size(); i++) {
                     JSONObject location = (JSONObject) locationArray.get(i);
                     String name = (String) location.get("name");
-//            String item =  (String) location.get("Item");
                     String description = (String) location.get("description");
-                    gameLocation.put(name, new Location(name, description));
+                    String north = (String) location.get("North");
+                    String east = (String) location.get("East");
+                    String south = (String) location.get("South");
+                    String west = (String) location.get("West");
+
+                    HashMap<String, String> tempAvailableDirection = new HashMap<>();
+                    tempAvailableDirection.put("north", north);
+                    tempAvailableDirection.put("east", east);
+                    tempAvailableDirection.put("south", south);
+                    tempAvailableDirection.put("west", west);
+
+                    gameLocation.put(name, new Location(name, description, tempAvailableDirection));
                 }
                 Game.setGameLocation(gameLocation);
             } catch (FileNotFoundException e) {
