@@ -142,10 +142,11 @@ public class Character {
     }
 
     public static void walk(String direction){
-        if (currentLocation.getAvailableDirection().get(direction.toLowerCase()) == null){
+        System.out.println("trial:" +currentLocation.getAvailableDirection().get(direction));
+        if (currentLocation.getAvailableDirection().get(direction) == null){
             GameText.lockedIn();
         } else {
-            currentLocation = currentLocation = totalLocation.get(currentLocation.getAvailableDirection().get(direction));
+            currentLocation = totalLocation.get(currentLocation.getAvailableDirection().get(direction));
             System.out.println(currentLocation.toString());
         }
     }
