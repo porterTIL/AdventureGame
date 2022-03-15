@@ -15,32 +15,18 @@ import java.io.InputStreamReader;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-//package com.Group3.ZombieBytes.lifeforms;
-//
-//import com.Group3.ZombieBytes.Game.Game;
-//import com.Group3.ZombieBytes.Game.GameText;
-//import com.Group3.ZombieBytes.Items.Item;
-//import com.Group3.ZombieBytes.Game.Location;
-//import com.Group3.ZombieBytes.Items.Noun;
-//import com.Group3.ZombieBytes.Items.Verb;
-//
-//import java.io.BufferedReader;
-//import java.io.IOException;
-//import java.io.InputStreamReader;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Locale;
-//
+
 public class Character {
 
     // properties
     private static String username;
     public static int health = 100;
+    private static Item choosenItem;
     private int spaces;
     private Directions direction = Directions.NORTH;
-    private List<Item> inventory = new ArrayList<>();
+    private static List<Item> inventory = new ArrayList<>();
     public static HashMap<String, Location> totalLocation = Game.getGameLocation();
-//    private Map<Location> characterLocation = new HashMap<>();
+    //    private Map<Location> characterLocation = new HashMap<>();
     public static Location currentLocation = totalLocation.get("TownCenter");
     List<GameText> characterText = new ArrayList<>();
 
@@ -87,35 +73,54 @@ public class Character {
         GameText.chooseAction();
 
         String chooseAction = null;
+        String[] wordInput = new String[2];
         try {
             chooseAction = reader.readLine();
+            wordInput = chooseAction.split(" ");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        switch (chooseAction.toLowerCase()) {
+        switch (wordInput[0].toLowerCase()) {
+            case "use":
+                Character.useItem(wordInput[1]);
+                chooseAction();
+                break;
+
+            case "check":
+                if (wordInput[1].equalsIgnoreCase("inventory")) {
+                    if (inventory.size() == 0){
+                        PrintContent.print("You currently have no items");
+                        chooseAction();
+                        break;
+                    }
+                    for (int i = 0; i < inventory.size(); i++) {
+                        System.out.println(("YOUR INVENTORY: " + inventory.get(i).getName()));
+                    }
+                } else {
+
+                    PrintContent.print("Can't check " + wordInput[1]);
+                }
+                chooseAction();
+                break;
+            case "grab":
+                System.out.println(inventory.size());
+                Character.addToInventory(wordInput[1], currentLocation);
+                PrintContent.print(username + " has picked up item");
+                System.out.println(inventory.size());
+                for (int i = 0; i < inventory.size(); i++){
+                    System.out.println((inventory.get(i).getName()));
+                }
+                chooseAction();
+                break;
             case "walk":
-                GameText.defaultWalk();
+                walk(wordInput[1].toLowerCase());
+//                GameText.defaultWalk();
                 chooseAction();
                 break;
-            case "walk north":
-                walk("north");
-                chooseAction();
-                break;
-            case "walk east":
-                walk("east");
-                chooseAction();
-                break;
-            case "walk south":
-                walk("south");
-                chooseAction();
-                break;
-            case "walk west":
-                walk("west");
-                chooseAction();
-                break;
+
             case "inspect":
-                for (int i = 0; i < currentLocation.getItems().size();i++) {
+                for (int i = 0; i < currentLocation.getItems().size(); i++) {
                     System.out.println(currentLocation.getItems().get(i));
                 }
                 for (int w = 0; w < currentLocation.getZombies().size(); w++) {
@@ -141,9 +146,9 @@ public class Character {
         }
     }
 
-    public static void walk(String direction){
-        System.out.println("trial:" +currentLocation.getAvailableDirection().get(direction));
-        if (currentLocation.getAvailableDirection().get(direction) == null){
+    public static void walk(String direction) {
+        System.out.println("trial:" + currentLocation.getAvailableDirection().get(direction));
+        if (currentLocation.getAvailableDirection().get(direction) == null) {
             GameText.lockedIn();
         } else {
             currentLocation = totalLocation.get(currentLocation.getAvailableDirection().get(direction));
@@ -161,7 +166,7 @@ public class Character {
         for (int w = 0; w < currentLocation.getZombies().size(); w++) {
             if (currentLocation.getZombies().size() > 00) {
                 if (Zombie.zombieHP <= 0) {
-                   GameText.alreadyDefeated();
+                    GameText.alreadyDefeated();
                     chooseAction();
                 }
                 if (Objects.equals(currentLocation.getZombies().get(w).getZombieName(), "Monkey Zombie")) {
@@ -202,7 +207,7 @@ public class Character {
                                 System.out.println("Your HP: " + Character.health);
                                 attack();
                             } else {
-                               GameText.runWin();
+                                GameText.runWin();
                                 chooseAction();
                             }
                             break;
@@ -217,293 +222,33 @@ public class Character {
             }
         }
     }
-}
 
-//    public void walk(){
-//        System.out.println(username + " is currently located in the " + currentLocation.getName());
-//        InputStreamReader input = new InputStreamReader(System.in);
-//        BufferedReader reader = new BufferedReader(input);
-//        System.out.println("Which direction does " + username + " want to walk?");
-//
-//        String walkDirection = null;
-//        try {
-//            walkDirection = reader.readLine();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        if (currentLocation == characterLocation.get(0)){
-//            switch (walkDirection.toLowerCase(Locale.ROOT)){
-//                case "north":
-//                    currentLocation = characterLocation.get(1);
-//                    System.out.println(username + " has moved to the" + currentLocation);
-//                    chooseAction();
-//                    break;
-//                case "south":
-//                    currentLocation = characterLocation.get(2);
-//                    System.out.println(username + " has moved to the " + currentLocation);
-//                    chooseAction();
-//                    break;
-//                case "east":
-//                    currentLocation = characterLocation.get(3);
-//                    System.out.println(username + " has moved to the " + currentLocation);
-//                    chooseAction();
-//                    break;
-//                case "west":
-//                    currentLocation = characterLocation.get(7);
-//                    System.out.println(username + " has moved to the " + currentLocation);
-//                    chooseAction();
-//                    break;
-//                default:
-//                    System.out.println("enter valid movement");
-//                    walk();
-//            }
-//        }else {
-//            if (currentLocation == characterLocation.get(1)){
-//                switch (walkDirection.toLowerCase(Locale.ROOT)){
-//                    case "east":
-//                        currentLocation = characterLocation.get(6);
-//                        System.out.println(username + " has moved to the " + currentLocation);
-//                        chooseAction();
-//                        break;
-//                    case "west":
-//                        currentLocation = characterLocation.get(5);
-//                        System.out.println(username + " has moved to the " + currentLocation);
-//                        chooseAction();
-//                        break;
-//                    case "south":
-//                        currentLocation = characterLocation.get(0);
-//                        System.out.println(username + " has moved to the " + currentLocation);
-//                        chooseAction();
-//                    default:
-//                        System.out.println("enter valid movement");
-//                        walk();
-//                }
-//            } else{
-//                if (currentLocation == characterLocation.get(2)){
-//                    switch (walkDirection.toLowerCase(Locale.ROOT)){
-//                        case "north":
-//                            currentLocation = characterLocation.get(0);
-//                            System.out.println(username + " has moved to the " + currentLocation);
-//                            chooseAction();
-//                            break;
-//                        case "east":
-//                            currentLocation = characterLocation.get(8);
-//                            System.out.println(username + " has moved to the " + currentLocation);
-//                            chooseAction();
-//                            break;
-//                        case "west":
-//                            currentLocation = characterLocation.get(4);
-//                            System.out.println(username + " has moved to the " + currentLocation);
-//                            chooseAction();
-//                            break;
-//                        default:
-//                            System.out.println("Please enter a valid movement");
-//                            walk();
-//                    }
-//                }else {
-//                    if (currentLocation == characterLocation.get(3)){
-//                        switch (walkDirection.toLowerCase(Locale.ROOT)){
-//                            case "north":
-//                                currentLocation = characterLocation.get(6);
-//                                System.out.println(username + " has moved to the " + currentLocation);
-//                                chooseAction();
-//                                break;
-//                            case "west":
-//                                currentLocation = characterLocation.get(0);
-//                                System.out.println(username + " has moved to the " + currentLocation);
-//                                chooseAction();
-//                                break;
-//                            case "south":
-//                                currentLocation = characterLocation.get(8);
-//                                System.out.println(username + " has moved to the " + currentLocation);
-//                                chooseAction();
-//                                break;
-//                            default:
-//                                System.out.println("Please enter a valid movement");
-//                                walk();
-//                        }
-//                    }else {
-//                        if (currentLocation == characterLocation.get(4)){
-//                            switch (walkDirection.toLowerCase(Locale.ROOT)){
-//                                case "north":
-//                                    currentLocation = characterLocation.get(7);
-//                                    System.out.println(username + " has moved to the " + currentLocation);
-//                                    chooseAction();
-//                                    break;
-//                                case "east":
-//                                    currentLocation = characterLocation.get(2);
-//                                    System.out.println(username + " has moved to the " + currentLocation);
-//                                    chooseAction();
-//                                    break;
-//                                default:
-//                                    System.out.println("Please enter a valid movement");
-//                                    walk();
-//                            }
-//                        }else {
-//                            if (currentLocation == characterLocation.get(5)) {
-//                                switch (walkDirection.toLowerCase(Locale.ROOT)){
-//                                    case "east":
-//                                        currentLocation = characterLocation.get(1);
-//                                        chooseAction();
-//                                        System.out.println(username + " has moved to the " + currentLocation);
-//                                        break;
-//                                    case "south":
-//                                        currentLocation = characterLocation.get(7);
-//                                        System.out.println(username + " has moved to the " + currentLocation);
-//                                        chooseAction();
-//                                        break;
-//                                    default:
-//                                        System.out.println("Please enter a valid movement");
-//                                        walk();
-//                                }
-//                            }else {
-//                                if (currentLocation == characterLocation.get(6)){
-//                                    switch (walkDirection.toLowerCase(Locale.ROOT)){
-//                                        case "west":
-//                                            currentLocation = characterLocation.get(1);
-//                                            System.out.println(username + " has moved to the " + currentLocation);
-//                                            chooseAction();
-//                                            break;
-//                                        case "south":
-//                                            currentLocation = characterLocation.get(3);
-//                                            System.out.println(username + " has moved to the " + currentLocation);
-//                                            chooseAction();
-//                                            break;
-//                                        default:
-//                                            System.out.println("Please enter a valid movement");
-//                                            walk();
-//                                    }
-//                                } else {
-//                                    if (currentLocation == characterLocation.get(7)){
-//                                        switch (walkDirection.toLowerCase(Locale.ROOT)){
-//                                            case "north":
-//                                                currentLocation = characterLocation.get(5);
-//                                                System.out.println(username + " has moved to the " + currentLocation);
-//                                                chooseAction();
-//                                                break;
-//                                            case "east":
-//                                                currentLocation = characterLocation.get(0);
-//                                                System.out.println(username + " has moved to the " + currentLocation);
-//                                                chooseAction();
-//                                                break;
-//                                            case "south":
-//                                                currentLocation = characterLocation.get(4);
-//                                                System.out.println(username + " has moved to the " + currentLocation);
-//                                                chooseAction();
-//                                                break;
-//                                            default:
-//                                                System.out.println("Please enter a valid movement");
-//                                                walk();
-//                                        }
-//                                    } else {
-//                                        if (currentLocation == characterLocation.get(8)){
-//                                            switch (walkDirection.toLowerCase(Locale.ROOT)){
-//                                                case "north":
-//                                                    currentLocation = characterLocation.get(3);
-//                                                    System.out.println(username + " has moved to the " + currentLocation);
-//                                                    chooseAction();
-//                                                    break;
-//                                                case "west":
-//                                                    currentLocation = characterLocation.get(2);
-//                                                    System.out.println(username + " has moved to the " + currentLocation);
-//                                                    chooseAction();
-//                                                    break;
-//                                                default:
-//                                                    System.out.println("Please enter a valid movement");
-//                                                    walk();
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-//        }
-//    public void runAway(Directions direction, int spaces){
-//
-//    }
-//
-//    public void attack(){
-//        System.out.println(Zombie.zombieHP);
-//        System.out.println("Zombie hit");
-//        Zombie.zombieHP = Zombie.zombieHP - 10;
-//        System.out.println("new Zombie HP " + Zombie.zombieHP);
-//
-//    }
-//
-//    public void grab(Item item){
+    public static void addToInventory(String item, Location currentLocation2) {
+        for (int i = 0; i < currentLocation2.getItems().size(); i++){
+            if (currentLocation2.getItems().get(i).getName().equalsIgnoreCase(item)){
+                inventory.add(currentLocation2.getItems().get(i));
+                currentLocation.getItems().remove(i);
+            } else {
+                PrintContent.print("You can not pick up this item");
+            }
+        }
 //        inventory.add(item);
-//    }
-//
-//    public void use(Item item){
-//        inventory.remove(item);
-//    }
-//
-//    public void inspect(Item items){
-//
-//    }
-//
-//    public void showInventory(){
-//        System.out.println(getInventory());
-//    }
-//
-//
-//    //getter and setter
-//
-//    public String getUsername() {
-//        return username;
-//    }
-//
-//    public void setUsername(String username) {
-//        this.username = username;
-//    }
-//
-//    public int getHealth() {
-//        return health;
-//    }
-//
-//    public void setHealth(int health) {
-//        this.health = health;
-//    }
-//
-//    public Directions getDirection() {
-//        return direction;
-//    }
-//
-//    public void setDirection(Directions direction) {
-//        this.direction = direction;
-//    }
-//
-//    public List<Item> getInventory() {
-//        return inventory;
-//    }
-//
-//    public void setInventory(List<Item> inventory) {
-//        this.inventory = inventory;
-//    }
-//
-//    public Location getCurrentLocation() {
-//        return currentLocation;
-//    }
-//
-//    public void setCurrentLocation(Location currentLocation) {
-//        this.currentLocation = currentLocation;
-//    }
-//
-//    //toString
-//
-//    @Override
-//    public String toString() {
-//        return "Character{" +
-//                "username='" + username + '\'' +
-//                ", health=" + health +
-//                ", direction=" + direction +
-//                ", inventory=" + inventory +
-//                '}';
-//    }
-//}
+//        currentLocation.getItems().remove(choosenItem);
+    }
+
+    public List<Item> getInventory() {
+        return inventory;
+    }
+
+    public static void useItem(String pickedItem) {
+        for (int i = 0; i < inventory.size(); i++){
+            inventory.get(i).getName().equalsIgnoreCase(pickedItem);
+            PrintContent.print("You have used " + inventory.get(i).getName());
+            inventory.remove(i);}
+//        if (inventory.contains(pickedItem)) {
+//            PrintContent.print(pickedItem.getName() + "has been used");
+//            inventory.remove(choosenItem);
+//        }
+    }
+
+}

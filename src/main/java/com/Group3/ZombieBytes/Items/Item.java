@@ -21,9 +21,9 @@ public class Item {
 
     // methods
     // business methods
-    public void use(){
-        System.out.println("Using " + getName() + ": " + getDescription());
-    }
+//    public void use(){
+//        System.out.println("Using " + getName() + ": " + getDescription());
+//    }
 
     // getters and setters
     public String getLocatedIn() {
