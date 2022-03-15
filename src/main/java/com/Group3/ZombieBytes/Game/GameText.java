@@ -69,6 +69,9 @@ private static HashMap<String, String> gameText;
     public static void attackDefault(){
         PrintContent.print(gameText.get("attackDefault"));
     }
+    public static void lockedIn(){
+        PrintContent.print(gameText.get("lockedIn"));
+    }
 
     // getters and setters
     public static HashMap<String, String> getGameText() {

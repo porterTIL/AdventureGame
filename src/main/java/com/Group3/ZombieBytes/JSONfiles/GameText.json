@@ -75,6 +75,10 @@
     {
       "name": "attackDefault",
       "text": "Please enter a valid choice"
+    },
+    {
+      "name": "lockedIn",
+      "text": "This direction is blocked off by too many zombies. Lets choose a different one."
     }
   ]
 }

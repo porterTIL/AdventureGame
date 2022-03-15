@@ -4,92 +4,76 @@
       "name": "TownCenter",
       "Item": "Letter",
       "description": "You have entered the town center",
-      "Valid Direction": [
-        {"North": "Hospital"},
-        {"East": "Store"},
-        {"South": "PoliceStation"},
-        {"West": "Road"}
-      ]
+        "North": "Hospital",
+        "East": "Store",
+        "South": "PoliceStation",
+        "West": "Road 3"
     },
     {
       "name": "Hospital",
       "Item": "Cure",
       "Zombie": "Zombie Boss",
-      "Description": "You have entered the Hospital.",
-      "Valid Direction": [
-        {"East": "Road 2"},
-        {"South": "TownCenter"},
-        {"West": "Road 1"}
-      ]
+      "description": "You have entered the Hospital.",
+        "East": "Road 2",
+        "South": "TownCenter",
+        "West": "Road 1"
     },
     {
       "name": "PoliceStation",
       "Item": "Baton",
       "Item": "Sandwich",
       "Zombie": "Monkey Zombie",
-      "Description": "You have entered the Police Station. You see a desk by the front door and jail cells to the back.",
+      "description": "You have entered the Police Station. You see a desk by the front door and jail cells to the back.",
       "Key": "City Key",
-      "Valid Direction": [
-        {"North": "TownCenter"},
-        {"East": "Road 4"},
-        {"West": "School"}
-      ]
+        "North": "TownCenter",
+        "East": "Road 4",
+        "West": "School"
     },
     {
       "name": "Store",
       "Item": "Food",
       "Key": "Banana Key",
       "Zombie": "Grocer Zombie",
-      "Description": "You have entered the Store. Aisles are lined with grocery items.",
-      "Valid Direction": [
-        {"North": "Road 2"},
-        {"South": "Road 4"},
-        {"West": "TownCenter"}
-      ]
+      "description": "You have entered the Store. Aisles are lined with grocery items.",
+        "North": "Road 2",
+        "South": "Road 4",
+        "West": "TownCenter"
     },
     {
       "name": "School",
       "Item": "Apple",
       "Key": "Nurse's Badge",
       "Zombie": "Teacher Zombie",
-      "Valid Direction": [
-        {"North": "Road 3"},
-        {"East": "PoliceStation"}
-      ]
+      "description": "You have entered the school.",
+        "North": "Road 3",
+        "East": "PoliceStation"
+
     },
     {
       "name": "Road 1",
       "Description": "You have entered a road. You see a stick on the ground.",
       "Item": "Stick",
-      "Valid Direction": [
-        {"East": "Hospital"},
-        {"South": "Road 3"}
-      ]
+        "East": "Hospital",
+        "South": "Road 3"
     },
     {
       "name": "Road 2",
       "Description": "You have entered a road",
-      "Valid Direction": [
-        {"South": "Store"},
-        {"West": "Hospital"}
-      ]
+        "South": "Store",
+        "West": "Hospital"
     },
     {
       "name": "Road 3",
       "Description": "You have entered a road",
-      "Valid Direction": [
-        {"North": "Road 1"},
-        {"East": "TownCenter"},
-        {"South": "School"}
-      ]
+        "North": "Road 1",
+        "East": "TownCenter",
+        "South": "School"
     },
     {
       "name": "Road 4",
       "Description": "You have entered a road",
-      "Valid Direction": [
-        {"North": "Hospital"},
-        {"West": "Road"}
-      ]
+        "North": "Hospital",
+        "West": "Road"
 
     }
   ]
