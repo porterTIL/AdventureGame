@@ -123,6 +123,7 @@ public class Character {
                 for (int w = 0; w < currentLocation.getZombies().size(); w++) {
                     System.out.println(currentLocation.getZombies().get(w));
                 }
+                    System.out.println(currentLocation.getInspect());
                 chooseAction();
                 break;
             case "attack":
