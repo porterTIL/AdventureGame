@@ -107,10 +107,6 @@ public class Character {
             case "grab":
                 CheckLength(wordInput.length, wordInput[0]);
                 Character.addToInventory(wordInput[1], currentLocation);
-                PrintContent.print(username + " has picked up item");
-                for (int i = 0; i < inventory.size(); i++) {
-                    System.out.println(("Your Inventory: " + inventory.get(i).getName()));
-                }
                 chooseAction();
                 break;
             case "walk":
@@ -185,14 +181,17 @@ public class Character {
                     GameText.ultimateNoKey();
                     chooseAction();
                 } else {
-                    System.out.println("You have confronted " + currentLocation.getZombies().get(w).getZombieName() + ". This zombie's HP is currently " + Zombie.zombieHP + ". What would you like to do? (use item, run, or hit)");
+                    System.out.println("You have confronted " + currentLocation.getZombies().get(w).getZombieName() +
+                            ". This zombie's HP is currently " + Zombie.zombieHP + ". What would you like to do? (use item, run, or hit)");
                     String battleAction = null;
+                    String[] wordInput = new String[2];
                     try {
                         battleAction = reader.readLine();
+                        wordInput = battleAction.split(" ");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    switch (battleAction.toLowerCase()) {
+                    switch (wordInput[0].toLowerCase()) {
                         case "hit":
                             System.out.println("Zombie HP: " + Zombie.zombieHP);
                             System.out.println("Your health: " + Character.health);
@@ -219,9 +218,11 @@ public class Character {
                                 chooseAction();
                             }
                             break;
-//                    case "use item":
-//                        System.out.println("Item used");
-//                        break;
+                        case "use":
+                            CheckLength(wordInput.length, wordInput[0]);
+                            Character.useItem(wordInput[1]);
+                            attack();
+                            break;
                         default:
                             GameText.attackDefault();
                             attack();
@@ -235,7 +236,11 @@ public class Character {
         for (int i = 0; i < currentLocation2.getItems().size(); i++) {
             if (currentLocation2.getItems().get(i).getName().equalsIgnoreCase(item)) {
                 inventory.add(currentLocation2.getItems().get(i));
+                PrintContent.print(username + " has picked up item");
                 currentLocation.getItems().remove(i);
+                for (int j = 0; j < inventory.size(); j++) {
+                    System.out.println(("Your Inventory: " + inventory.get(j).getName()));
+                }
             } else {
                 PrintContent.print("You can not pick up this item");
             }
@@ -251,11 +256,10 @@ public class Character {
     public static void useItem(String pickedItem) {
         for (int i = 0; i < inventory.size(); i++) {
             if (inventory.get(i).getName().equalsIgnoreCase(pickedItem)) {
-            PrintContent.print("You have used " + inventory.get(i).getName());
-            PrintContent.print(inventory.get(i).getUse());
-            inventory.remove(i);
+                PrintContent.print("You have used " + inventory.get(i).getName());
+                PrintContent.print(inventory.get(i).getUse());
+                inventory.remove(i);
             }
-
         }
 //        if (inventory.contains(pickedItem)) {
 //            PrintContent.print(pickedItem.getName() + "has been used");
