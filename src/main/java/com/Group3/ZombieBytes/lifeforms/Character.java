@@ -90,7 +90,7 @@ public class Character {
             case "inventory":
 //                CheckLength(wordInput.length, wordInput[0]);
                 if (wordInput[0].equalsIgnoreCase("inventory")) {
-                    if (inventory.size() == 0){
+                    if (inventory.size() == 0) {
                         PrintContent.print("You currently have no items");
                         chooseAction();
                         break;
@@ -108,7 +108,7 @@ public class Character {
                 CheckLength(wordInput.length, wordInput[0]);
                 Character.addToInventory(wordInput[1], currentLocation);
                 PrintContent.print(username + " has picked up item");
-                for (int i = 0; i < inventory.size(); i++){
+                for (int i = 0; i < inventory.size(); i++) {
                     System.out.println(("Your Inventory: " + inventory.get(i).getName()));
                 }
                 chooseAction();
@@ -155,8 +155,9 @@ public class Character {
             System.out.println(currentLocation.toString());
         }
     }
-    public static void CheckLength(int length, String verb){
-        if (length < 2){
+
+    public static void CheckLength(int length, String verb) {
+        if (length < 2) {
             System.out.println("Please enter a noun command to go along with your verb: " + verb);
             chooseAction();
         }
@@ -168,6 +169,7 @@ public class Character {
 
         if (Character.health <= 0) {
             GameText.death();
+            System.exit(0);
         }
         for (int w = 0; w < currentLocation.getZombies().size(); w++) {
             if (currentLocation.getZombies().size() > 00) {
@@ -230,8 +232,8 @@ public class Character {
     }
 
     public static void addToInventory(String item, Location currentLocation2) {
-        for (int i = 0; i < currentLocation2.getItems().size(); i++){
-            if (currentLocation2.getItems().get(i).getName().equalsIgnoreCase(item)){
+        for (int i = 0; i < currentLocation2.getItems().size(); i++) {
+            if (currentLocation2.getItems().get(i).getName().equalsIgnoreCase(item)) {
                 inventory.add(currentLocation2.getItems().get(i));
                 currentLocation.getItems().remove(i);
             } else {
@@ -247,11 +249,12 @@ public class Character {
     }
 
     public static void useItem(String pickedItem) {
-        for (int i = 0; i < inventory.size(); i++){
+        for (int i = 0; i < inventory.size(); i++) {
             inventory.get(i).getName().equalsIgnoreCase(pickedItem);
             PrintContent.print("You have used " + inventory.get(i).getName());
             PrintContent.print(inventory.get(i).getUse());
-            inventory.remove(i);}
+            inventory.remove(i);
+        }
 //        if (inventory.contains(pickedItem)) {
 //            PrintContent.print(pickedItem.getName() + "has been used");
 //            inventory.remove(choosenItem);
