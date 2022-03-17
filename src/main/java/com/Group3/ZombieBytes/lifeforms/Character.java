@@ -250,10 +250,12 @@ public class Character {
 
     public static void useItem(String pickedItem) {
         for (int i = 0; i < inventory.size(); i++) {
-            inventory.get(i).getName().equalsIgnoreCase(pickedItem);
+            if (inventory.get(i).getName().equalsIgnoreCase(pickedItem)) {
             PrintContent.print("You have used " + inventory.get(i).getName());
             PrintContent.print(inventory.get(i).getUse());
             inventory.remove(i);
+            }
+
         }
 //        if (inventory.contains(pickedItem)) {
 //            PrintContent.print(pickedItem.getName() + "has been used");
