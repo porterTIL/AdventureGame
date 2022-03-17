@@ -5,3 +5,6 @@
 /.idea/
 *.xml
 *.class
+AdventureGame.iml
+target/classes/com/Group3/ZombieBytes/Items/Item.class
+target/classes/com/Group3/ZombieBytes/lifeforms/Character.class
