@@ -181,14 +181,17 @@ public class Character {
                     GameText.ultimateNoKey();
                     chooseAction();
                 } else {
-                    System.out.println("You have confronted " + currentLocation.getZombies().get(w).getZombieName() + ". This zombie's HP is currently " + Zombie.zombieHP + ". What would you like to do? (use item, run, or hit)");
+                    System.out.println("You have confronted " + currentLocation.getZombies().get(w).getZombieName() +
+                            ". This zombie's HP is currently " + Zombie.zombieHP + ". What would you like to do? (use item, run, or hit)");
                     String battleAction = null;
+                    String[] wordInput = new String[2];
                     try {
                         battleAction = reader.readLine();
+                        wordInput = battleAction.split(" ");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    switch (battleAction.toLowerCase()) {
+                    switch (wordInput[0].toLowerCase()) {
                         case "hit":
                             System.out.println("Zombie HP: " + Zombie.zombieHP);
                             System.out.println("Your health: " + Character.health);
@@ -215,9 +218,11 @@ public class Character {
                                 chooseAction();
                             }
                             break;
-//                    case "use item":
-//                        System.out.println("Item used");
-//                        break;
+                        case "use":
+                            CheckLength(wordInput.length, wordInput[0]);
+                            Character.useItem(wordInput[1]);
+                            attack();
+                            break;
                         default:
                             GameText.attackDefault();
                             attack();
