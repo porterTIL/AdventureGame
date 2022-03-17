@@ -182,7 +182,7 @@ public class Character {
                     chooseAction();
                 } else {
                     System.out.println("You have confronted " + currentLocation.getZombies().get(w).getZombieName() +
-                            ". This zombie's HP is currently " + Zombie.zombieHP + ". What would you like to do? (use item, run, or hit)");
+                            ". This zombie's HP is currently " + Zombie.zombieHP + ". What would you like to do? (use item, run, hit, or inventory)");
                     String battleAction = null;
                     String[] wordInput = new String[2];
                     try {
@@ -223,6 +223,18 @@ public class Character {
                             Character.useItem(wordInput[1]);
                             attack();
                             break;
+                        case "inventory":
+                            if (wordInput[0].equalsIgnoreCase("inventory")) {
+                                if (inventory.size() == 0) {
+                                    PrintContent.print("You currently have no items");
+                                    chooseAction();
+                                    break;
+                                }
+                                for (int i = 0; i < inventory.size(); i++) {
+                                    System.out.println(("YOUR INVENTORY: " + inventory.get(i).getName()));
+                                }
+                            }
+                            attack();
                         default:
                             GameText.attackDefault();
                             attack();
