@@ -147,8 +147,11 @@ public class Character {
 
     public static void walk(String direction) {
         if (currentLocation.getAvailableDirection().get(direction) == null) {
+            GameText.defaultWalk();
+        } else if (currentLocation.getAvailableDirection().get(direction) != null) {
             GameText.lockedIn();
-        } else {
+        }
+        else {
             currentLocation = totalLocation.get(currentLocation.getAvailableDirection().get(direction));
             System.out.println(currentLocation.toString());
         }
@@ -195,18 +198,17 @@ public class Character {
                     }
                     switch (wordInput[0].toLowerCase()) {
                         case "hit":
-                            System.out.println("Zombie HP: " + Zombie.zombieHP);
-                            System.out.println("Your health: " + Character.health);
-                            GameText.punch();
-                            Zombie.zombieHP = Zombie.zombieHP - 10;
-                            Zombie.bite();
-                            System.out.println("Your health " + Character.health);
-                            System.out.println("Zombie HP: " + Zombie.zombieHP);
                             if (Zombie.zombieHP <= 0) {
                                 GameText.attackWin();
                                 chooseAction();
+                            } else {
+                                GameText.punch();
+                                Zombie.zombieHP -= 10;
+                                Zombie.bite();
+                                System.out.println("Your health " + Character.health);
+                                System.out.println("Zombie HP: " + Zombie.zombieHP);
+                                attack();
                             }
-                            attack();
                             break;
                         case "run":
                             int int_random = ThreadLocalRandom.current().nextInt(0, 100);
