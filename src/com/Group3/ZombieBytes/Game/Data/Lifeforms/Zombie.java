@@ -50,7 +50,7 @@ public class Zombie {
         this.zombieLocation = zombieLocation;
     }
 
-    private long getZombieHP() {
+    public long getZombieHP() {
         return this.zombieHP;
     }
 
