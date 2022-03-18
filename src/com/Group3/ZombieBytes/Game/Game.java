@@ -11,7 +11,8 @@ import com.Group3.ZombieBytes.Game.Data.Lifeforms.Character;
 
 import java.util.HashMap;
 
-public class Game /*extends Thread*/{
+public class Game implements Runnable{
+    private static Game instance = null;
     // properties
     // set game map
     private static HashMap<String, Location> gameLocation;
@@ -21,6 +22,12 @@ public class Game /*extends Thread*/{
 
     }
     // methods
+    public static Game getInstance(){
+        if(instance==null){
+            instance=new Game();
+        }
+        return instance;
+    }
         // business methods
     public static void start(){
         runParsers();  // gathers data from json files and installs our classes with its properties
@@ -62,6 +69,12 @@ public class Game /*extends Thread*/{
     public static void setGameLocation(HashMap<String, Location> gameLocation) {
         Game.gameLocation = gameLocation;
     }
+
+    @Override
+    public void run() {
+        start();
+    }
+
     // toString
 //    public String toString(){
 //        return ;

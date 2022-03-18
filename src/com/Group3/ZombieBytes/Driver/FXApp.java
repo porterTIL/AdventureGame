@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
-public class FXDriver extends Application {
+public class FXApp extends Application {
     private static int xRes = 400;
     private static int yRes = 400;
     private static Paint backgroundColor = Color.WHITE; //!DON'T USE AWT
@@ -16,21 +16,22 @@ public class FXDriver extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        Game.getInstance().run();
     }
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws Exception{
         //Create group of images for scene
         Group root = new Group();
         //Create a scene
         Scene scene = new Scene(root, xRes, yRes);
         //Set scene background color
-        scene.setFill(backgroundColor);
+        scene.setFill(Color.BLANCHEDALMOND);
         //Set title
         stage.setTitle(appName);
         //display scene
         stage.setScene(scene);
         stage.show();
-        Game.start();
+        stop();
     }
 }
