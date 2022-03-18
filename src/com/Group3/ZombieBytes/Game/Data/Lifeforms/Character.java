@@ -1,13 +1,12 @@
-package com.Group3.ZombieBytes.lifeforms;
+package com.Group3.ZombieBytes.Game.Data.Lifeforms;
 
 import com.Group3.ZombieBytes.Game.Game;
-import com.Group3.ZombieBytes.Game.GameText;
-import com.Group3.ZombieBytes.Game.Location;
-import com.Group3.ZombieBytes.Items.Item;
-import com.Group3.ZombieBytes.Items.Noun;
-import com.Group3.ZombieBytes.Items.Verb;
-import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
-import com.Group3.ZombieBytes.lifeforms.Directions;
+import com.Group3.ZombieBytes.Util.Display.GameText;
+import com.Group3.ZombieBytes.Game.Data.Location;
+import com.Group3.ZombieBytes.Game.Data.Items.Item;
+import isThisUsed.Noun;
+import isThisUsed.Verb;
+import com.Group3.ZombieBytes.Util.Display.PrintContent;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +20,7 @@ public class Character {
     // properties
     private static String username;
     public static int health = 100;
-    private static Item choosenItem;
+    private static Item chosenItem;
     private int spaces;
     private Directions direction = Directions.NORTH;
     private static List<Item> inventory = new ArrayList<>();
@@ -33,6 +32,7 @@ public class Character {
     public static ArrayList<Verb> verbInteractions = new ArrayList<>();
     public static ArrayList<Noun> nounInteractions = new ArrayList<>();
 
+
     public static void startGame() {
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader reader = new BufferedReader(input);
@@ -43,28 +43,30 @@ public class Character {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(username + ", type 'start' to play the game. Enter 'quit' at any time to end the game.");
-        String startGame = null;
         try {
-            startGame = reader.readLine();
+            do {
+                System.out.println(username + ", type 'start' to play the game. Enter 'quit' at any time to end the game.");
+            }
+            while (startOrQuit(reader.readLine()));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("YOU DID A BAD");
+            System.out.println("BACK TO THE BEGINNING >:(");
+            startGame();
         }
+    }
 
-
-        switch (startGame.toLowerCase()) {
+    //demands user to enter start or quit
+    public static boolean startOrQuit(String input) {
+        switch (input.toLowerCase()) {
             case "start":
                 GameText.intro();
                 System.out.println(username + " is currently located in the " + currentLocation.getName());
                 chooseAction();
-                break;
+                return false;
             case "quit":
-                startGame();
-                break;
-            default:
-                GameText.defaultStart();
-                startGame();
+                Game.quit();
         }
+        return true;
     }
 
     public static void chooseAction() {
@@ -123,6 +125,7 @@ public class Character {
                 for (int w = 0; w < currentLocation.getZombies().size(); w++) {
                     System.out.println(currentLocation.getZombies().get(w));
                 }
+                System.out.println(currentLocation.getInspect());
                 chooseAction();
                 break;
             case "attack":
@@ -134,8 +137,7 @@ public class Character {
                 }
                 break;
             case "quit":
-                GameText.outro();
-                startGame();
+                Game.quit();
                 break;
             default:
                 GameText.defaultChooseAction();
@@ -184,6 +186,7 @@ public class Character {
                 } else {
                     System.out.println("You have confronted " + zombie.getZombieName() +
                             ". This zombie's HP is currently " + zombie.zombieHP + ". What would you like to do? (use item, run, or hit)");
+
                     String battleAction = null;
                     String[] wordInput = new String[2];
                     try {
@@ -224,6 +227,18 @@ public class Character {
                             Character.useItem(wordInput[1]);
                             attack();
                             break;
+                        case "inventory":
+                            if (wordInput[0].equalsIgnoreCase("inventory")) {
+                                if (inventory.size() == 0) {
+                                    PrintContent.print("You currently have no items");
+                                    chooseAction();
+                                    break;
+                                }
+                                for (int i = 0; i < inventory.size(); i++) {
+                                    System.out.println(("YOUR INVENTORY: " + inventory.get(i).getName()));
+                                }
+                            }
+                            attack();
                         default:
                             GameText.attackDefault();
                             attack();

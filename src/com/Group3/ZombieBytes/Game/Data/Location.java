@@ -1,26 +1,28 @@
-package com.Group3.ZombieBytes.Game;
+package com.Group3.ZombieBytes.Game.Data;
 
-import com.Group3.ZombieBytes.lifeforms.Zombie;
-import com.Group3.ZombieBytes.Items.Item;
+import com.Group3.ZombieBytes.Game.Data.Lifeforms.Zombie;
+import com.Group3.ZombieBytes.Game.Data.Items.Item;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
 public class Location {
     // properties
     private String name;
     private String description;
     private HashMap<String, String> availableDirection;
     private ArrayList<Item> items;
+    private String inspect;
 
 
     private ArrayList<Zombie> zombies;
 
     // constructor
-    public Location(String name, String description,HashMap<String, String> availableDirection ){
+    public Location(String name, String description, HashMap<String, String> availableDirection, String inspect) {
         setName(name);
         setDescription(description);
         setAvailableDirection(availableDirection);
+        setInspect(inspect);
     }
 
     // methods
@@ -40,6 +42,7 @@ public class Location {
     public void setDescription(String description) {
         this.description = description;
     }
+
     public ArrayList<Item> getItems() {
         return items;
     }
@@ -63,8 +66,17 @@ public class Location {
     public void setAvailableDirection(HashMap<String, String> availableDirection) {
         this.availableDirection = availableDirection;
     }
+
+    public String getInspect() {
+        return inspect;
+    }
+
+    public void setInspect(String inspect) {
+        this.inspect = inspect;
+    }
+
     // toString
-    public String toString(){
+    public String toString() {
         return description;
     }
 }

@@ -1,15 +1,13 @@
 package com.Group3.ZombieBytes.Game;
-//import com.Group3.ZombieBytes.lifeforms.Character;
-//import com.Group3.ZombieBytes.lifeforms.Zombie;
+//import com.Group3.ZombieBytes.Game.Data.lifeforms.Character;
+//import com.Group3.ZombieBytes.Game.Data.lifeforms.Zombie;
 
-import com.Group3.ZombieBytes.JsonParser.*;
-import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
-//import com.Group3.ZombieBytes.lifeforms.Character;
-//import com.Group3.ZombieBytes.lifeforms.Zombie;
-import com.Group3.ZombieBytes.Items.*;
-import com.Group3.ZombieBytes.JsonParser.*;
-import com.Group3.ZombieBytes.lifeforms.Character;
-import com.Group3.ZombieBytes.lifeforms.Zombie;
+import com.Group3.ZombieBytes.Game.Data.Location;
+import com.Group3.ZombieBytes.Util.Display.GameText;
+import com.Group3.ZombieBytes.Util.JsonParser.*;
+//import com.Group3.ZombieBytes.Game.Data.lifeforms.Character;
+//import com.Group3.ZombieBytes.Game.Data.lifeforms.Zombie;
+import com.Group3.ZombieBytes.Game.Data.Lifeforms.Character;
 
 import java.util.HashMap;
 
@@ -51,6 +49,12 @@ public class Game {
 //            PrintContent.print("Total Items: " + loc.getValue().getItems().size());
 //        }
     }
+
+    public static void quit(){
+        GameText.outro();
+        System.exit(0);
+    }
+
     // setters and getters
     public static HashMap<String, Location> getGameLocation() {
         return gameLocation;

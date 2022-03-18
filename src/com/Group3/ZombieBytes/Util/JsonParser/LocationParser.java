@@ -1,20 +1,15 @@
-package com.Group3.ZombieBytes.JsonParser;
+package com.Group3.ZombieBytes.Util.JsonParser;
 
 import com.Group3.ZombieBytes.Game.Game;
-import com.Group3.ZombieBytes.Game.Location;
-import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
-import org.codehaus.jackson.map.ObjectMapper;
+import com.Group3.ZombieBytes.Game.Data.Location;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class LocationParser {
     public static void run() {
@@ -27,7 +22,7 @@ public class LocationParser {
         // this class helps us read the json file for location
         {
             try {
-                FileReader locationReader = new FileReader("src/main/java/com/Group3/ZombieBytes/JSONfiles/Location.json");
+                FileReader locationReader = new FileReader("resources/JSON/Location.json");
                 Object locationObject = jsonparser.parse(locationReader);
                 JSONObject locations = (JSONObject) locationObject;
 
@@ -42,6 +37,7 @@ public class LocationParser {
                     String east = (String) location.get("East");
                     String south = (String) location.get("South");
                     String west = (String) location.get("West");
+                    String inspect = (String) location.get("inspect");
 
                     HashMap<String, String> tempAvailableDirection = new HashMap<>();
                     tempAvailableDirection.put("north", north);
@@ -49,7 +45,7 @@ public class LocationParser {
                     tempAvailableDirection.put("south", south);
                     tempAvailableDirection.put("west", west);
 
-                    gameLocation.put(name, new Location(name, description, tempAvailableDirection));
+                    gameLocation.put(name, new Location(name, description, tempAvailableDirection, inspect));
                 }
                 Game.setGameLocation(gameLocation);
             } catch (FileNotFoundException e) {

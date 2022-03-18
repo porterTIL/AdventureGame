@@ -21,6 +21,7 @@
       "name": "Apple",
       "quantity": 1,
       "type":"food",
+      "description": "Looks tasty, too bad the teacher prefers you!",
       "use": "5"
     },
     {
