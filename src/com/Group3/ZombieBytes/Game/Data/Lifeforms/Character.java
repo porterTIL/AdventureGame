@@ -124,7 +124,7 @@ public class Character {
                     System.out.println(currentLocation.getItems().get(i));
                 }
                 for (int w = 0; w < currentLocation.getZombies().size(); w++) {
-                    if (Zombie.getZombieHP() <= 0) {
+                    if (currentLocation.getZombies().get(w).getZombieHP() <= 0) {
                         System.out.println("There is a victim of " + username + "'s awe-inspiring violence on the floor." + username + " has already killed the zombie in this location.");
                     } else {
                         System.out.println(currentLocation.getZombies().get(w));
