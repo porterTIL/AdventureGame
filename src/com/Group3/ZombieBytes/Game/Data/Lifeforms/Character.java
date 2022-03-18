@@ -1,12 +1,13 @@
 package com.Group3.ZombieBytes.Game.Data.Lifeforms;
 
 import com.Group3.ZombieBytes.Game.Game;
-import com.Group3.ZombieBytes.Util.Display.GameText;
+import com.Group3.ZombieBytes.Util.Display.*;
 import com.Group3.ZombieBytes.Game.Data.Location;
-import com.Group3.ZombieBytes.Game.Data.Items.Item;
-import isThisUsed.Noun;
-import isThisUsed.Verb;
-import com.Group3.ZombieBytes.Util.Display.PrintContent;
+import com.Group3.ZombieBytes.Game.Data.Items.*;
+import com.Group3.ZombieBytes.Game.Data.Lifeforms.*;
+import isThisUsed.*;
+import com.Group3.ZombieBytes.Util.Display.*;
+import com.Group3.ZombieBytes.Game.Data.Lifeforms.Directions;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -123,7 +124,11 @@ public class Character {
                     System.out.println(currentLocation.getItems().get(i));
                 }
                 for (int w = 0; w < currentLocation.getZombies().size(); w++) {
-                    System.out.println(currentLocation.getZombies().get(w));
+                    if (Zombie.getZombieHP() <= 0) {
+                        System.out.println("There is a victim of " + username + "'s awe-inspiring violence on the floor." + username + " has already killed the zombie in this location." );
+                    } else {
+                        System.out.println(currentLocation.getZombies().get(w));
+                    }
                 }
                 System.out.println(currentLocation.getInspect());
                 chooseAction();
@@ -205,6 +210,8 @@ public class Character {
                             if (Zombie.zombieHP <= 0) {
                                 GameText.attackWin();
                                 chooseAction();
+                               // GameText.alreadyDefeated();
+
                             }
                             attack();
                             break;
