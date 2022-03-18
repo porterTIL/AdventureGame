@@ -11,7 +11,7 @@ import com.Group3.ZombieBytes.Game.Data.Lifeforms.Character;
 
 import java.util.HashMap;
 
-public class Game {
+public class Game /*extends Thread*/{
     // properties
     // set game map
     private static HashMap<String, Location> gameLocation;
@@ -25,7 +25,6 @@ public class Game {
     public static void start(){
         runParsers();  // gathers data from json files and installs our classes with its properties
         Character.startGame();
-
         // game code
 //        for (Map.Entry<String, Location> loc : gameLocation.entrySet()) {
 //            String key = loc.getKey();

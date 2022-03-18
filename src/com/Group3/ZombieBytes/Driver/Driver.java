@@ -1,11 +1,16 @@
-package com.Group3.ZombieBytes.Client;
+package com.Group3.ZombieBytes.Driver;
 
 import com.Group3.ZombieBytes.Game.Game;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 
-public class ZombieGameClient {
+public class Driver {
     public static void main(String[] args) {
         // starts the game
-
         Game.start();
     }
 }
