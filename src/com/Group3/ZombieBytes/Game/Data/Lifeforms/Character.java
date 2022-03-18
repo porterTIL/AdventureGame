@@ -85,9 +85,9 @@ public class Character {
         }
         switch (wordInput[0].toLowerCase()) {
             case "use":
-                CheckLength(wordInput.length, wordInput[0]);
-                Character.useItem(wordInput[1]);
-                chooseAction();
+                CheckLength(wordInput.length, wordInput[0]);    // CheckLength param1: checks that user input is the right number of words. param2: takes the user input verb to use in print feedback
+                useItem(wordInput[1]);  // pass the item string to "useItem".
+                chooseAction(); // call recursively to restart user input loop
                 break;
 
             case "inventory":
@@ -275,11 +275,17 @@ public class Character {
     }
 
     public static void useItem(String pickedItem) {
-        for (int i = 0; i < inventory.size(); i++) {
-            if (inventory.get(i).getName().equalsIgnoreCase(pickedItem)) {
-                PrintContent.print("You have used " + inventory.get(i).getName());
-                PrintContent.print(inventory.get(i).getUse());
-                inventory.remove(i);
+        for (Item item : inventory){
+            if (item.getName().equalsIgnoreCase(pickedItem)) {
+                    PrintContent.print("You have used " + item.getName());
+                    PrintContent.print(item.getUse());
+                    Game.start();
+                }
+                else{
+                    PrintContent.print("You have used " + item.getName());
+                    PrintContent.print(item.getUse());
+                    inventory.remove(item);
+                }
             }
         }
 //        if (inventory.contains(pickedItem)) {
@@ -287,5 +293,3 @@ public class Character {
 //            inventory.remove(choosenItem);
 //        }
     }
-
-}
