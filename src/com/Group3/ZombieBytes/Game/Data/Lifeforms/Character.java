@@ -206,7 +206,7 @@ public class Character {
                             if (Zombie.zombieHP <= 0) {
                                 GameText.attackWin();
                                 chooseAction();
-                                GameText.alreadyDefeated(); // added
+                                GameText.alreadyDefeated();
 
                             }
                             attack();
