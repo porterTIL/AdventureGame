@@ -167,22 +167,23 @@ public class Character {
             GameText.death();
             System.exit(0);
         }
-        for (int w = 0; w < currentLocation.getZombies().size(); w++) {
-            if (currentLocation.getZombies().size() > 00) {
-                if (Zombie.zombieHP <= 0) {
+        for (int w = 0; w < currentLocation.getZombies().size(); w++) { // currentLocation.getZombies returns array list of zombies
+            Zombie zombie = currentLocation.getZombies().get(w);
+            if (currentLocation.getZombies().size() > 0) {
+                if (zombie.zombieHP <= 0) {
                     GameText.alreadyDefeated();
                     chooseAction();
                 }
-                if (Objects.equals(currentLocation.getZombies().get(w).getZombieName(), "Monkey Zombie")) {
+                if (Objects.equals(zombie.getZombieName(), "Monkey Zombie")) {
                     GameText.monkeyNoBanana();
                     chooseAction();
                 }
-                if (Objects.equals(currentLocation.getZombies().get(w).getZombieName(), "Ultimate Zombie Boss")) {
+                if (Objects.equals(zombie.getZombieName(), "Ultimate Zombie Boss")) {
                     GameText.ultimateNoKey();
                     chooseAction();
                 } else {
-                    System.out.println("You have confronted " + currentLocation.getZombies().get(w).getZombieName() +
-                            ". This zombie's HP is currently " + Zombie.zombieHP + ". What would you like to do? (use item, run, or hit)");
+                    System.out.println("You have confronted " + zombie.getZombieName() +
+                            ". This zombie's HP is currently " + zombie.zombieHP + ". What would you like to do? (use item, run, or hit)");
                     String battleAction = null;
                     String[] wordInput = new String[2];
                     try {
@@ -193,14 +194,14 @@ public class Character {
                     }
                     switch (wordInput[0].toLowerCase()) {
                         case "hit":
-                            System.out.println("Zombie HP: " + Zombie.zombieHP);
+                            System.out.println("Zombie HP: " + zombie.zombieHP);
                             System.out.println("Your health: " + Character.health);
                             GameText.punch();
-                            Zombie.zombieHP = Zombie.zombieHP - 10;
+                            zombie.zombieHP = zombie.zombieHP - 10;
                             Zombie.bite();
                             System.out.println("Your health " + Character.health);
-                            System.out.println("Zombie HP: " + Zombie.zombieHP);
-                            if (Zombie.zombieHP <= 0) {
+                            System.out.println("Zombie HP: " + zombie.zombieHP);
+                            if (zombie.zombieHP <= 0) {
                                 GameText.attackWin();
                                 chooseAction();
                             }
