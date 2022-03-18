@@ -1,4 +1,4 @@
-package com.Group3.ZombieBytes.Data.Lifeforms;
+package com.Group3.ZombieBytes.Game.Data.Lifeforms;
 
 public enum Level {
     EASY,

@@ -1,9 +1,9 @@
-package com.Group3.ZombieBytes.Data.Lifeforms;
+package com.Group3.ZombieBytes.Game.Data.Lifeforms;
 
 import com.Group3.ZombieBytes.Game.Game;
 import com.Group3.ZombieBytes.Util.Display.GameText;
-import com.Group3.ZombieBytes.Data.Location;
-import com.Group3.ZombieBytes.Data.Items.Item;
+import com.Group3.ZombieBytes.Game.Data.Location;
+import com.Group3.ZombieBytes.Game.Data.Items.Item;
 import isThisUsed.Noun;
 import isThisUsed.Verb;
 import com.Group3.ZombieBytes.Util.Display.PrintContent;
