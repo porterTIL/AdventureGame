@@ -1,6 +1,5 @@
-package com.Group3.ZombieBytes.JsonParser;
-import com.Group3.ZombieBytes.Game.Game;
-import com.Group3.ZombieBytes.Game.GameText;
+package com.Group3.ZombieBytes.Util.JsonParser;
+import com.Group3.ZombieBytes.Util.Display.GameText;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -24,7 +23,7 @@ public class GameTextParser {
         // this class helps us read the json file for location
         {
             try {
-                FileReader gameTextReader = new FileReader("src/main/java/com/Group3/ZombieBytes/JSONfiles/GameText.json");
+                FileReader gameTextReader = new FileReader("resources/JSON/GameText.json");
                 Object gameTextObject = jsonparser.parse(gameTextReader);
                 JSONObject jsonGameTextObject = (JSONObject) gameTextObject;
 

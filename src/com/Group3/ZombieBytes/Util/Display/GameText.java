@@ -1,12 +1,6 @@
-package com.Group3.ZombieBytes.Game;
+package com.Group3.ZombieBytes.Util.Display;
 
-import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
-import org.json.simple.JSONObject;
-
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
 public class GameText {
 // properties

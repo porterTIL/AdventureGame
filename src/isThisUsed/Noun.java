@@ -1,11 +1,11 @@
-package com.Group3.ZombieBytes.Items;
+package isThisUsed;
 
-public class Verb {
+public class Noun {
     // properties
     public String value = null;
     // constructors
-    public Verb(String verb){
-        this.value = verb;
+    public Noun(String noun){
+        this.value = noun;
     }
     // methods
     public String getValue() {

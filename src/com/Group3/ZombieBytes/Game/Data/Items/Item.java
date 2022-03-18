@@ -1,6 +1,4 @@
-package com.Group3.ZombieBytes.Items;
-
-import java.util.Locale;
+package com.Group3.ZombieBytes.Game.Data.Items;
 
 public class Item {
     // properties

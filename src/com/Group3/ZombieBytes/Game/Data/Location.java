@@ -1,11 +1,10 @@
-package com.Group3.ZombieBytes.Game;
+package com.Group3.ZombieBytes.Game.Data;
 
-import com.Group3.ZombieBytes.lifeforms.Zombie;
-import com.Group3.ZombieBytes.Items.Item;
+import com.Group3.ZombieBytes.Game.Data.Lifeforms.Zombie;
+import com.Group3.ZombieBytes.Game.Data.Items.Item;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class Location {
     // properties
