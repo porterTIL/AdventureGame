@@ -1,7 +1,7 @@
 package com.Group3.ZombieBytes.Game.Data;
 
-import com.Group3.ZombieBytes.Game.Data.Lifeforms.Zombie;
-import com.Group3.ZombieBytes.Game.Data.Items.Item;
+import com.Group3.ZombieBytes.Game.Data.Lifeforms.*;
+import com.Group3.ZombieBytes.Game.Data.Items.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
