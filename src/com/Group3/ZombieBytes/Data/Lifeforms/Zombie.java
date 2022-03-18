@@ -1,6 +1,6 @@
-package com.Group3.ZombieBytes.lifeforms;
+package com.Group3.ZombieBytes.Data.Lifeforms;
 
-import com.Group3.ZombieBytes.Game.GameText;
+import com.Group3.ZombieBytes.Util.Display.GameText;
 
 public class Zombie {
 

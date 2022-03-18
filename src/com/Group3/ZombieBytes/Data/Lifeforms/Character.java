@@ -1,13 +1,12 @@
-package com.Group3.ZombieBytes.lifeforms;
+package com.Group3.ZombieBytes.Data.Lifeforms;
 
 import com.Group3.ZombieBytes.Game.Game;
-import com.Group3.ZombieBytes.Game.GameText;
-import com.Group3.ZombieBytes.Game.Location;
-import com.Group3.ZombieBytes.Items.Item;
-import com.Group3.ZombieBytes.Items.Noun;
-import com.Group3.ZombieBytes.Items.Verb;
-import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
-import com.Group3.ZombieBytes.lifeforms.Directions;
+import com.Group3.ZombieBytes.Util.Display.GameText;
+import com.Group3.ZombieBytes.Data.Location;
+import com.Group3.ZombieBytes.Data.Items.Item;
+import isThisUsed.Noun;
+import isThisUsed.Verb;
+import com.Group3.ZombieBytes.Util.Display.PrintContent;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +20,7 @@ public class Character {
     // properties
     private static String username;
     public static int health = 100;
-    private static Item choosenItem;
+    private static Item chosenItem;
     private int spaces;
     private Directions direction = Directions.NORTH;
     private static List<Item> inventory = new ArrayList<>();

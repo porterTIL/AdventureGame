@@ -1,6 +1,5 @@
-package com.Group3.ZombieBytes.JsonParser;
-import com.Group3.ZombieBytes.Game.Game;
-import com.Group3.ZombieBytes.Game.GameText;
+package com.Group3.ZombieBytes.Util.JsonParser;
+import com.Group3.ZombieBytes.Util.Display.GameText;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

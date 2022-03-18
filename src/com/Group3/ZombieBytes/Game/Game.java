@@ -1,15 +1,12 @@
 package com.Group3.ZombieBytes.Game;
-//import com.Group3.ZombieBytes.lifeforms.Character;
-//import com.Group3.ZombieBytes.lifeforms.Zombie;
+//import com.Group3.ZombieBytes.Data.lifeforms.Character;
+//import com.Group3.ZombieBytes.Data.lifeforms.Zombie;
 
-import com.Group3.ZombieBytes.JsonParser.*;
-import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
-//import com.Group3.ZombieBytes.lifeforms.Character;
-//import com.Group3.ZombieBytes.lifeforms.Zombie;
-import com.Group3.ZombieBytes.Items.*;
-import com.Group3.ZombieBytes.JsonParser.*;
-import com.Group3.ZombieBytes.lifeforms.Character;
-import com.Group3.ZombieBytes.lifeforms.Zombie;
+import com.Group3.ZombieBytes.Data.Location;
+import com.Group3.ZombieBytes.Util.JsonParser.*;
+//import com.Group3.ZombieBytes.Data.lifeforms.Character;
+//import com.Group3.ZombieBytes.Data.lifeforms.Zombie;
+import com.Group3.ZombieBytes.Data.Lifeforms.Character;
 
 import java.util.HashMap;
 

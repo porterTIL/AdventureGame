@@ -1,4 +1,4 @@
-package com.Group3.ZombieBytes.PrintToOutPut;
+package com.Group3.ZombieBytes.Util.Display;
 
 import java.util.HashMap;
 import java.util.Map;

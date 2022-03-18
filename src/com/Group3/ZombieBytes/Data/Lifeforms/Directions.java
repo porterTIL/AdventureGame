@@ -1,4 +1,4 @@
-package com.Group3.ZombieBytes.lifeforms;
+package com.Group3.ZombieBytes.Data.Lifeforms;
 
 public enum Directions {
     NORTH,

@@ -1,8 +1,7 @@
-package com.Group3.ZombieBytes.JsonParser;
+package com.Group3.ZombieBytes.Util.JsonParser;
 
 import com.Group3.ZombieBytes.Game.Game;
-import com.Group3.ZombieBytes.Game.Location;
-import com.Group3.ZombieBytes.PrintToOutPut.PrintContent;
+import com.Group3.ZombieBytes.Data.Location;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -10,9 +9,7 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class LocationParser {
     public static void run() {
