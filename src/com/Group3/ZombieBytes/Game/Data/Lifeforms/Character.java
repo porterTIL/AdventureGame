@@ -125,7 +125,7 @@ public class Character {
                 }
                 for (int w = 0; w < currentLocation.getZombies().size(); w++) {
                     if (Zombie.getZombieHP() <= 0) {
-                        System.out.println("There is a victim of " + username + "'s awe-inspiring violence on the floor." + username + " has already killed the zombie in this location." );
+                        System.out.println("There is a victim of " + username + "'s awe-inspiring violence on the floor." + username + " has already killed the zombie in this location.");
                     } else {
                         System.out.println(currentLocation.getZombies().get(w));
                     }
@@ -152,6 +152,8 @@ public class Character {
 
     public static void walk(String direction) {
         if (currentLocation.getAvailableDirection().get(direction) == null) {
+            GameText.lockedIn();
+        } else if (currentLocation.getAvailableDirection().get(direction) != null) {
             GameText.lockedIn();
         } else {
             currentLocation = totalLocation.get(currentLocation.getAvailableDirection().get(direction));
@@ -212,7 +214,7 @@ public class Character {
                             if (zombie.zombieHP <= 0) {
                                 GameText.attackWin();
                                 chooseAction();
-                               // GameText.alreadyDefeated();
+                                // GameText.alreadyDefeated();
 
                             }
                             attack();
@@ -277,21 +279,20 @@ public class Character {
     }
 
     public static void useItem(String pickedItem) {
-        for (Item item : inventory){
+        for (Item item : inventory) {
             if (item.getName().equalsIgnoreCase(pickedItem)) {
-                    PrintContent.print("You have used " + item.getName());
-                    PrintContent.print(item.getUse());
-                    Game.start();
-                }
-                else{
-                    PrintContent.print("You have used " + item.getName());
-                    PrintContent.print(item.getUse());
-                    inventory.remove(item);
-                }
+                PrintContent.print("You have used " + item.getName());
+                PrintContent.print(item.getUse());
+                Game.start();
+            } else {
+                PrintContent.print("You have used " + item.getName());
+                PrintContent.print(item.getUse());
+                inventory.remove(item);
             }
         }
+    }
 //        if (inventory.contains(pickedItem)) {
 //            PrintContent.print(pickedItem.getName() + "has been used");
 //            inventory.remove(choosenItem);
 //        }
-    }
+}
