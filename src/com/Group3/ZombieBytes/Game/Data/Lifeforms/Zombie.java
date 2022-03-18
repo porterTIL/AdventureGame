@@ -7,7 +7,7 @@ public class Zombie {
     // Properties
     private String zombieName;
     private String zombieLocation;
-    public static long zombieHP;
+    public long zombieHP;
     private String zombieDescription;
     private String Zombies = null;
     private static int newHealth;
@@ -50,12 +50,12 @@ public class Zombie {
         this.zombieLocation = zombieLocation;
     }
 
-    public static long getZombieHP() {
-        return zombieHP;
+    private long getZombieHP() {
+        return this.zombieHP;
     }
 
-    public static void setZombieHP(long zombieHP) {
-        Zombie.zombieHP = zombieHP;
+    private void setZombieHP(long zombieHP) {
+        this.zombieHP = zombieHP;
     }
 
     public String getZombieDescription() {
