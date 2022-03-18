@@ -32,6 +32,7 @@ public class Character {
     public static ArrayList<Verb> verbInteractions = new ArrayList<>();
     public static ArrayList<Noun> nounInteractions = new ArrayList<>();
 
+
     public static void startGame() {
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader reader = new BufferedReader(input);
@@ -42,28 +43,30 @@ public class Character {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(username + ", type 'start' to play the game. Enter 'quit' at any time to end the game.");
-        String startGame = null;
         try {
-            startGame = reader.readLine();
+            do {
+                System.out.println(username + ", type 'start' to play the game. Enter 'quit' at any time to end the game.");
+            }
+            while (startOrQuit(reader.readLine()));
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("YOU DID A BAD");
+            System.out.println("BACK TO THE BEGINNING >:(");
+            startGame();
         }
+    }
 
-
-        switch (startGame.toLowerCase()) {
+    //demands user to enter start or quit
+    public static boolean startOrQuit(String input) {
+        switch (input.toLowerCase()) {
             case "start":
                 GameText.intro();
                 System.out.println(username + " is currently located in the " + currentLocation.getName());
                 chooseAction();
-                break;
+                return false;
             case "quit":
-                startGame();
-                break;
-            default:
-                GameText.defaultStart();
-                startGame();
+                Game.quit();
         }
+        return true;
     }
 
     public static void chooseAction() {
@@ -122,7 +125,7 @@ public class Character {
                 for (int w = 0; w < currentLocation.getZombies().size(); w++) {
                     System.out.println(currentLocation.getZombies().get(w));
                 }
-                    System.out.println(currentLocation.getInspect());
+                System.out.println(currentLocation.getInspect());
                 chooseAction();
                 break;
             case "attack":
@@ -134,8 +137,7 @@ public class Character {
                 }
                 break;
             case "quit":
-                GameText.outro();
-                startGame();
+                Game.quit();
                 break;
             default:
                 GameText.defaultChooseAction();
