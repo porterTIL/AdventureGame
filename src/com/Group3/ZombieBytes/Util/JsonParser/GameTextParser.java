@@ -23,7 +23,7 @@ public class GameTextParser {
         // this class helps us read the json file for location
         {
             try {
-                FileReader gameTextReader = new FileReader("src/main/java/com/Group3/ZombieBytes/JSONfiles/GameText.json");
+                FileReader gameTextReader = new FileReader("resources/JSON/GameText.json");
                 Object gameTextObject = jsonparser.parse(gameTextReader);
                 JSONObject jsonGameTextObject = (JSONObject) gameTextObject;
 

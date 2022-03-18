@@ -1,4 +1,4 @@
-package com.Group3.ZombieBytes.Data.Items;
+package com.Group3.ZombieBytes.Game.Data.Items;
 
 public class Item {
     // properties
