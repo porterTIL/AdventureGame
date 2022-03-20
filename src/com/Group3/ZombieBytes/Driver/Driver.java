@@ -1,11 +1,12 @@
 package com.Group3.ZombieBytes.Driver;
 
 import com.Group3.ZombieBytes.Game.Game;
+import com.Group3.ZombieBytes.Util.UserInput.ReaderInput;
 
 public class Driver {
     public static void main(String[] args) {
         // starts the game
-        Game.start();
+        Game.start(new ReaderInput());
     }
 }
 

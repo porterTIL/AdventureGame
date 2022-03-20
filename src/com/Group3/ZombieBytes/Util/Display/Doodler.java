@@ -1,25 +1,38 @@
 package com.Group3.ZombieBytes.Util.Display;
 
-import com.Group3.ZombieBytes.Driver.FXApp;
-import com.Group3.ZombieBytes.Game.Data.Location;
+import com.Group3.ZombieBytes.Driver.FXDriver;
 import com.Group3.ZombieBytes.Game.Game;
+import com.Group3.ZombieBytes.Util.UserInput.Input;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 public class Doodler {
+    private static Paint backgroundColor = Color.WHITE; //!DON'T USE AWT
+    public final static int xRes = 400;
+    public final static int yRes = 400;
     public final static int xScale = 1;
     public final static int yScale = xScale;
+    private final static TextField in = FXDriver.getInputField();
+    public final static TextArea out = FXDriver.getTextField();
+    private Doodler(){}
     public static Group drawMap(){
         //calculate square size
-        int xSize = (FXApp.xRes/10)*xScale;
-        int ySize = (FXApp.yRes/10)*yScale;
-        //make a new rectangle for each location
+        int xSize = (xRes/10)*xScale;
+        int ySize = (yRes/10)*yScale;
         // keep track of previous squares position
         double xPos = 0;
         double yPos = 0;
-         Rectangle[] rectangles = new Rectangle[Game.getGameLocation().size()];
+        //make a new rectangle for each location
+        Rectangle[] rectangles = new Rectangle[Game.getGameLocation().size()];
         for(int i =0; i< Game.getGameLocation().values().size(); i++){
             //create rectangle
             Rectangle rect = new Rectangle(xSize, ySize);
@@ -31,7 +44,7 @@ public class Doodler {
                 yPos += ySize*2;
             }
             //if the map is out of bounds, lower scale and try again
-            if((xPos+xSize)>FXApp.xRes || (yPos+ySize)>FXApp.yRes) {
+            if((xPos+xSize)> xRes || (yPos+ySize)> yRes) {
                 //insert code here (need to change scale to not be final with getters and setters. Too lazy rn)
             }
             rect.setX(xPos);
@@ -42,7 +55,40 @@ public class Doodler {
         Group rectGroup = new Group(rectangles);
         return rectGroup;
     }
-    public static Scene drawScene(Group... groups){
-        return null;
+    //Creates a textbox and includes in field to draw a fake console
+    public static Group drawConsole(){
+        //create textbox background
+        Rectangle background = new Rectangle();
+        background.setWidth(xRes); //screen width
+        background.setHeight(yRes/2); // half the height of screen
+        background.setY(yRes/2); //the bottom half
+        background.setFill(Color.WHITE);//white background
+        //get text area, then position and style it
+
+        return new Group();
+    }
+    public static Scene drawStartScene(){
+        //start button
+        Button start = new Button("Start");
+        start.addEventFilter(MouseEvent.MOUSE_RELEASED, e -> Game.start(new Input()));
+        //quit button
+        Button quit = new Button("Quit");
+        quit.setLayoutX(50);
+        Group buttons = new Group(start, quit);
+        //create title text
+        Text title = new Text(FXDriver.appName);
+        title.setTextAlignment(TextAlignment.CENTER);
+        title.setX(xRes/2);
+        title.setY(yRes/3);
+        //Create group of start items
+        Group root = new Group(title, buttons);
+        //Create a scene
+        return new Scene(root, xRes, yRes);
+
+    }
+    public static Scene drawGameScene(Group graphic){
+        Group console = drawConsole();
+
+        return new Scene(new Group(graphic, console));
     }
 }
