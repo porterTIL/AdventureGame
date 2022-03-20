@@ -1,12 +1,16 @@
 package com.Group3.ZombieBytes.Game.Data.Lifeforms;
 
+import com.Group3.ZombieBytes.Driver.FXDriver;
 import com.Group3.ZombieBytes.Game.Game;
+import com.Group3.ZombieBytes.Util.Display.Doodler;
 import com.Group3.ZombieBytes.Util.Display.GameText;
 import com.Group3.ZombieBytes.Game.Data.Location;
 import com.Group3.ZombieBytes.Game.Data.Items.Item;
 import com.Group3.ZombieBytes.Util.UserInput.Input;
 import isThisUsed.Noun;
 import isThisUsed.Verb;
+import javafx.application.Platform;
+import javafx.scene.Group;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,6 +48,7 @@ public class Character {
             GameText.printer.print(username + ", type 'start' to play the game. Enter 'quit' at any time to end the game.");
         }
         while (startOrQuit(reader.readLine()));
+        chooseAction();
     }
 
     //demands user to enter start or quit
@@ -52,7 +57,6 @@ public class Character {
             case "start":
                 GameText.intro();
                 GameText.printer.print(username + " is currently located in the " + currentLocation.getName());
-                chooseAction();
                 return false;
             case "quit":
                 Game.quit();

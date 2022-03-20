@@ -14,13 +14,14 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Window;
 
 public class Doodler {
     private static Paint backgroundColor = Color.WHITE; //!DON'T USE AWT
     public final static int xRes = 400;
     public final static int yRes = 400;
     public final static int xScale = 1;
-    public final static int yScale = xScale;
+    public final static int yScale = 1;
     private final static TextField in = FXDriver.getInputField();
     public final static TextArea out = FXDriver.getTextField();
     private Doodler(){}
@@ -70,7 +71,13 @@ public class Doodler {
     public static Scene drawStartScene(){
         //start button
         Button start = new Button("Start");
-        start.addEventFilter(MouseEvent.MOUSE_RELEASED, e -> Game.start(new Input()));
+        start.addEventFilter(MouseEvent.MOUSE_RELEASED, e -> new Thread(() -> {
+            try {
+                Game.start(new Input());
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        }).start());
         //quit button
         Button quit = new Button("Quit");
         quit.setLayoutX(50);
@@ -86,9 +93,9 @@ public class Doodler {
         return new Scene(root, xRes, yRes);
 
     }
-    public static Scene drawGameScene(Group graphic){
+    public static Group drawGameScene(Group graphic){
         Group console = drawConsole();
 
-        return new Scene(new Group(graphic, console));
+        return new Group(graphic, console);
     }
 }

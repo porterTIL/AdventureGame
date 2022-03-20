@@ -14,12 +14,13 @@ import com.Group3.ZombieBytes.Util.JsonParser.*;
 //import com.Group3.ZombieBytes.Game.Data.lifeforms.Zombie;
 import com.Group3.ZombieBytes.Game.Data.Lifeforms.Character;
 import com.Group3.ZombieBytes.Util.UserInput.ReaderInput;
+import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.control.TextArea;
 
 import java.util.HashMap;
 
-public class Game {
+public class Game{
     // properties
     // set game map
     private static HashMap<String, Location> gameLocation;
@@ -29,12 +30,12 @@ public class Game {
 
     }
         // business methods
-    public static void start(Input input){
-        //draw the game
-        FXDriver.setScene(Doodler.drawGameScene(new Group()));
+    public static void start(Input input) throws InterruptedException {
         // if false printer is DisplayContent(JFX) if true printer is PrintContent(console)
-        GameText.setPrinter(((input instanceof ReaderInput) ? new PrintContent() : new DisplayContent()));
+        GameText.printer=(((input instanceof ReaderInput) ? new PrintContent() : new DisplayContent()));
         runParsers();  // gathers data from json files and installs our classes with its properties
+        Platform.runLater(() -> FXDriver.setScene(Doodler.drawGameScene(new Group())));//draw the game in a jfx thread
+        Thread.sleep(10);
         Character.startGame(input);
         // game code
 //        for (Map.Entry<String, Location> loc : gameLocation.entrySet()) {
@@ -46,7 +47,6 @@ public class Game {
 //            PrintContent.print("");
 //        }
     }
-    //starts with jfx
 
     // runs the parsers to fill the game properties
     private static void runParsers(){

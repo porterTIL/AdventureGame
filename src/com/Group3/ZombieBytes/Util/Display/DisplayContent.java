@@ -1,6 +1,7 @@
 package com.Group3.ZombieBytes.Util.Display;
 
 import com.Group3.ZombieBytes.Driver.FXDriver;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 
 import java.util.Map;
@@ -13,11 +14,11 @@ public class DisplayContent extends PrintContent{
     }
     @Override
     public void print(String text) {
-        console.appendText(text + linebreak);
+        Platform.runLater(()->console.appendText(text + linebreak));
     }
     @Override
     public void print(int text) {
-        console.appendText(text + linebreak);
+        Platform.runLater(()->console.appendText(text + linebreak));
     }
     @Override
     public void print(long text) {

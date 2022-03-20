@@ -6,6 +6,7 @@ import com.Group3.ZombieBytes.Util.UserInput.Input;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -22,29 +23,30 @@ public class FXDriver extends Application {
     }
 
     @Override
-    public void start(Stage stage){
-        this.stage=stage;
-        //doodling text
-        userInput.setAlignment(Pos.BOTTOM_CENTER);
-        //Set scene background color
-        //scene.setFill(Color.BLANCHEDALMOND);
-        //Set title
-        stage.setTitle(appName);
-        //display scene
-        stage.setScene(Doodler.drawStartScene());
-        stage.show();
+    public void start(Stage stage) {
+        stage.setTitle(appName); //set title to app name
+        stage.setScene(Doodler.drawStartScene()); //display scene
+        stage.show(); //I hate that you have to do this, but it makes sense
+        this.stage = stage;//keep a reference for changing later I hate that you have to do this even more, because it doesn't make sense
     }
+    //accessors
     public static TextField getInputField(){
         return userInput;
     }
-    public static TextArea getTextField(){
+    public static TextArea getTextField() {
         return userOutput;
     }
-    public static void setScene(Scene scene){
-        if(stage!=null) stage.setScene(scene);
+    public static void setScene(Group root) {
+        stage.getScene().setRoot(root);
     }
-    public void startGame(){
-        setScene(Doodler.drawStartScene());
-        Game.start(new Input());
+    //
+    public static void beginGame(){
+        new Thread(() -> {
+            try{
+                Game.start(new Input());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 }

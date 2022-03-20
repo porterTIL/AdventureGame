@@ -76,7 +76,4 @@ public class GameText {
     public static void setGameText(HashMap<String, String> gameText) {
         GameText.gameText = gameText;
     }
-    public static void setPrinter(PrintContent printer){
-        GameText.printer = printer;
-    }
 }

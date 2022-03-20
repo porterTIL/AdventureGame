@@ -4,7 +4,7 @@ import com.Group3.ZombieBytes.Game.Game;
 import com.Group3.ZombieBytes.Util.UserInput.ReaderInput;
 
 public class Driver {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // starts the game
         Game.start(new ReaderInput());
     }
