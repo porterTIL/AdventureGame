@@ -9,6 +9,7 @@ import com.Group3.ZombieBytes.Util.Display.Doodler;
 import com.Group3.ZombieBytes.Util.Display.GameText;
 import com.Group3.ZombieBytes.Util.Display.PrintContent;
 import com.Group3.ZombieBytes.Util.UserInput.Input;
+import com.Group3.ZombieBytes.Util.Display.*;
 import com.Group3.ZombieBytes.Util.JsonParser.*;
 //import com.Group3.ZombieBytes.Game.Data.lifeforms.Character;
 //import com.Group3.ZombieBytes.Game.Data.lifeforms.Zombie;
@@ -29,6 +30,7 @@ public class Game{
     private Game(){
 
     }
+    // methods
         // business methods
     public static void start(Input input) throws InterruptedException {
         //if its a reader input it needs to print to console
@@ -52,7 +54,6 @@ public class Game{
 //            PrintContent.print("");
 //        }
     }
-
     // runs the parsers to fill the game properties
     private static void runParsers(){
         GameTextParser.run();
@@ -80,8 +81,6 @@ public class Game{
     public static void setGameLocation(HashMap<String, Location> gameLocation) {
         Game.gameLocation = gameLocation;
     }
-
-
     // toString
 //    public String toString(){
 //        return ;

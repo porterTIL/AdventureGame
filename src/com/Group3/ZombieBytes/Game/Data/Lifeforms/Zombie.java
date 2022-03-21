@@ -1,16 +1,17 @@
 package com.Group3.ZombieBytes.Game.Data.Lifeforms;
 
-import com.Group3.ZombieBytes.Util.Display.GameText;
+import com.Group3.ZombieBytes.Util.Display.*;
 
 public class Zombie {
 
     // Properties
     private String zombieName;
     private String zombieLocation;
-    public static long zombieHP;
+    public long zombieHP;
     private String zombieDescription;
     private String Zombies = null;
     private static int newHealth;
+    private boolean zombieDead;
 
     // constructors
     public Zombie(String zombieName, long zombieHealthPoint, String zombieLocation, String zombieDescription){
@@ -49,12 +50,12 @@ public class Zombie {
         this.zombieLocation = zombieLocation;
     }
 
-    public static long getZombieHP() {
-        return zombieHP;
+    public long getZombieHP() {
+        return this.zombieHP;
     }
 
-    public static void setZombieHP(long zombieHP) {
-        Zombie.zombieHP = zombieHP;
+    private void setZombieHP(long zombieHP) {
+        this.zombieHP = zombieHP;
     }
 
     public String getZombieDescription() {
@@ -65,7 +66,13 @@ public class Zombie {
         this.zombieDescription = zombieDescription;
     }
 
+    public boolean isZombieDead() {
+        return zombieDead;
+    }
 
+    public void setZombieDead(boolean zombieDead) {
+        this.zombieDead = zombieDead;
+    }
 
     // to String
     public String toString(){
