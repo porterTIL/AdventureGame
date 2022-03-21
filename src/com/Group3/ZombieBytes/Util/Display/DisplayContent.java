@@ -10,9 +10,9 @@ public class DisplayContent extends PrintContent{
     static String linebreak = System.lineSeparator();
     private TextArea console;
     public DisplayContent(){
-        console = Doodler.out;
+        console = FXDriver.getTextField();
     }
-    @Override
+    @Override //appends text to console when it gets back to JFX thread
     public void print(String text) {
         Platform.runLater(()->console.appendText(text + linebreak));
     }
@@ -35,8 +35,5 @@ public class DisplayContent extends PrintContent{
     }
     public void clear(){
         console.clear();
-    }
-    public TextArea getConsole(){
-        return console;
     }
 }

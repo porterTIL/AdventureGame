@@ -31,11 +31,16 @@ public class Game{
     }
         // business methods
     public static void start(Input input) throws InterruptedException {
-        // if false printer is DisplayContent(JFX) if true printer is PrintContent(console)
-        GameText.printer=(((input instanceof ReaderInput) ? new PrintContent() : new DisplayContent()));
+        //if its a reader input it needs to print to console
         runParsers();  // gathers data from json files and installs our classes with its properties
-        Platform.runLater(() -> FXDriver.setScene(Doodler.drawGameScene(new Group())));//draw the game in a jfx thread
-        Thread.sleep(10);
+        if((input instanceof ReaderInput)){
+            GameText.printer= new PrintContent();
+        } else { // else it needs to do jfx stuff
+            Platform.runLater(() -> FXDriver.getStage().getScene().setRoot(Doodler.drawGameScene(Doodler.drawMap())));//draw the Map in the jfx thread
+            GameText.printer = new DisplayContent();
+            Thread.sleep(10);
+        }
+        // if false printer is DisplayContent(JFX) if true printer is PrintContent(console)
         Character.startGame(input);
         // game code
 //        for (Map.Entry<String, Location> loc : gameLocation.entrySet()) {
