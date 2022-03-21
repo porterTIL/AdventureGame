@@ -6,7 +6,13 @@ import com.Group3.ZombieBytes.Util.UserInput.ReaderInput;
 public class Driver {
     public static void main(String[] args) throws InterruptedException {
         // starts the game
-        Game.start(new ReaderInput());
+        System.out.println("Would you like to play with graphics Y/N");
+        ReaderInput reader = new ReaderInput();
+        if(reader.readLine().equalsIgnoreCase("y")){
+            FXDriver.main(args);
+        } else {
+            Game.start(new ReaderInput());
+        }
     }
 }
 

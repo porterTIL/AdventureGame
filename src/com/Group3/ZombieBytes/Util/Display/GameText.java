@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class GameText {
 // properties
-    public static PrintContent printer;
+    public static PrintContent printer; //printer object for polymorphism(in hindsight an interface probably would have been better... Too Late!)
     private static HashMap<String, String> gameText;
 
     //methods
@@ -67,13 +67,13 @@ public class GameText {
         printer.print(gameText.get("lockedIn"));
     }
 
+    public static void setGameText(HashMap<String, String> gameText) {
+        GameText.gameText = gameText;
+    }
     // getters and setters
     /* TODO: remove?
     public static HashMap<String, String> getGameText() {
         return gameText;
     } */
 
-    public static void setGameText(HashMap<String, String> gameText) {
-        GameText.gameText = gameText;
-    }
 }

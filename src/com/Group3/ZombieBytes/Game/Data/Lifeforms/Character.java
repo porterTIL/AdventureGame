@@ -65,6 +65,7 @@ public class Character {
     }
 
     public static void chooseAction() {
+        Platform.runLater(()->Doodler.updateMap(Doodler.getMapSquares()));
         GameText.chooseAction();
         String chooseAction = null;
         String[] wordInput = new String[2];

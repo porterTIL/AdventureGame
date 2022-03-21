@@ -1,14 +1,12 @@
 {
   "Location": [
     {
-      "name": "TownCenter",
-      "Item": "Letter",
-      "description": "You have entered the town center",
-      "North": "Hospital",
-      "East": "Store",
-      "South": "PoliceStation",
-      "West": "Road 3",
-      "inspect": "What used to be a lively town, is dead silent"
+      "name": "Road 1",
+      "description": "You have entered a road. You see a stick on the ground.",
+      "Item": "Stick",
+      "East": "Hospital",
+      "South": "Road 3",
+      "inspect": "Tis just a typical road. You should go North"
     },
     {
       "name": "Hospital",
@@ -21,16 +19,29 @@
       "inspect": "Hospitals used to make you nervous and now you are even more so by its silence"
     },
     {
-      "name": "PoliceStation",
-      "Item": "Baton",
-      "Item": "Sandwich",
-      "Zombie": "Monkey Zombie",
-      "description": "You have entered the Police Station. You see a desk by the front door and jail cells to the back.",
-      "Key": "City Key",
-      "North": "TownCenter",
-      "East": "Road 4",
-      "West": "School",
-      "inspect": "O oooo its the popo place"
+      "name": "Road 2",
+      "description": "You have entered a road",
+      "South": "Store",
+      "West": "Hospital",
+      "inspect": "Another typical road. Again should go North"
+    },
+    {
+      "name": "Road 3",
+      "description": "You have entered a road",
+      "North": "Road 1",
+      "East": "TownCenter",
+      "South": "School",
+      "inspect": "Why so many roads!!!!! Screw it! GO NORTH!!!"
+    },
+    {
+      "name": "TownCenter",
+      "Item": "Letter",
+      "description": "You have entered the town center",
+      "North": "Hospital",
+      "East": "Store",
+      "South": "PoliceStation",
+      "West": "Road 3",
+      "inspect": "What used to be a lively town, is dead silent"
     },
     {
       "name": "Store",
@@ -54,27 +65,16 @@
       "inspect": "And they said you'd never go back to school. Pffft.. look at them now... DEAD!"
     },
     {
-      "name": "Road 1",
-      "description": "You have entered a road. You see a stick on the ground.",
-      "Item": "Stick",
-      "East": "Hospital",
-      "South": "Road 3",
-      "inspect": "Tis just a typical road. You should go North"
-    },
-    {
-      "name": "Road 2",
-      "description": "You have entered a road",
-      "South": "Store",
-      "West": "Hospital",
-      "inspect": "Another typical road. Again should go North"
-    },
-    {
-      "name": "Road 3",
-      "description": "You have entered a road",
-      "North": "Road 1",
-      "East": "TownCenter",
-      "South": "School",
-      "inspect": "Why so many roads!!!!! Screw it! GO NORTH!!!"
+      "name": "PoliceStation",
+      "Item": "Baton",
+      "Item": "Sandwich",
+      "Zombie": "Monkey Zombie",
+      "description": "You have entered the Police Station. You see a desk by the front door and jail cells to the back.",
+      "Key": "City Key",
+      "North": "TownCenter",
+      "East": "Road 4",
+      "West": "School",
+      "inspect": "O oooo its the popo place"
     },
     {
       "name": "Road 4",
