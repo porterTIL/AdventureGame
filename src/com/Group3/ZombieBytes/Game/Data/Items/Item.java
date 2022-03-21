@@ -19,7 +19,6 @@ public class Item {
         setType(type);
         setDescription(description);
         setUse(use);
-
     }
 
     // methods

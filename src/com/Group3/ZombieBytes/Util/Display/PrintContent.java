@@ -4,23 +4,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PrintContent {
-    public static void print(String text) {
+    public void print(String text) {
         System.out.println(text);
     }
-    public static void print(int text) {
+    public void print(int text) {
         System.out.println(text);
     }
-    public static void print(long text) {
+    public void print(long text) {
         System.out.println(text);
     }
-    public static void print(Map<Object,Object> gameObject) {
+    public void print(Map<Object,Object> gameObject) {
         System.out.println(gameObject);
     }
 
-    public static void print(boolean text) {
+    public void print(boolean text) {
         System.out.println(text);
     }
 
-    public static void print(HashMap<String, String> gameText) {
-    }
+    public void print(HashMap<String, String> gameText) {}
 }
