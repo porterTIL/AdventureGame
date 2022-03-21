@@ -1,6 +1,4 @@
 package com.Group3.ZombieBytes.Game;
-//import com.Group3.ZombieBytes.Game.Data.lifeforms.Character;
-//import com.Group3.ZombieBytes.Game.Data.lifeforms.Zombie;
 
 import com.Group3.ZombieBytes.Driver.FXDriver;
 import com.Group3.ZombieBytes.Game.Data.Location;
@@ -9,15 +7,10 @@ import com.Group3.ZombieBytes.Util.Display.Doodler;
 import com.Group3.ZombieBytes.Util.Display.GameText;
 import com.Group3.ZombieBytes.Util.Display.PrintContent;
 import com.Group3.ZombieBytes.Util.UserInput.Input;
-import com.Group3.ZombieBytes.Util.Display.*;
 import com.Group3.ZombieBytes.Util.JsonParser.*;
-//import com.Group3.ZombieBytes.Game.Data.lifeforms.Character;
-//import com.Group3.ZombieBytes.Game.Data.lifeforms.Zombie;
 import com.Group3.ZombieBytes.Game.Data.Lifeforms.Character;
 import com.Group3.ZombieBytes.Util.UserInput.ReaderInput;
 import javafx.application.Platform;
-import javafx.scene.Group;
-import javafx.scene.control.TextArea;
 
 import java.util.HashMap;
 

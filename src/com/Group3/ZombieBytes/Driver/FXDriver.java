@@ -13,12 +13,14 @@ public class FXDriver extends Application {
     private static TextArea userOutput = new TextArea();
     public final static String appName = "ZombieBytes";
     static private Stage stage;
+    public static boolean hasGraphics;
 
     public static void main(String[] args) {
         // starts the game
         System.out.println("Would you like to play with graphics Y/N");
         ReaderInput reader = new ReaderInput();
         if(reader.readLine().equalsIgnoreCase("y")){
+            hasGraphics=true;
             launch(args);
         } else {
             try {

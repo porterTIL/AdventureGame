@@ -1,13 +1,13 @@
 package com.Group3.ZombieBytes.Game.Data.Lifeforms;
 
+import com.Group3.ZombieBytes.Driver.FXDriver;
 import com.Group3.ZombieBytes.Game.Game;
 import com.Group3.ZombieBytes.Util.Display.*;
 import com.Group3.ZombieBytes.Game.Data.Location;
 import com.Group3.ZombieBytes.Game.Data.Items.*;
-import com.Group3.ZombieBytes.Game.Data.Lifeforms.*;
+import com.Group3.ZombieBytes.Util.UserInput.Input;
 import isThisUsed.*;
-import com.Group3.ZombieBytes.Util.Display.*;
-import com.Group3.ZombieBytes.Game.Data.Lifeforms.Directions;
+import javafx.application.Platform;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Character {
 
     // properties
+    static Input reader;
     private static String username;
     public static int health = 100;
     private static Item chosenItem;
@@ -61,17 +62,15 @@ public class Character {
     }
 
     public static void chooseAction() {
-        Platform.runLater(()->Doodler.updateMap(Doodler.getMapSquares()));
+        if(FXDriver.hasGraphics) {
+            Platform.runLater(()->Doodler.updateMap(Doodler.getMapSquares()));
+        }
         GameText.chooseAction();
 
-        String chooseAction = null;
-        String[] wordInput = new String[2];
-        try {
-            chooseAction = reader.readLine();
-            wordInput = chooseAction.split(" ");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String chooseAction;
+        String[] wordInput;
+        chooseAction = reader.readLine();
+        wordInput = chooseAction.split(" ");
         switch (wordInput[0].toLowerCase()) {
             case "use":
                 CheckLength(wordInput.length, wordInput[0]);    // CheckLength param1: checks that user input is the right number of words. param2: takes the user input verb to use in print feedback
@@ -182,7 +181,7 @@ public class Character {
                     chooseAction();
                 } else {
                     GameText.printer.print("You have confronted " + currentLocation.getZombies().get(w).getZombieName() +
-                            ". This zombie's HP is currently " + Zombie.zombieHP + ". What would you like to do? (use item, run, hit, or inventory)");
+                            ". This zombie's HP is currently " + zombie.zombieHP + ". What would you like to do? (use item, run, hit, or inventory)");
                     String battleAction = null;
                     String[] wordInput = new String[2];
                     try {
