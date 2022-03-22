@@ -2,8 +2,6 @@ package com.Group3.ZombieBytes.Game.Data.Lifeforms;
 
 import com.Group3.ZombieBytes.Util.Display.GameText;
 
-import java.util.random.RandomGenerator;
-
 public class ZombieBoss extends Zombie{
     public ZombieBoss(String zombieName, long zombieHealthPoint, String zombieLocation, String zombieDescription) {
         super(zombieName, zombieHealthPoint, zombieLocation, zombieDescription);

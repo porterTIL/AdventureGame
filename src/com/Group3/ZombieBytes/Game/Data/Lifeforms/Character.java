@@ -144,7 +144,7 @@ public class Character {
                 GameText.lockedIn();
             } else {
                 currentLocation = totalLocation.get(currentLocation.getAvailableDirection().get(direction));
-                System.out.println(currentLocation.toString());
+                GameText.printer.print(currentLocation.toString());
             }
         } else {
             GameText.defaultWalk();
@@ -264,6 +264,7 @@ public class Character {
                 GameText.printer.print("You have used " + item.getName());
                 GameText.printer.print(item.getUse());
                 inventory.remove(item);
+                return;
             }
         }
     }
