@@ -257,12 +257,14 @@ public class Character {
     public static void useItem(String pickedItem) {
         for (Item item : inventory) {
             if (item.getName().equalsIgnoreCase(pickedItem)) {
-                GameText.printer.print("You have used " + item.getName());
-                GameText.printer.print(item.getUse());
-            } else {
-                GameText.printer.print("You have used " + item.getName());
-                GameText.printer.print(item.getUse());
+                String itemName = item.getName();
+                String itemUse = item.getUse();
+                GameText.printer.print("You have used " + itemName);
+                GameText.printer.print(itemUse);
                 inventory.remove(item);
+                return;
+            } else {
+                //DON'T HAVE ITEM
             }
         }
     }

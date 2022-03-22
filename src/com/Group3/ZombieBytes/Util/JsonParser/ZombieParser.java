@@ -1,5 +1,6 @@
 package com.Group3.ZombieBytes.Util.JsonParser;
 
+import com.Group3.ZombieBytes.Driver.Driver;
 import com.Group3.ZombieBytes.Game.Data.Lifeforms.ZombieBoss;
 import com.Group3.ZombieBytes.Game.Game;
 import com.Group3.ZombieBytes.Game.Data.Location;
@@ -12,6 +13,7 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +27,7 @@ public class ZombieParser {
         // this class helps us read the json file for location
         {
             try {
-                FileReader zombieReader = new FileReader("resources/JSON/Zombie.json");
+                InputStreamReader zombieReader = new InputStreamReader(ClassLoader.getSystemResourceAsStream("Zombie.json"));
                 Object zombieObject = jsonparser.parse(zombieReader);
                 JSONObject zombies = (JSONObject) zombieObject;
                 // Location is a json array of objects
