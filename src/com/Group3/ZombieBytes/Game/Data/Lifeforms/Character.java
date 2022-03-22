@@ -139,14 +139,15 @@ public class Character {
     }
 
     public static void walk(String direction) {
-        if (currentLocation.getAvailableDirection().get(direction) == null) {
+        if (Directions.isDirection(direction)) {
+            if (currentLocation.getAvailableDirection().get(direction) == null) {
+                GameText.lockedIn();
+            } else {
+                currentLocation = totalLocation.get(currentLocation.getAvailableDirection().get(direction));
+                System.out.println(currentLocation.toString());
+            }
+        } else {
             GameText.defaultWalk();
-        }
-        //else if (!currentLocation.getAvailableDirection().get(direction).equalsIgnoreCase(currentLocation.getAvailableDirection().get(direction))) {
-        //GameText.lockedIn();}
-        else {
-            currentLocation = totalLocation.get(currentLocation.getAvailableDirection().get(direction));
-            GameText.printer.print(currentLocation.toString());
         }
     }
 
