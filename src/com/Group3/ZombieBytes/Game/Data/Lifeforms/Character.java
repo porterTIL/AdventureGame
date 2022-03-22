@@ -110,8 +110,8 @@ public class Character {
                 break;
 
             case "inspect":
-                for (int i = 0; i < currentLocation.getItems().size(); i++) {
-                    GameText.printer.print(currentLocation.getItems().get(i).toString());
+                for (int i = 0; i < currentLocation.getVisibleItems().size(); i++) {
+                    GameText.printer.print(currentLocation.getVisibleItems().get(i).toString());
                 }
                 for (int w = 0; w < currentLocation.getZombies().size(); w++) {
                     if (currentLocation.getZombies().get(w).getZombieHP() <= 0) {
@@ -238,17 +238,17 @@ public class Character {
 
     public static void addToInventory(String item, Location currentLocation2) {
         for (int i = 0; i < currentLocation2.getItems().size(); i++) {
-            if (currentLocation2.getItems().get(i).getName().equalsIgnoreCase(item)) {
-                inventory.add(currentLocation2.getItems().get(i));
+            if (currentLocation2.getVisibleItems().get(i).getName().equalsIgnoreCase(item)) {
+                inventory.add(currentLocation2.getVisibleItems().get(i));
                 GameText.printer.print(username + " has picked up item");
-                currentLocation.getItems().remove(i);
                 for (int j = 0; j < inventory.size(); j++) {
                     GameText.printer.print(("Your Inventory: " + inventory.get(j).getName()));
                 }
-            } else {
-                GameText.printer.print("You can not pick up this item");
+                currentLocation2.getItems().remove(i);
+                return;
             }
         }
+        GameText.printer.print("You can not pick up this item");
 //        inventory.add(item);
 //        currentLocation.getItems().remove(choosenItem);
     }
