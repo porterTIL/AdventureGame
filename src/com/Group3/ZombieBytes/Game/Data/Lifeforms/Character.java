@@ -1,13 +1,13 @@
 package com.Group3.ZombieBytes.Game.Data.Lifeforms;
 
+import com.Group3.ZombieBytes.Driver.FXDriver;
 import com.Group3.ZombieBytes.Game.Game;
 import com.Group3.ZombieBytes.Util.Display.*;
 import com.Group3.ZombieBytes.Game.Data.Location;
 import com.Group3.ZombieBytes.Game.Data.Items.*;
-import com.Group3.ZombieBytes.Game.Data.Lifeforms.*;
+import com.Group3.ZombieBytes.Util.UserInput.Input;
 import isThisUsed.*;
-import com.Group3.ZombieBytes.Util.Display.*;
-import com.Group3.ZombieBytes.Game.Data.Lifeforms.Directions;
+import javafx.application.Platform;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Character {
 
     // properties
+    static Input reader;
     private static String username;
     public static int health = 100;
     private static Item chosenItem;
@@ -33,27 +34,18 @@ public class Character {
     public static ArrayList<Verb> verbInteractions = new ArrayList<>();
     public static ArrayList<Noun> nounInteractions = new ArrayList<>();
 
-
-    public static void startGame() {
-        InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader reader = new BufferedReader(input);
+    public static void startGame(Input in) {
+        //InputStreamReader input = new InputStreamReader(System.in);
+        //BufferedReader reader = new BufferedReader(input);
+        reader=in;
         GameText.username();
         username = null;
-        try {
-            username = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
+        username = reader.readLine();
+        do {
+            GameText.printer.print(username + ", type 'start' to play the game. Enter 'quit' at any time to end the game.");
         }
-        try {
-            do {
-                System.out.println(username + ", type 'start' to play the game. Enter 'quit' at any time to end the game.");
-            }
-            while (startOrQuit(reader.readLine()));
-        } catch (IOException e) {
-            System.out.println("YOU DID A BAD");
-            System.out.println("BACK TO THE BEGINNING >:(");
-            startGame();
-        }
+        while (startOrQuit(reader.readLine()));
+        chooseAction();
     }
 
     //demands user to enter start or quit
@@ -61,8 +53,7 @@ public class Character {
         switch (input.toLowerCase()) {
             case "start":
                 GameText.intro();
-                System.out.println(username + " is currently located in the " + currentLocation.getName());
-                chooseAction();
+                GameText.printer.print(username + " is currently located in the " + currentLocation.getName());
                 return false;
             case "quit":
                 Game.quit();
@@ -71,18 +62,15 @@ public class Character {
     }
 
     public static void chooseAction() {
-        InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader reader = new BufferedReader(input);
+        if(FXDriver.hasGraphics) {
+            Platform.runLater(()->Doodler.updateMap(Doodler.getMapSquares()));
+        }
         GameText.chooseAction();
 
-        String chooseAction = null;
-        String[] wordInput = new String[2];
-        try {
-            chooseAction = reader.readLine();
-            wordInput = chooseAction.split(" ");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String chooseAction;
+        String[] wordInput;
+        chooseAction = reader.readLine();
+        wordInput = chooseAction.split(" ");
         switch (wordInput[0].toLowerCase()) {
             case "use":
                 CheckLength(wordInput.length, wordInput[0]);    // CheckLength param1: checks that user input is the right number of words. param2: takes the user input verb to use in print feedback
@@ -94,16 +82,16 @@ public class Character {
 //                CheckLength(wordInput.length, wordInput[0]);
                 if (wordInput[0].equalsIgnoreCase("inventory")) {
                     if (inventory.size() == 0) {
-                        PrintContent.print("You currently have no items");
+                        GameText.printer.print("You currently have no items");
                         chooseAction();
                         break;
                     }
                     for (int i = 0; i < inventory.size(); i++) {
-                        System.out.println(("YOUR INVENTORY: " + inventory.get(i).getName()));
+                        GameText.printer.print(("YOUR INVENTORY: " + inventory.get(i).getName()));
                     }
                 } else {
 
-                    PrintContent.print("Can't check " + wordInput[1]);
+                    GameText.printer.print("Can't check " + wordInput[1]);
                 }
                 chooseAction();
                 break;
@@ -121,7 +109,7 @@ public class Character {
 
             case "inspect":
                 for (int i = 0; i < currentLocation.getItems().size(); i++) {
-                    System.out.println(currentLocation.getItems().get(i));
+                    GameText.printer.print(currentLocation.getItems().get(i).toString());
                 }
                 for (int w = 0; w < currentLocation.getZombies().size(); w++) {
                     if (currentLocation.getZombies().get(w).getZombieHP() <= 0) {
@@ -130,7 +118,7 @@ public class Character {
                         System.out.println(currentLocation.getZombies().get(w));
                     }
                 }
-                System.out.println(currentLocation.getInspect());
+                GameText.printer.print(currentLocation.getInspect());
                 chooseAction();
                 break;
             case "attack":
@@ -165,7 +153,7 @@ public class Character {
 
     public static void CheckLength(int length, String verb) {
         if (length < 2) {
-            System.out.println("Please enter a noun command to go along with your verb: " + verb);
+            GameText.printer.print("Please enter a noun command to go along with your verb: " + verb);
             chooseAction();
         }
     }
@@ -193,9 +181,8 @@ public class Character {
                     GameText.ultimateNoKey();
                     chooseAction();
                 } else {
-                    System.out.println("You have confronted " + zombie.getZombieName() +
-                            ". This zombie's HP is currently " + zombie.zombieHP + ". What would you like to do? (use item, run, or hit)");
-
+                    GameText.printer.print("You have confronted " + currentLocation.getZombies().get(w).getZombieName() +
+                            ". This zombie's HP is currently " + zombie.zombieHP + ". What would you like to do? (use item, run, hit, or inventory)");
                     String battleAction = null;
                     String[] wordInput = new String[2];
                     try {
@@ -206,13 +193,13 @@ public class Character {
                     }
                     switch (wordInput[0].toLowerCase()) {
                         case "hit":
-                            System.out.println("Zombie HP: " + zombie.zombieHP);
-                            System.out.println("Your health: " + Character.health);
+                            GameText.printer.print("Zombie HP: " + zombie.zombieHP);
+                            GameText.printer.print("Your health: " + Character.health);
                             GameText.punch();
                             zombie.zombieHP = zombie.zombieHP - 10;
                             Zombie.bite();
-                            System.out.println("Your health " + Character.health);
-                            System.out.println("Zombie HP: " + zombie.zombieHP);
+                            GameText.printer.print("Your health " + Character.health);
+                            GameText.printer.print("Zombie HP: " + zombie.zombieHP);
                             if (zombie.zombieHP <= 0) {
                                 GameText.attackWin();
                                 chooseAction();
@@ -226,7 +213,7 @@ public class Character {
                             if (int_random > 50) {
                                 GameText.runFail();
                                 Character.health = Character.health - 10;
-                                System.out.println("Your HP: " + Character.health);
+                                GameText.printer.print("Your HP: " + Character.health);
                                 attack();
                             } else {
                                 GameText.runWin();
@@ -241,12 +228,12 @@ public class Character {
                         case "inventory":
                             if (wordInput[0].equalsIgnoreCase("inventory")) {
                                 if (inventory.size() == 0) {
-                                    PrintContent.print("You currently have no items");
+                                    GameText.printer.print("You currently have no items");
                                     chooseAction();
                                     break;
                                 }
                                 for (int i = 0; i < inventory.size(); i++) {
-                                    System.out.println(("YOUR INVENTORY: " + inventory.get(i).getName()));
+                                    GameText.printer.print(("YOUR INVENTORY: " + inventory.get(i).getName()));
                                 }
                             }
                             attack();
@@ -263,13 +250,13 @@ public class Character {
         for (int i = 0; i < currentLocation2.getItems().size(); i++) {
             if (currentLocation2.getItems().get(i).getName().equalsIgnoreCase(item)) {
                 inventory.add(currentLocation2.getItems().get(i));
-                PrintContent.print(username + " has picked up item");
+                GameText.printer.print(username + " has picked up item");
                 currentLocation.getItems().remove(i);
                 for (int j = 0; j < inventory.size(); j++) {
-                    System.out.println(("Your Inventory: " + inventory.get(j).getName()));
+                    GameText.printer.print(("Your Inventory: " + inventory.get(j).getName()));
                 }
             } else {
-                PrintContent.print("You can not pick up this item");
+                GameText.printer.print("You can not pick up this item");
             }
         }
 //        inventory.add(item);
@@ -283,18 +270,18 @@ public class Character {
     public static void useItem(String pickedItem) {
         for (Item item : inventory) {
             if (item.getName().equalsIgnoreCase(pickedItem)) {
-                PrintContent.print("You have used " + item.getName());
-                PrintContent.print(item.getUse());
-                Game.start();
+                GameText.printer.print("You have used " + item.getName());
+                GameText.printer.print(item.getUse());
             } else {
-                PrintContent.print("You have used " + item.getName());
-                PrintContent.print(item.getUse());
+                GameText.printer.print("You have used " + item.getName());
+                GameText.printer.print(item.getUse());
                 inventory.remove(item);
             }
         }
     }
 //        if (inventory.contains(pickedItem)) {
-//            PrintContent.print(pickedItem.getName() + "has been used");
+//            GameText.printer.print(pickedItem.getName() + "has been used");
 //            inventory.remove(choosenItem);
 //        }
 }
+
