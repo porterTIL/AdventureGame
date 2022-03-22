@@ -1,5 +1,6 @@
 package com.Group3.ZombieBytes.Util.JsonParser;
 
+import com.Group3.ZombieBytes.Game.Data.Lifeforms.ZombieBoss;
 import com.Group3.ZombieBytes.Game.Game;
 import com.Group3.ZombieBytes.Game.Data.Location;
 import com.Group3.ZombieBytes.Game.Data.Lifeforms.Zombie;
@@ -36,7 +37,11 @@ public class ZombieParser {
                     long healthPoint = (Long) zombie.get("healthPoint");
                     String location = (String) zombie.get("location");
                     String description = (String) zombie.get("description");
-                    zombieList.add(new Zombie(name, healthPoint, location, description));
+                    if(zombie.get("boss")!=null){
+                        zombieList.add(new ZombieBoss(name, healthPoint, location, description));
+                    } else{
+                        zombieList.add(new Zombie(name, healthPoint, location, description));
+                    }
                 }
                 for (Map.Entry<String, Location> loc : Game.getGameLocation().entrySet()) {
                     ArrayList<Zombie> tempZombieList = new ArrayList<>();
