@@ -23,7 +23,8 @@
       "quantity": 1,
       "type":"food",
       "description": "Looks tasty, too bad the teacher prefers you!",
-      "use": "5"
+      "use": "It's mealy. Bleh.",
+      "healthPoints": 10
     },
     {
       "location": "policeStation",
@@ -31,7 +32,8 @@
       "quantity": 1,
       "type":"food",
       "Description": "Looks delicious! Maybe eating this will restore some health points...",
-      "use":""
+      "use":"It's a peanut butter, pickle, and mayo sandwich. It tastes better than it should.... How disturbing.",
+      "healthPoints": 30
     },
     {
       "location": "store",
