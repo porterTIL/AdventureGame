@@ -44,8 +44,15 @@ public class ItemParser {
                     String description = (String) item.get("Description");
                     String use = (String) item.get("use");
                     Boolean visible = (Boolean) item.get("visible");
+                    Boolean consumable = (Boolean) item.get("consumable");
+                    long healthPoints = 0;
+                    if (item.get("healthPoints") != null) {
+                        healthPoints = (Long) item.get("healthPoints");
+                    }
                     if(visible==null) visible=true;
-                    itemList.add(new Item(location, name, quantity, type, description, use, visible));
+                    if (consumable == null) consumable = true;
+                    itemList.add(new Item(location, name, quantity, type, description, use, visible, healthPoints, consumable));
+
                 }
 
                 // found on stackOverFlow flow how to parse through Location hash map from ZombieGame
