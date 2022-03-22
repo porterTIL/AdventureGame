@@ -76,6 +76,8 @@ public class Character {
                 CheckLength(wordInput.length, wordInput[0]);    // CheckLength param1: checks that user input is the right number of words. param2: takes the user input verb to use in print feedback
                 useItem(wordInput[1]);  // pass the item string to "useItem".
                 chooseAction(); // call recursively to restart user input loop
+
+
                 break;
 
             case "inventory":
@@ -267,8 +269,17 @@ public class Character {
     }
 
     public static void useItem(String pickedItem) {
+        if(pickedItem.equalsIgnoreCase("cure") && currentLocation.getName().equalsIgnoreCase("policestation")) {
+            GameText.printer.print("You have cured Dr. Binks. He will save everyone now. Good job. You have won the game. Type 'Quit' to exit.");
+        }else {
+                GameText.printer.print("This is not the right location to release the cure.");
+
+            }
+
+
+
         for (Item item : inventory) {
-            if (item.getName().equalsIgnoreCase(pickedItem)) {
+            if (item.getName().equalsIgnoreCase(pickedItem) && pickedItem!="cure") {
                 GameText.printer.print("You have used " + item.getName());
                 GameText.printer.print(item.getUse());
             } else {

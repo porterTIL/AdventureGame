@@ -5,8 +5,8 @@
       "name": "Cure",
       "quantity": 1,
       "type": "cure",
-      "Description": "You have found the cure! You'll have to find a location to spread it to the zombies...",
-      "use": "You have won the game!"
+      "Description": "You have found the cure! You'll have to find the right location to spread it to the zombies...",
+      "use": ""
     },
     {
       "location": "townCenter",
