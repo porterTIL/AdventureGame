@@ -44,6 +44,10 @@ public class Location {
     }
 
     public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public ArrayList<Item> getVisibleItems() {
         if(zombies.isEmpty()){
             return items;
         } else {
