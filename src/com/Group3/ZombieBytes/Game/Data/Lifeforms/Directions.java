@@ -4,5 +4,14 @@ public enum Directions {
     NORTH,
     EAST,
     SOUTH,
-    WEST
+    WEST;
+
+    public static boolean isDirection(String in) {
+        for(Directions direction : Directions.values()) {
+            if(in.equalsIgnoreCase(direction.name())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
