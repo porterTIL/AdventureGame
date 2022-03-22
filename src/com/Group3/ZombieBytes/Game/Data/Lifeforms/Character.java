@@ -113,9 +113,9 @@ public class Character {
                 }
                 for (int w = 0; w < currentLocation.getZombies().size(); w++) {
                     if (currentLocation.getZombies().get(w).getZombieHP() <= 0) {
-                        System.out.println("There is a victim of " + username + "'s awe-inspiring violence on the floor." + username + " has already killed the zombie in this location.");
+                        GameText.printer.print("There is a victim of " + username + "'s awe-inspiring violence on the floor." + username + " has already killed the zombie in this location.");
                     } else {
-                        System.out.println(currentLocation.getZombies().get(w));
+                        GameText.printer.print(currentLocation.getZombies().get(w).toString());
                     }
                 }
                 GameText.printer.print(currentLocation.getInspect());
@@ -159,12 +159,10 @@ public class Character {
     }
 
     public static void attack() {
-        InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader reader = new BufferedReader(input);
 
         if (Character.health <= 0) {
             GameText.death();
-            System.exit(0);
+            Game.quit();
         }
         for (int w = 0; w < currentLocation.getZombies().size(); w++) { // currentLocation.getZombies returns array list of zombies
             Zombie zombie = currentLocation.getZombies().get(w);
@@ -176,28 +174,18 @@ public class Character {
                 if (Objects.equals(zombie.getZombieName(), "Monkey Zombie")) {
                     GameText.monkeyNoBanana();
                     chooseAction();
-                }
-                if (Objects.equals(zombie.getZombieName(), "Ultimate Zombie Boss")) {
-                    GameText.ultimateNoKey();
-                    chooseAction();
-                } else {
+                }else {
                     GameText.printer.print("You have confronted " + currentLocation.getZombies().get(w).getZombieName() +
                             ". This zombie's HP is currently " + zombie.zombieHP + ". What would you like to do? (use item, run, hit, or inventory)");
-                    String battleAction = null;
-                    String[] wordInput = new String[2];
-                    try {
-                        battleAction = reader.readLine();
-                        wordInput = battleAction.split(" ");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    String battleAction = reader.readLine();
+                    String[] wordInput = battleAction.split(" ");
                     switch (wordInput[0].toLowerCase()) {
                         case "hit":
                             GameText.printer.print("Zombie HP: " + zombie.zombieHP);
                             GameText.printer.print("Your health: " + Character.health);
                             GameText.punch();
                             zombie.zombieHP = zombie.zombieHP - 10;
-                            Zombie.bite();
+                            zombie.bite();
                             GameText.printer.print("Your health " + Character.health);
                             GameText.printer.print("Zombie HP: " + zombie.zombieHP);
                             if (zombie.zombieHP <= 0) {
