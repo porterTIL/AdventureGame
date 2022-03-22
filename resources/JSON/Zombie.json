@@ -22,7 +22,8 @@
       "name": "Ultimate Zombie Boss",
       "healthPoint": 100,
       "location": "hospital",
-      "description": "A powerful zombie, large from consuming others. You assume this was the initial zombie that began the plague."
+      "description": "A powerful zombie, large from consuming others. You assume this was the initial zombie that began the plague.",
+      "boss": "the big one"
     },
     {
       "name": "Monkey Zombie",

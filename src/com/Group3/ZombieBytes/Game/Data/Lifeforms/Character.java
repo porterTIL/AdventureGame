@@ -115,9 +115,9 @@ public class Character {
                 }
                 for (int w = 0; w < currentLocation.getZombies().size(); w++) {
                     if (currentLocation.getZombies().get(w).getZombieHP() <= 0) {
-                        System.out.println("There is a victim of " + username + "'s awe-inspiring violence on the floor." + username + " has already killed the zombie in this location.");
+                        GameText.printer.print("There is a victim of " + username + "'s awe-inspiring violence on the floor." + username + " has already killed the zombie in this location.");
                     } else {
-                        System.out.println(currentLocation.getZombies().get(w));
+                        GameText.printer.print(currentLocation.getZombies().get(w).toString());
                     }
                 }
                 GameText.printer.print(currentLocation.getInspect());
@@ -141,14 +141,15 @@ public class Character {
     }
 
     public static void walk(String direction) {
-        if (currentLocation.getAvailableDirection().get(direction) == null) {
+        if (Directions.isDirection(direction)) {
+            if (currentLocation.getAvailableDirection().get(direction) == null) {
+                GameText.lockedIn();
+            } else {
+                currentLocation = totalLocation.get(currentLocation.getAvailableDirection().get(direction));
+                GameText.printer.print(currentLocation.toString());
+            }
+        } else {
             GameText.defaultWalk();
-        }
-        //else if (!currentLocation.getAvailableDirection().get(direction).equalsIgnoreCase(currentLocation.getAvailableDirection().get(direction))) {
-        //GameText.lockedIn();}
-        else {
-            currentLocation = totalLocation.get(currentLocation.getAvailableDirection().get(direction));
-            GameText.printer.print(currentLocation.toString());
         }
     }
 
@@ -160,12 +161,10 @@ public class Character {
     }
 
     public static void attack() {
-        InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader reader = new BufferedReader(input);
 
         if (Character.health <= 0) {
             GameText.death();
-            System.exit(0);
+            Game.quit();
         }
         for (int w = 0; w < currentLocation.getZombies().size(); w++) { // currentLocation.getZombies returns array list of zombies
             Zombie zombie = currentLocation.getZombies().get(w);
@@ -177,28 +176,18 @@ public class Character {
                 if (Objects.equals(zombie.getZombieName(), "Monkey Zombie")) {
                     GameText.monkeyNoBanana();
                     chooseAction();
-                }
-                if (Objects.equals(zombie.getZombieName(), "Ultimate Zombie Boss")) {
-                    GameText.ultimateNoKey();
-                    chooseAction();
-                } else {
+                }else {
                     GameText.printer.print("You have confronted " + currentLocation.getZombies().get(w).getZombieName() +
                             ". This zombie's HP is currently " + zombie.zombieHP + ". What would you like to do? (use item, run, hit, or inventory)");
-                    String battleAction = null;
-                    String[] wordInput = new String[2];
-                    try {
-                        battleAction = reader.readLine();
-                        wordInput = battleAction.split(" ");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    String battleAction = reader.readLine();
+                    String[] wordInput = battleAction.split(" ");
                     switch (wordInput[0].toLowerCase()) {
                         case "hit":
                             GameText.printer.print("Zombie HP: " + zombie.zombieHP);
                             GameText.printer.print("Your health: " + Character.health);
                             GameText.punch();
                             zombie.zombieHP = zombie.zombieHP - 10;
-                            Zombie.bite();
+                            zombie.bite();
                             GameText.printer.print("Your health " + Character.health);
                             GameText.printer.print("Zombie HP: " + zombie.zombieHP);
                             if (zombie.zombieHP <= 0) {
@@ -269,6 +258,7 @@ public class Character {
     }
 
     public static void useItem(String pickedItem) {
+
         if(pickedItem.equalsIgnoreCase("cure") && currentLocation.getName().equalsIgnoreCase("policestation")) {
             GameText.printer.print("You have cured Dr. Binks. He will save everyone now. Good job. You have won the game. Type 'Quit' to exit.");
         }else {
@@ -286,6 +276,28 @@ public class Character {
                 GameText.printer.print("You have used " + item.getName());
                 GameText.printer.print(item.getUse());
                 inventory.remove(item);
+
+        for (Item item : inventory) {   // search the inventory for the item to be used
+            if (item.getName().equalsIgnoreCase(pickedItem)){   // if an item matches, check if it's the cure, food, or a simple "text-output" item
+                if (pickedItem.equalsIgnoreCase("cure")){
+                    GameText.printer.print("You have used " + item.getName());
+                    GameText.printer.print(item.getUse());
+                    System.exit(0);   // exit the game upon winning - change this after adding in more game winning logic
+                }
+                else if (item.getType().equalsIgnoreCase("food")){
+                    GameText.printer.print("You have used " + item.getName());
+                    GameText.printer.print(item.getUse());
+                    health += item.healthPoints;
+                }
+                else {
+                    GameText.printer.print("You have used " + item.getName());
+                    GameText.printer.print(item.getUse());
+                }
+                if(item.consumable) {
+                    inventory.remove(item); // whatever you used, remove it from the inventory
+                }
+                return;
+
             }
         }
     }

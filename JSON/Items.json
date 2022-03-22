@@ -5,8 +5,8 @@
       "name": "Cure",
       "quantity": 1,
       "type": "cure",
-      "Description": "You have found the cure! You'll have to find the right location to spread it to the zombies...",
-      "use": ""
+      "Description": "You have found the cure! You'll have to find a location to spread it to the zombies...",
+      "use": "You have won the game!"
     },
     {
       "location": "townCenter",
@@ -14,8 +14,7 @@
       "quantity": 1,
       "type": "letter",
       "Description": "A tattered note with 'HELP' written on the front",
-      "use": "HELP...something happened...the reasearch going on at the hospital...something went wrong and everyone started...changing? Mutating into some...thing.\nThe only cure is still in the hospital but I think I'm the only one who wasn't attacked. I'm going to try to get it...I may not return but please...somebody...if you find this letter we need your help.\n Here is a map of the town.\nRoad1   Hospital       Road2\nRoad3   TownCenter      Store\nSchool   PoliceStation   Road4",
-      "consumable": false
+      "use": "HELP...something happened...the reasearch going on at the hospital...something went wrong and everyone started...changing? Mutating into some...thing.\nThe only cure is still in the hospital but I think I'm the only one who wasn't attacked. I'm going to try to get it...I may not return but please...somebody...if you find this letter we need your help.\n Here is a map of the town.\nRoad1   Hospital       Road2\nRoad3   TownCenter      Store\nSchool   PoliceStation   Road4"
     },
     {
       "location": "school",
@@ -23,8 +22,7 @@
       "quantity": 1,
       "type":"food",
       "description": "Looks tasty, too bad the teacher prefers you!",
-      "use": "It's mealy. Bleh.",
-      "healthPoints": 10
+      "use": "5"
     },
     {
       "location": "policeStation",
@@ -32,8 +30,7 @@
       "quantity": 1,
       "type":"food",
       "Description": "Looks delicious! Maybe eating this will restore some health points...",
-      "use":"It's a peanut butter, pickle, and mayo sandwich. It tastes better than it should.... How disturbing.",
-      "healthPoints": 30
+      "use":""
     },
     {
       "location": "store",
@@ -47,8 +44,7 @@
       "name": "Baton",
       "quantity": 1,
       "type":"weapon",
-      "Description": "A tool that can come in use for protecting against Zombies.",
-      "consumable": false
+      "Description": "A tool that can come in use for protecting against Zombies."
     },
     {
       "location": "road 1",

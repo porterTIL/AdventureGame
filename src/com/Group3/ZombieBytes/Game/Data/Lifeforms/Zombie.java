@@ -28,7 +28,7 @@ public class Zombie {
 
     //methods
         // business methods
-    public static void bite() {
+    public void bite() {
         Character.health = Character.health - 10;
         GameText.bite();
     }

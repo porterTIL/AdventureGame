@@ -7,18 +7,23 @@ public class Item {
     long quantity = 0;
     String type = null;
     String description = null;
-
+    public boolean visible;
+    public long healthPoints;
+    public boolean consumable;
 
     String use = null;
 
     // constructors
-    public Item(String locatedIn, String name, long quantity, String type, String description, String use){
+    public Item(String locatedIn, String name, long quantity, String type, String description, String use, boolean visible, long healthPoints, boolean consumable){
         setLocatedIn(locatedIn);
         setName(name);
         setQuantity(quantity);
         setType(type);
         setDescription(description);
         setUse(use);
+        this.visible=visible;
+        this.healthPoints = healthPoints;
+        this.consumable = consumable;
     }
 
     // methods

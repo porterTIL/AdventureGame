@@ -44,7 +44,17 @@ public class Location {
     }
 
     public ArrayList<Item> getItems() {
-        return items;
+        if(zombies.isEmpty()){
+            return items;
+        } else {
+            ArrayList<Item> visibleItems = new ArrayList();
+            for(Item item : items){
+                if(item.visible){
+                    visibleItems.add(item);
+                }
+            }
+            return visibleItems;
+        }
     }
 
     public void setItems(ArrayList<Item> items) {
