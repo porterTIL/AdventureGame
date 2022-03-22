@@ -272,7 +272,9 @@ public class Character {
                     GameText.printer.print("You have used " + item.getName());
                     GameText.printer.print(item.getUse());
                 }
-                inventory.remove(item); // whatever you used, remove it from the inventory
+                if(item.consumable) {
+                    inventory.remove(item); // whatever you used, remove it from the inventory
+                }
                 return;
             }
         }
