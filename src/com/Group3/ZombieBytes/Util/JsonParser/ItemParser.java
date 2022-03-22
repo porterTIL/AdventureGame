@@ -43,7 +43,7 @@ public class ItemParser {
                     String type = (String) item.get("type");
                     String description = (String) item.get("Description");
                     String use = (String) item.get("use");
-                    Boolean visible = (boolean) item.get("visible");
+                    Boolean visible = (Boolean) item.get("visible");
                     if(visible==null) visible=true;
                     itemList.add(new Item(location, name, quantity, type, description, use, visible));
                 }
