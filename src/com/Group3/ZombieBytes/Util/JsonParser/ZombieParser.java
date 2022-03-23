@@ -9,14 +9,22 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class ZombieParser {
+
+    private static InputStream getFileFromResourceAsStream(String fileName) {
+        ClassLoader classLoader = ZombieParser.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found! " + fileName);
+        } else {
+            return inputStream;
+        }
+    }
     public static void run() {
 //     created an arraylist to store my location objects
         List<Zombie> zombieList = new ArrayList<>();
@@ -25,7 +33,7 @@ public class ZombieParser {
         // this class helps us read the json file for location
         {
             try {
-                FileReader zombieReader = new FileReader("resources/JSON/Zombie.json");
+                Reader zombieReader = new InputStreamReader(getFileFromResourceAsStream("JSON/Zombie.json"));
                 Object zombieObject = jsonparser.parse(zombieReader);
                 JSONObject zombies = (JSONObject) zombieObject;
                 // Location is a json array of objects

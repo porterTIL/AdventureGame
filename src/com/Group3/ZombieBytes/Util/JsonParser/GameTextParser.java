@@ -5,13 +5,21 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 
 
 public class GameTextParser {
+
+    private static InputStream getFileFromResourceAsStream(String fileName) {
+        ClassLoader classLoader = GameTextParser.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found! " + fileName);
+        } else {
+            return inputStream;
+        }
+    }
     public static void run(){
         //     created an arraylist to store my location objects
         HashMap<String, String> gameText = new HashMap<String, String>();
@@ -23,7 +31,7 @@ public class GameTextParser {
         // this class helps us read the json file for location
         {
             try {
-                FileReader gameTextReader = new FileReader("resources/JSON/GameText.json");
+                Reader gameTextReader = new InputStreamReader(getFileFromResourceAsStream("JSON/GameText.json"));
                 Object gameTextObject = jsonparser.parse(gameTextReader);
                 JSONObject jsonGameTextObject = (JSONObject) gameTextObject;
 
