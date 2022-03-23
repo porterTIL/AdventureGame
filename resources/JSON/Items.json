@@ -14,7 +14,7 @@
       "quantity": 1,
       "type": "letter",
       "Description": "A tattered note with 'HELP' written on the front",
-      "use": "HELP...something happened...the reasearch going on at the hospital...something went wrong and everyone started...changing? Mutating into some...thing.\nThe only cure is still in the hospital but I think I'm the only one who wasn't attacked. I'm going to try to get it...I may not return but please...somebody...if you find this letter we need your help.\n Here is a map of the town.\nRoad1   Hospital       Road2\nRoad3   TownCenter      Store\nSchool   PoliceStation   Road4",
+      "use": "\n\"Ope... we've made a terrible terrible mistake. The town that I love has been destroyed but, if you're reading this... perhaps it's not too late.\nOur animal research at the hospital... no point beating around the bush... \nWe made zombies. They're just so cool! I really should have thought this through.\nI've synthesized a cure, it's in the hospital.\nIf you go there, tell Patient Zero I said 'HI!'\"\nIt's signed Dr. Gear\n\nAttached is a map of the town.\nRoad1   Hospital       Road2\nRoad3   TownCenter      Store\nSchool   PoliceStation   Road4",
       "consumable": false
     },
     {

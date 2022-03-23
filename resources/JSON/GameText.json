@@ -10,15 +10,15 @@
     },
     {
       "name": "punch",
-      "text": "You punch the zombie in the face. "
+      "text": "You punch the zombie in the face."
     },
     {
       "name": "intro",
-      "text": "Weary from finals and end of the year festivities, you return home to your small home town for summer vacation. When you step off the bus at the town center, however, a chill rises in your spine and you notice that there is nobody in sight."
+      "text": "Weary from finals and end of the year festivities, you step off the bus at the town center. \n\"It feels good to be home.\" you say to yourself. \nLooking around, you notice the always bustling town square is... empty. \nA chill climbs your spine.\nLoose paper blows around the square. It appears someone has torn all of the fliers off the town bulletin board.\nIn place of the fliers is a single hand written LETTER.\n"
     },
     {
       "name": "letter",
-      "text": "HELP...something happened...the reasearch going on at the hospital...something went wrong and everyone started...changing? Mutating into some...thing. The only cure is still in the hospital but I think I'm the only one who wasn't attacked. I'm going to try to get it...I may not return but please...somebody...if you find this letter we need your help"
+      "text": "\n\"Ope... we've made a terrible terrible mistake. The town that I love has been destroyed but, if you're reading this... perhaps it's not too late.\n Our animal research at the hospital... No point beating around the bush at this point... \n We made zombies. They just seemed so cool, I really should have thought this through. They looked so cool on TV.\n I've synthesized a cure, it's in the hospital.\"\n It's signed Dr. Emily Gear\n"
     },
     {
       "name": "outro",
@@ -30,7 +30,7 @@
     },
     {
       "name": "bite",
-      "text": "The zombie bit you!"
+      "text": "Gross! The zombie bit you! I sure hope this doesn't get infected."
     },
     {
       "name": "chooseAction",
