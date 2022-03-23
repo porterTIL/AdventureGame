@@ -62,9 +62,7 @@ public class Character {
     }
 
     public static void chooseAction() {
-        if(FXDriver.hasGraphics) {
-            Platform.runLater(()->Doodler.updateMap(Doodler.getMapSquares()));
-        }
+        Platform.runLater(()->Doodler.updateMap(Doodler.getMapSquares()));
         GameText.chooseAction();
 
         String chooseAction;
@@ -259,23 +257,23 @@ public class Character {
 
     public static void useItem(String pickedItem) {
 
-        if(pickedItem.equalsIgnoreCase("cure") && currentLocation.getName().equalsIgnoreCase("policestation")) {
+        if (pickedItem.equalsIgnoreCase("cure") && currentLocation.getName().equalsIgnoreCase("policestation")) {
             GameText.printer.print("You have cured Dr. Binks. He will save everyone now. Good job. You have won the game. Type 'Quit' to exit.");
-        }else {
-                GameText.printer.print("This is not the right location to release the cure.");
+        } else {
+            GameText.printer.print("This is not the right location to release the cure.");
 
-            }
-
-
+        }
 
         for (Item item : inventory) {
-            if (item.getName().equalsIgnoreCase(pickedItem) && pickedItem!="cure") {
+            if (item.getName().equalsIgnoreCase(pickedItem) && pickedItem != "cure") {
                 GameText.printer.print("You have used " + item.getName());
                 GameText.printer.print(item.getUse());
             } else {
                 GameText.printer.print("You have used " + item.getName());
                 GameText.printer.print(item.getUse());
                 inventory.remove(item);
+            }
+        }
 
         for (Item item : inventory) {   // search the inventory for the item to be used
             if (item.getName().equalsIgnoreCase(pickedItem)){   // if an item matches, check if it's the cure, food, or a simple "text-output" item
