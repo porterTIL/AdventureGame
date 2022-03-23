@@ -24,10 +24,10 @@ import javafx.scene.text.TextAlignment;
 
 public class Doodler {
     private static Paint backgroundColor = Color.BISQUE; //!DON'T USE AWT
-    public final static int xRes = 400;
-    public final static int yRes = 400;
+    public final static int xRes = 800;
+    public final static int yRes = 600;
     public final static int xScale = 1;
-    public final static int yScale = 1;
+    public final static double yScale = 1.5;
     private static Group console;
     private static Group graphic;//current image
 
@@ -35,7 +35,7 @@ public class Doodler {
     public static Group drawMap(){
         //calculate square size
         int xSize = (xRes/10)*xScale;
-        int ySize = (yRes/10)*yScale;
+        int ySize = (int) ((yRes/10)*yScale);
         // keep track of previous squares position
         double xPos = 0;
         double yPos = 0;
