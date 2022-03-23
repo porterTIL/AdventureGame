@@ -258,19 +258,18 @@ public class Character {
     public static void useItem(String pickedItem) {
         for (Item item : inventory) {   // search the inventory for the item to be used
             if (item.getName().equalsIgnoreCase(pickedItem)){   // if an item matches, check if it's the cure, food, or a simple "text-output" item
+
+                GameText.printer.print("You have used " + item.getName());
+                GameText.printer.print(item.getUse());
+
                 if (pickedItem.equalsIgnoreCase("cure")){
-                    GameText.printer.print("You have used " + item.getName());
-                    GameText.printer.print(item.getUse());
                     System.exit(0);   // exit the game upon winning - change this after adding in more game winning logic
                 }
                 else if (item.getType().equalsIgnoreCase("food")){
-                    GameText.printer.print("You have used " + item.getName());
-                    GameText.printer.print(item.getUse());
                     health += item.healthPoints;
                 }
-                else {
-                    GameText.printer.print("You have used " + item.getName());
-                    GameText.printer.print(item.getUse());
+                else if (item.getName().equalsIgnoreCase("key") && currentLocation.getName().equalsIgnoreCase("PoliceStation")){
+
                 }
                 if(item.consumable) {
                     inventory.remove(item); // whatever you used, remove it from the inventory
