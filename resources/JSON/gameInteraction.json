@@ -1,0 +1,23 @@
+{
+  "Interaction": [
+    {
+      "verb": [
+        "grab",
+        "get",
+        "set",
+        "wet",
+        "pet",
+        "yeet"
+      ],
+      "noun": [
+        "Stick",
+        "Baton",
+        "Key",
+        "Sandwich",
+        "Apple",
+        "Letter",
+        "Cure"
+      ]
+    }
+  ]
+}
