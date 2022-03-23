@@ -1,18 +1,10 @@
 package com.Group3.ZombieBytes.Driver;
 
-import com.Group3.ZombieBytes.Game.Game;
-import com.Group3.ZombieBytes.Util.UserInput.ReaderInput;
+import javafx.application.Application;
 
 public class Driver {
-    public static void main(String[] args) throws InterruptedException {
-        // starts the game
-        System.out.println("Would you like to play with graphics Y/N");
-        ReaderInput reader = new ReaderInput();
-        if(reader.readLine().equalsIgnoreCase("y")){
-            FXDriver.main(args);
-        } else {
-            Game.start(new ReaderInput());
-        }
+    public static void main(String[] args) {
+        Application.launch(FXDriver.class, args);
     }
 }
 

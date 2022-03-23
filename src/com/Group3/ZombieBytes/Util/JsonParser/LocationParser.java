@@ -6,9 +6,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.HashMap;
 
 public class LocationParser {
@@ -22,7 +21,7 @@ public class LocationParser {
         // this class helps us read the json file for location
         {
             try {
-                FileReader locationReader = new FileReader("resources/JSON/Location.json");
+                Reader locationReader = new InputStreamReader(getFileFromResourceAsStream("json/Location.json"));
                 Object locationObject = jsonparser.parse(locationReader);
                 JSONObject locations = (JSONObject) locationObject;
 
@@ -55,6 +54,15 @@ public class LocationParser {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+        }
+    }
+    private static InputStream getFileFromResourceAsStream(String fileName) {
+        ClassLoader classLoader = LocationParser.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found! " + fileName);
+        } else {
+            return inputStream;
         }
     }
 

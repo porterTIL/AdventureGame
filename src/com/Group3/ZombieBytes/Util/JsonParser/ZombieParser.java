@@ -1,6 +1,5 @@
 package com.Group3.ZombieBytes.Util.JsonParser;
 
-import com.Group3.ZombieBytes.Driver.Driver;
 import com.Group3.ZombieBytes.Game.Data.Lifeforms.ZombieBoss;
 import com.Group3.ZombieBytes.Game.Game;
 import com.Group3.ZombieBytes.Game.Data.Location;
@@ -10,10 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +23,7 @@ public class ZombieParser {
         // this class helps us read the json file for location
         {
             try {
-                InputStreamReader zombieReader = new InputStreamReader(ClassLoader.getSystemResourceAsStream("Zombie.json"));
+                Reader zombieReader = new InputStreamReader(getFileFromResourceAsStream("json/Zombie.json"));
                 Object zombieObject = jsonparser.parse(zombieReader);
                 JSONObject zombies = (JSONObject) zombieObject;
                 // Location is a json array of objects
@@ -63,6 +59,16 @@ public class ZombieParser {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private static InputStream getFileFromResourceAsStream(String fileName) {
+        ClassLoader classLoader = ZombieParser.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found! " + fileName);
+        } else {
+            return inputStream;
         }
     }
 }

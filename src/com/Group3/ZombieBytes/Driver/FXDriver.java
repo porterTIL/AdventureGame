@@ -2,6 +2,7 @@ package com.Group3.ZombieBytes.Driver;
 
 import com.Group3.ZombieBytes.Game.Game;
 import com.Group3.ZombieBytes.Util.Display.Doodler;
+import com.Group3.ZombieBytes.Util.JsonParser.ZombieParser;
 import com.Group3.ZombieBytes.Util.UserInput.ReaderInput;
 import javafx.application.Application;
 import javafx.scene.control.TextArea;
@@ -16,7 +17,6 @@ public class FXDriver extends Application {
     public static boolean hasGraphics;
 
     public static void main(String[] args) {
-        // starts the game
         System.out.println("Would you like to play with graphics Y/N");
         ReaderInput reader = new ReaderInput();
         if(reader.readLine().equalsIgnoreCase("y")){

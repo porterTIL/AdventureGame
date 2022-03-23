@@ -9,9 +9,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import com.Group3.ZombieBytes.Game.Data.Items.Item;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +25,7 @@ public class ItemParser {
         // this class helps us read the json file for location
         {
             try {
-                FileReader itemReader = new FileReader("resources/JSON/Items.json");
+                Reader itemReader = new InputStreamReader(getFileFromResourceAsStream("json/Items.json"));
                 Object itemObject = jsonparser.parse(itemReader);
                 JSONObject items = (JSONObject) itemObject;
 
@@ -77,6 +75,15 @@ public class ItemParser {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+        }
+    }
+    private static InputStream getFileFromResourceAsStream(String fileName) {
+        ClassLoader classLoader = ItemParser.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found! " + fileName);
+        } else {
+            return inputStream;
         }
     }
 }

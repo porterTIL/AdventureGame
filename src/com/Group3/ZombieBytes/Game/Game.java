@@ -26,6 +26,7 @@ public class Game{
     // methods
         // business methods
     public static void start(Input input) throws InterruptedException {
+        System.out.println("in game");
         //if its a reader input it needs to print to console
         runParsers();  // gathers data from json files and installs our classes with its properties
         if((input instanceof ReaderInput)){
