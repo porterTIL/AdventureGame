@@ -2,7 +2,7 @@
   "Location": [
     {
       "name": "Road 1",
-      "description": "You have entered a road. You see a stick on the ground.",
+      "description": "You have entered a road. You see a STICK on the ground.",
       "Item": "Stick",
       "East": "Hospital",
       "South": "Road 3",
@@ -16,7 +16,7 @@
       "East": "Road 2",
       "South": "TownCenter",
       "West": "Road 1",
-      "inspect": "Hospitals used to make you nervous and now you are even more so by its silence"
+      "inspect": "Hospitals have always made you nervous, now even more so by its silence"
     },
     {
       "name": "Road 2",
